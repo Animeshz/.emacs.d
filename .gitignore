@@ -2,5 +2,11 @@ auto-save-list/
 eln-cache/
 elpaca/
 parinfer-rust/
+undohist/
 
 .org-id-locations
+history
+config.el
+
+*~
+\#*\#

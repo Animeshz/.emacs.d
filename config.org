@@ -8,89 +8,134 @@
 #+BEGIN_SRC emacs-lisp
 (setq org-src-preserve-indentation t
       org-export-preserve-breaks t)
+
+(setq create-lockfiles nil
+      make-backup-files nil)
+
+(setq use-short-answers t)
+
+(setq-default fill-column 120)
+
+(global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
+
+(setq-default tab-width 4)
+(setq-default evil-shift-width tab-width)
+(setq-default indent-tabs-mode nil)
 #+END_SRC
 
-** Set Keymaps
-:PROPERTIES:
-:header-args: :noweb-ref general-config :tangle no
-:END:
-#+BEGIN_SRC emacs-lisp
+** Set Keybinds
+
+#+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
 (general-define-key
-  :states '(insert)
-  "C-S-v" 'evil-paste-after)
+ :states '(insert)
+ "C-S-v" 'evil-paste-after)  ;; TODO: WTF position of paste?
 
 (general-define-key
-  :states '(normal motion visual operator)
-  "," 'evil-scroll-line-down
-  "." 'evil-scroll-line-up)
-  "go" '(avy-goto-word-0 :which-key "avy goto word")
-  "gl" '(avy-goto-char :which-key "avy goto letter"))
+ :states '(normal motion visual operator)
+ :keymaps 'override
+
+ "H" 'evil-beginning-of-line
+ "J" 'evil-goto-line
+ "K" 'evil-goto-first-line
+ "L" 'evil-end-of-line
+
+ "," 'evil-scroll-line-down
+ "." 'evil-scroll-line-up
+
+ "C-+" 'text-scale-increase
+ "C-_" 'text-scale-decrease
+ "C--" 'text-scale-decrease
+
+ "TAB" #'next-buffer
+ "S-TAB" #'previous-buffer)  ;; TODO: Not working
 
 (general-define-key
-  :states '(normal visual)
-  "H" 'evil-beginning-of-line
-  "J" 'evil-goto-line
-  "K" 'evil-goto-first-line
-  "L" 'evil-end-of-line
-  "C-+" '(text-scale-increase :which-key "")
-  "C--" '(text-scale-decrease :which-key ""))
+ :states '(normal motion visual)
+ "go" '(avy-goto-word-0 :which-key "avy goto word")
+ "gl" '(avy-goto-char :which-key "avy goto letter"))
+
+(general-create-definer leader-key
+  :states '(normal hybrid motion visual operator emacs)
+  :keymaps 'override
+  :prefix "SPC")
+
+(leader-key
+  "c" 'display-fill-column-indicator-mode)
+
+;; (evilem-default-keybindings "SPC")
+;; (define-key evilem-map "s"
+;;   (evilem-create (list #'evil-snipe-repeat #'evil-snipe-repeat-reverse)
+;;                   :name 'evil-easymotion-snipe-forward
+;;                   :pre-hook (save-excursion (call-interactively #'evil-snipe-s))
+;;                   :bind ((evil-snipe-scope 'buffer)
+;;                         (evil-snipe-enable-highlight)
+;;                         (evil-snipe-enable-incremental-highlight))))
+
 #+END_SRC
 
 
 * Packages
 
+** Undo History
+
+#+BEGIN_SRC emacs-lisp
+;; keep undo history
+(use-package undo-fu)
+;; save command history
+(use-package savehist
+  :elpaca nil
+  :init
+  (savehist-mode))
+;; keep file history between emacs sessions
+(use-package undohist
+  :init
+  (setq undo-tree-history-directory-alist '(((concat user-emacs-directory "/undohist"))))
+  :config
+  (undohist-initialize))
+#+END_SRC
+
 ** Evil + General (Vim-Keybind)
 
 #+BEGIN_SRC emacs-lisp :noweb yes
 (use-package evil
+  :after undo-fu
   :init
-    (setq evil-want-keybinding nil)
-    ; (setq evil-undo-system 'undo-fu)
+  (setq evil-want-keybinding nil)
+  (setq evil-undo-system 'undo-fu)
   :config
-    (evil-mode 1))
+  (evil-mode 1)
+  (setq ;evil-want-fine-undo t
+   evil-vsplit-window-right t
+   evil-split-window-below t))
 
-(setq ;evil-move-cursor-back nil
-      evil-want-fine-undo t
-      ;evil-move-beyond-eol t
-      evil-respect-visual-line-mode t         ;; I don't know why this does not work and keep the visual selection after one indentation
-      evil-org-retain-visual-state-on-shift t
-      evil-vsplit-window-right t
-      evil-split-window-below t)
+(use-package helpful)
+(use-package general
+  :after (evil helpful avy)
+  :config
+  (general-override-mode)
+  (general-auto-unbind-keys)
+  (general-evil-setup t)
 
-  (use-package general
-    :after evil
-    :config
-    (general-evil-setup t)
-
-    ;; Remap C-h to helpful 
-    (general-define-key
-       :prefix "C-h"
-       "f" #'helpful-callable
-       "v" #'helpful-variable
-       "k" #'helpful-key
-       "F" #'helpful-function
-       "C" #'helpful-command)
-
-    <<general-config>>)
+  ;; Remap C-h to helpful package
+  (general-define-key
+   :prefix "C-h"
+   "f" #'helpful-callable
+   "v" #'helpful-variable
+   "k" #'helpful-key
+   "F" #'helpful-function
+   "C" #'helpful-command)
+  <<general-config>>)
 #+END_SRC
 
-** Parinfer
-#+BEGIN_SRC emacs-lisp
-(use-package parinfer-rust-mode
-    :hook emacs-lisp-mode
-    :init
-    (setq parinfer-rust-auto-download t))
-
-#+END_SRC
-
-** Vertico (Fuzzy Finder)
+** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
 
 #+BEGIN_SRC emacs-lisp
 (use-package vertico
   :init
   (setq vertico-count 20
-	vertico-resize nil
-	vertico-cycle t)
+        vertico-resize nil
+        vertico-cycle t)
   (vertico-mode))
 
 (use-package orderless
@@ -100,14 +145,57 @@
   (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
-** Avy
+** Which Key
 
 #+BEGIN_SRC emacs-lisp
-(use-package helpful)
-(use-package avy
-     :config
-     (setq avy-background t)
-     (avy-setup-default))
-(elpaca-wait)
+(use-package which-key
+  :init
+  (which-key-mode))
+(setq which-key-idle-delay 0.4)
 #+END_SRC
 
+** Avy / EasyMotion (Goto)
+
+#+BEGIN_SRC emacs-lisp
+(use-package avy)
+;; (use-package evil-easymotion)
+#+END_SRC
+
+
+** Theme & Font
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-city-lights t)
+  (custom-set-faces
+   '(doom-themes-visual-bell (( t(:background "#00FFFF"))))
+   '(org-ellipsis (( t(:foreground "#C678DD"))))))
+
+(set-face-attribute 'default nil :font "CaskaydiaCove Nerd Font Mono" :height 125)
+#+END_SRC
+
+** Parinfer
+
+#+BEGIN_SRC emacs-lisp
+(use-package parinfer-rust-mode
+  :hook '(emacs-lisp-mode org-mode)
+  :init
+  (setq parinfer-rust-auto-download t))
+#+END_SRC
+
+
+* Misc
+
+** Highlight Trailing Whitespace
+
+#+BEGIN_SRC emacs-lisp
+(setq-default show-trailing-whitespace t)
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\\s-+$" 0 'trailing-whitespace)))))
+#+END_SRC

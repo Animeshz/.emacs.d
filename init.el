@@ -44,5 +44,4 @@
 ;; nvim ka copy
 ;; formatting
 ;; Tab key (2-spaces) indentation: insert-mode
-
-
+;; Ctrl-Backspace at ^ strange behavior (deletes word from upper line too)
