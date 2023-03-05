@@ -20,8 +20,8 @@
 (setq display-line-numbers-type 'relative)
 
 (setq-default tab-width 4)
-(setq-default evil-shift-width tab-width)
 (setq-default indent-tabs-mode nil)
+(setq-default evil-shift-width tab-width)
 #+END_SRC
 
 ** Set Keybinds
@@ -29,7 +29,8 @@
 #+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
 (general-define-key
  :states '(insert)
- "C-S-v" 'evil-paste-after)  ;; TODO: WTF position of paste?
+ "C-S-v" 'evil-paste-after  ;; TODO: WTF position of paste?
+ "TAB" 'tab-to-tab-stop)
 
 (general-define-key
  :states '(normal motion visual operator)
@@ -48,10 +49,8 @@
  "C--" 'text-scale-decrease
 
  "TAB" #'next-buffer
- "S-TAB" #'previous-buffer)  ;; TODO: Not working
+ "S-TAB" #'previous-buffer  ;; TODO: Not working
 
-(general-define-key
- :states '(normal motion visual)
  "go" '(avy-goto-word-0 :which-key "avy goto word")
  "gl" '(avy-goto-char :which-key "avy goto letter"))
 
@@ -61,6 +60,8 @@
   :prefix "SPC")
 
 (leader-key
+  "ff" 'find-file
+  "tw" 'delete-trailing-whitespace
   "c" 'display-fill-column-indicator-mode)
 
 ;; (evilem-default-keybindings "SPC")
@@ -194,8 +195,16 @@
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)
 (add-hook 'prog-mode-hook
-          (lambda ()
-            (font-lock-add-keywords
-             nil
-             '(("\\s-+$" 0 'trailing-whitespace)))))
+          (lambda () (font-lock-add-keywords nil '(("\\s-+$" 0 'trailing-whitespace)))))
+#+END_SRC
+
+** Don't affect previous line with C-backspace
+
+#+BEGIN_SRC emacs-lisp
+(defun my/backward-kill-word ()
+  "Kill backward to the beginning of the current word, but do not cross lines."
+  (interactive)
+  (if (not (looking-back "^\\s-*")) (backward-kill-word 1) (delete-horizontal-space)))
+
+(global-set-key (kbd "<C-backspace>") 'my/backward-kill-word)
 #+END_SRC
