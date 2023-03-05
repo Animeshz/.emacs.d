@@ -29,9 +29,10 @@
 #+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
 (general-define-key
  :states '(insert)
- "C-S-v" 'evil-paste-after  ;; TODO: WTF position of paste?
+ "C-S-v" 'evil-paste-before-cursor-after
  "TAB" 'tab-to-tab-stop)
 
+; (define-key org-mode-map (kbd "<backtab>") nil)
 (general-define-key
  :states '(normal motion visual operator)
  :keymaps 'override
@@ -49,7 +50,7 @@
  "C--" 'text-scale-decrease
 
  "TAB" #'next-buffer
- "S-TAB" #'previous-buffer  ;; TODO: Not working
+ "BACKTAB" #'previous-buffer  ;; TODO: Not working
 
  "go" '(avy-goto-word-0 :which-key "avy goto word")
  "gl" '(avy-goto-char :which-key "avy goto letter"))
