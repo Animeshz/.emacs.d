@@ -65,8 +65,10 @@
 (leader-key
   "ff" 'find-file
   "tw" 'delete-trailing-whitespace
+  "ev" 'eval-region
   "x" 'kill-this-buffer
   "c" 'display-fill-column-indicator-mode
+  "s" 'switch-to-buffer
   "/" 'comment-line)                    ;
 
 ;; (global-unset-key (kbd "C-c C-a"))
@@ -216,6 +218,12 @@
     marginalia-align-offset 20))
 #+END_SRC
 
+** VTerm
+
+#+BEGIN_SRC emacs-lisp
+(use-package vterm)
+#+END_SRC
+
 
 * Misc
 
@@ -245,3 +253,12 @@
 ;; 1. Avy / EasyMotion make it better
 ;; 2. Href opening in default apps set by XDG-MIME / XDG-SCHEME-HANDLER
 #+END_SRC
+
+* Resources References
+
+These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.
+
+- [[https://opensource.com/sites/default/files/gated-content/cheat_sheet_emacs.pdf][Emacs Cheatsheet - Opensource.com]]
+- [[https://github.com/progfolio/.emacs.d][Progfolio's Emacs Config (Creator of Elpaca package manager we're currently using)]]
+- [[https://github.com/aadi58002/emacs-config/blob/main/init.org#avy-map][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]]
+- [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Luca's Emacs Config]] & [[https://www.karsdorp.io/posts/dotemacs/][Karsdorp's Emacs Config]] - Long list of useful options to use, like a reference-book!
