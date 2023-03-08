@@ -1,12 +1,18 @@
+.cache/
 auto-save-list/
 eln-cache/
 elpaca/
 parinfer-rust/
 undohist/
 
+.lsp*
 .org-id-locations
-history
+bookmarks
 config.el
+history
+projectile-bookmarks.el*
+recentf
 
 *~
+.\#*
 \#*\#
