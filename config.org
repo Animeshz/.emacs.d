@@ -222,6 +222,34 @@
   (setq parinfer-rust-troublesome-modes nil))
 #+END_SRC
 
+** LSP (Highlighting, AutoCompletion & CodeActions)
+
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :init
+  (projectile-mode +1)
+  :config
+  (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
+
+(use-package eglot
+  :hook (prog-mode . eglot-ensure))
+#+END_SRC
+
+** Mermaid (Graph)
+
+#+BEGIN_SRC emacs-lisp
+(use-package mermaid-mode)
+(use-package ob-mermaid
+  :config
+  (add-hook 'org-babel-after-execute-hook (lambda ()
+                                            (org-toggle-inline-images)
+                                            (org-toggle-inline-images)))
+  (setq org-startup-with-inline-images t)
+  (setq org-confirm-babel-evaluate nil)
+  (add-to-list 'org-babel-default-header-args:mermaid '(:background-color . "#FFFFFF"))
+  (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t))))
+#+END_SRC
+
 
 * Misc
 
