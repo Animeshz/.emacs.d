@@ -14,6 +14,7 @@
 (global-visual-line-mode t)     ; Word Wrap
 
 (setq-default fill-column 120)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 
 (global-display-line-numbers-mode t)
 (setq display-line-numbers-type 'relative)
@@ -28,7 +29,7 @@
 #+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
 (general-define-key
  :states '(insert motion)
- :keymaps '(override local global minibuffer-mode-map)
+ :keymaps '(override local global)
 
  "C-S-v" 'evil-paste-before-cursor-after
  "TAB" 'tab-to-tab-stop)
@@ -48,6 +49,8 @@
  "C-+" 'text-scale-increase
  "C-_" 'text-scale-decrease
  "C--" 'text-scale-decrease
+ "C-S-i" '(lambda () (interactive) (indent-region (point-min) (point-max)))
+ "C-S-p" 'execute-extended-command  ; M-x
 
  "<escape>" 'keyboard-escape-quit
  "<tab>" 'next-buffer
@@ -70,8 +73,9 @@
   "ev" 'eval-region
   "x" 'kill-this-buffer
   "c" 'display-fill-column-indicator-mode
-  "b" 'bookmark-jump
   "s" 'switch-to-buffer
+  "d" 'bookmark-jump
+  "p" 'projectile-command-map
   "/" 'comment-line)
 #+END_SRC
 
@@ -113,7 +117,7 @@
 
 (use-package helpful)
 (use-package general
-  :after (evil helpful hop)
+  :after (evil helpful hop consult)
   :config
   (general-override-mode)
   (general-auto-unbind-keys)
@@ -147,13 +151,21 @@
   (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
-** Consult + Marginalia
+** Embark + Consult + Marginalia
 
-Consult: Extend default commands
-Marginalia: Add extra information on Variable/Function/FindFile/etc
+- Embark: Quick Actions
+- Consult: Extend default commands
+- Marginalia: Add extra information on Variable/Function/FindFile/etc
 
 #+BEGIN_SRC emacs-lisp
+(use-package embark
+  :bind ("C-;" . 'embark-act)
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command
+        embark-quit-after-action nil))
+
 (use-package consult)
+(use-package embark-consult)
 
 (use-package marginalia
   :config
@@ -167,23 +179,10 @@ Marginalia: Add extra information on Variable/Function/FindFile/etc
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
   :init
-  (which-key-mode))
-(setq which-key-idle-delay 0.4)
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.4))
 #+END_SRC
-
-** Hop (Jump Anywhere on Buffer)
-
-#+BEGIN_SRC emacs-lisp
-;; install pcre(-devel) package first from system package manager
-(use-package pcre
-  :elpaca (pcre :host github :repo "syohex/emacs-pcre"
-                :files (:default "pcre.el" "pcre-core.so")
-                :pre-build ("make" "all")))
-
-(use-package hop
-  :elpaca (hop :host github :repo "Animeshz/hop.el"))
-#+END_SRC
-
 
 ** Theme & Font
 #+BEGIN_SRC emacs-lisp
@@ -198,6 +197,19 @@ Marginalia: Add extra information on Variable/Function/FindFile/etc
    '(org-ellipsis (( t(:foreground "#C678DD"))))))
 
 (set-face-attribute 'default nil :font "CaskaydiaCove Nerd Font Mono" :height 125)
+#+END_SRC
+
+** Hop (Jump Anywhere on Buffer)
+
+#+BEGIN_SRC emacs-lisp
+;; install pcre(-devel) package first from system package manager
+(use-package pcre
+  :elpaca (pcre :host github :repo "syohex/emacs-pcre"
+                :files (:default "pcre.el" "pcre-core.so")
+                :pre-build ("make" "all")))
+
+(use-package hop
+  :elpaca (hop :host github :repo "Animeshz/hop.el"))
 #+END_SRC
 
 ** Parinfer
@@ -253,6 +265,8 @@ Marginalia: Add extra information on Variable/Function/FindFile/etc
 #+BEGIN_SRC emacs-lisp
 ;; TODO:
 ;; 1. Href opening in default apps set by XDG-MIME / XDG-SCHEME-HANDLER
+;; 2. Remove "Type C-h for help." when running evil-quit without saving and pressing wrong key.
+;;    -> Remove Line 253-259 in emacs/lisp/emacs-lisp/files.el
 #+END_SRC
 
 * Resources References
