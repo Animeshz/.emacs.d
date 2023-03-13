@@ -82,7 +82,9 @@
 
 * Packages
 
-** Undo History
+** Productivity
+
+*** Undo History
 
 #+BEGIN_SRC emacs-lisp
 ;; keep undo history
@@ -100,7 +102,7 @@
   (undohist-initialize))
 #+END_SRC
 
-** Evil + General (Vim-Keybind)
+*** Evil + General (Vim-Keybind)
 
 #+BEGIN_SRC emacs-lisp :noweb yes
 (use-package evil
@@ -134,7 +136,7 @@
   <<general-config>>)
 #+END_SRC
 
-** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
+*** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
 
 #+BEGIN_SRC emacs-lisp
 (use-package vertico
@@ -151,7 +153,7 @@
   (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
-** Embark + Consult + Marginalia
+*** Embark + Consult + Marginalia
 
 - Embark: Quick Actions
 - Consult: Extend default commands
@@ -174,7 +176,7 @@
         marginalia-align-offset 20))
 #+END_SRC
 
-** Which Key
+*** Which Key
 
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
@@ -184,22 +186,7 @@
   (setq which-key-idle-delay 0.4))
 #+END_SRC
 
-** Theme & Font
-#+BEGIN_SRC emacs-lisp
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (doom-themes-visual-bell-config)
-  (load-theme 'doom-city-lights t)
-  (custom-set-faces
-   '(doom-themes-visual-bell (( t(:background "#00FFFF"))))
-   '(org-ellipsis (( t(:foreground "#C678DD"))))))
-
-(set-face-attribute 'default nil :font "CaskaydiaCove Nerd Font Mono" :height 125)
-#+END_SRC
-
-** Hop (Jump Anywhere on Buffer)
+*** Hop (Jump Anywhere on Buffer)
 
 #+BEGIN_SRC emacs-lisp
 ;; install pcre(-devel) package first from system package manager
@@ -212,7 +199,44 @@
   :elpaca (hop :host github :repo "Animeshz/hop.el"))
 #+END_SRC
 
-** Parinfer
+** Customization
+
+*** Theme
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-city-lights t)
+  (custom-set-faces
+   '(doom-themes-visual-bell (( t(:background "#00FFFF"))))
+   '(org-ellipsis (( t(:foreground "#C678DD"))))))
+#+END_SRC
+
+*** Font
+
+#+BEGIN_SRC emacs-lisp
+(defvar try-fonts
+  (list
+   "CaskaydiaCove Nerd Font Mono"))
+(defvar default-font nil
+  "The default font")
+
+(let ((try try-fonts))
+  (while (and try (not (font-info (car try))))
+    (setq try (cdr try)))
+  (setq default-font (car try)))
+
+(unless (eq default-font nil)
+  (set-face-attribute 'default nil :font default-font))
+(set-face-attribute 'default nil :height 125)
+#+END_SRC
+
+** Programming
+
+*** Parinfer (Lisp Auto-Parenthesis)
 
 #+BEGIN_SRC emacs-lisp
 (use-package parinfer-rust-mode
@@ -222,7 +246,7 @@
   (setq parinfer-rust-troublesome-modes nil))
 #+END_SRC
 
-** LSP (Highlighting, AutoCompletion & CodeActions)
+*** LSP (Highlighting, AutoCompletion & CodeActions)
 
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
@@ -235,7 +259,7 @@
   :hook (prog-mode . eglot-ensure))
 #+END_SRC
 
-** Mermaid (Graph)
+*** Mermaid (Graph)
 
 #+BEGIN_SRC emacs-lisp
 (use-package mermaid-mode)
