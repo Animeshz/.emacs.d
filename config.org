@@ -266,8 +266,7 @@
 (use-package ob-mermaid
   :config
   (add-hook 'org-babel-after-execute-hook (lambda ()
-                                            (org-toggle-inline-images)
-                                            (org-toggle-inline-images)))
+                                            (org-redisplay-inline-images)))
   (setq org-startup-with-inline-images t)
   (setq org-confirm-babel-evaluate nil)
   (add-to-list 'org-babel-default-header-args:mermaid '(:background-color . "#FFFFFF"))
@@ -276,6 +275,14 @@
 
 
 * Misc
+
+** Don't reset the cursor to the middle when scrolling
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(scroll-conservatively 200)
+ '(scroll-margin 3))
+#+END_SRC
 
 ** Highlight Trailing Whitespace
 
