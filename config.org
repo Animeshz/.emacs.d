@@ -29,10 +29,19 @@
 #+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
 (general-define-key
  :states '(insert motion)
- :keymaps '(override local global)
+ :keymaps '(local global)
 
  "C-S-v" 'evil-paste-before-cursor-after
  "TAB" 'tab-to-tab-stop)
+
+(general-define-key
+ :states 'insert
+ "C-s" 'tempel-complete)
+(general-define-key
+ :states '(insert normal)
+ :keymaps 'tempel-map
+ "S-TAB" 'tempel-previous
+ "TAB" 'tempel-next)
 
 (general-define-key
  :states '(normal motion visual operator emacs)
@@ -240,13 +249,20 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package parinfer-rust-mode
-  :hook '(emacs-lisp-mode org-mode)
+  :hook '(emacs-lisp-mode)
   :init
   (setq parinfer-rust-auto-download t)
-  (setq parinfer-rust-troublesome-modes nil))
+  (setq parinfer-rust-troublesome-modes nil)
+  :config
+  (defun my-enable-minor-mode-for-special-file ()
+    "Enable my-minor-mode for my-special-file.txt."
+    (message "%s" (buffer-name))
+    (when (string= (buffer-name) "config.org")
+      (parinfer-rust-mode)))
+  (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
 #+END_SRC
 
-*** LSP (Highlighting, AutoCompletion & CodeActions)
+*** Highlighting, AutoCompletion, CodeActions & Snippets
 
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
@@ -256,10 +272,40 @@
   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
 
 (use-package eglot
-  :hook (prog-mode . eglot-ensure))
+  :hook (prog-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs '(graphviz-dot-mode . ("dot-language-server" "--stdio"))))
+
+(use-package corfu
+  :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
+  :config
+  ;; Setup corfu for popup like completion
+  (setq corfu-cycle t  ; Allows cycling through candidates
+        corfu-auto t   ; Enable auto completion
+        corfu-auto-prefix 0  ; Complete with less prefix keys
+        corfu-auto-delay 0.0  ; No delay for completion
+        corfu-echo-documentation t ; Echo docs for current completion option
+        corfu-popupinfo-delay 0.0
+        corfu-quit-no-match 'separator
+        corfu-quit-at-boundary 'insert)
+
+  ;; Silence the pcomplete capf, no errors or messages!
+  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
+
+  ;; Ensure that pcomplete does not write to the buffer
+  ;; and behaves as a pure `completion-at-point-function'.
+  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
+  (global-corfu-mode 1)
+  (corfu-popupinfo-mode 1))
+
+(use-package tempel
+  :config
+  (global-tempel-abbrev-mode))
+
+(use-package tempel-collection)
 #+END_SRC
 
-*** Mermaid (Graph)
+*** Mermaid/GraphViz (Graph)
 
 #+BEGIN_SRC emacs-lisp
 (use-package mermaid-mode)
@@ -269,8 +315,13 @@
                                             (org-redisplay-inline-images)))
   (setq org-startup-with-inline-images t)
   (setq org-confirm-babel-evaluate nil)
-  (add-to-list 'org-babel-default-header-args:mermaid '(:background-color . "#FFFFFF"))
   (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t))))
+
+(use-package graphviz-dot-mode
+  :config
+  (org-babel-do-load-languages 'org-babel-load-languages '((dot . t))))
+
+(use-package ob-svgbob)
 #+END_SRC
 
 
@@ -319,13 +370,284 @@
       `((".*" ,user-temporary-file-directory t)))
 #+END_SRC
 
-** TODOs
+** Window Split Vertical-Horizontal Toggle
 
 #+BEGIN_SRC emacs-lisp
-;; TODO:
-;; 1. Href opening in default apps set by XDG-MIME / XDG-SCHEME-HANDLER
-;; 2. Remove "Type C-h for help." when running evil-quit without saving and pressing wrong key.
-;;    -> Remove Line 253-259 in emacs/lisp/emacs-lisp/files.el
+(defun window-split-toggle ()
+  "Toggle between horizontal and vertical split with two windows."
+  (interactive)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+#+END_SRC
+
+** open-at-point that opens respecting OS's default app for the link
+
+#+BEGIN_SRC emacs-lisp
+(defun open-at-point ()
+  "Open URL at point."
+  (interactive)
+  (let* ((link-regexp "\\[\\[\\(.*?\\)\\]\\[.*?\\]\\]")
+         (link (save-excursion
+                 (when (re-search-backward link-regexp nil t)
+                   (match-string 1)))))
+    (message "%s" link)
+    (cond
+     ((string-equal system-type "windows-nt")
+      (w32-shell-execute "open" (replace-regexp-in-string "/" "\\" link t t)))
+     ((string-equal system-type "darwin")
+      (shell-command (format "open \"%s\"" link)))
+     ((string-equal system-type "gnu/linux")
+      (let ((process-connection-type nil)) (start-process "" nil "xdg-open" link))))))
+#+END_SRC
+
+** File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.
+
+Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
+
+#+BEGIN_SRC emacs-lisp
+(defun map-y-or-n-p (prompter actor list &optional help action-alist
+                     no-cursor-in-echo-area)
+  "Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.
+
+LIST is a list of objects, or a function of no arguments to return the next
+object; when it returns nil, the list of objects is considered exhausted.
+
+If PROMPTER is a string, it should be a format string to be used to format
+the question as \(format PROMPTER OBJECT).
+If PROMPTER is not a string, it should be a function of one argument, an
+object from LIST, which returns a string to be used as the question for
+that object.  If the function's return value is not a string, it may be
+nil to ignore the object, or non-nil to act on the object with ACTOR
+without asking the user.
+
+ACTOR is a function of one argument, an object from LIST,
+which gets called with each object for which the user answers `yes'
+to the question presented by PROMPTER.
+
+The user's answers to the questions may be one of the following:
+
+ - y, Y, or SPC to act on that object;
+ - n, N, or DEL to skip that object;
+ - ! to act on all following objects;
+ - ESC or q to exit (skip all following objects);
+ - . (period) to act on the current object and then exit; or
+ - \\[help-command] to get help.
+
+HELP provides information for displaying help when the user
+types \\[help-command].  If HELP is given, it should be a list of
+the form (OBJECT OBJECTS ACTION), where OBJECT is a string giving
+the singular noun describing an element of LIST; OBJECTS is the
+plural noun describing several elements of LIST, and ACTION is a
+transitive verb describing action by ACTOR on one or more elements
+of LIST.  If HELP is omitted or nil, it defaults
+to \(\"object\" \"objects\" \"act on\").
+
+If ACTION-ALIST is given, it is an alist specifying additional keys
+that will be accepted as an answer to the questions.  Each element
+of the alist has the form (KEY FUNCTION HELP), where KEY is a character;
+FUNCTION is a function of one argument (an object from LIST); and HELP
+is a string.  When the user presses KEY, FUNCTION is called; if it
+returns non-nil, the object is considered to have been \"acted upon\",
+and `map-y-or-n-p' proceeds to the next object from LIST.  If
+FUNCTION returns nil, the prompt is re-issued for the same object: this
+comes in handy if FUNCTION produces some display that will allow the
+user to make an intelligent decision whether the object in question
+should be acted upon.  If the user types \\[help-command], the string
+given by HELP is used to describe the effect of KEY.
+
+Optional argument NO-CURSOR-IN-ECHO-AREA, if non-nil, means not to set
+`cursor-in-echo-area' while prompting with the questions.
+
+This function uses `query-replace-map' to define the standard responses,
+but only some of the responses which `query-replace' understands
+are meaningful here, as described above.
+
+The function's value is the number of actions taken."
+  (let* ((actions 0)
+         (msg (current-message))
+         user-keys mouse-event map prompt char elt def
+   ;; Non-nil means we should use mouse menus to ask.
+         use-menus
+         delayed-switch-frame
+         ;; Rebind other-window-scroll-buffer so that subfunctions can set
+         ;; it temporarily, without risking affecting the caller.
+         (other-window-scroll-buffer other-window-scroll-buffer)
+         (next (if (functionp list)
+                   (lambda () (setq elt (funcall list)))
+                   (lambda () (when list
+                               (setq elt (pop list))
+                               t))))
+         (try-again (lambda ()
+                     (let ((x next))
+                      (setq next (lambda () (setq next x) elt))))))
+    (if (and (listp last-nonmenu-event)
+         use-dialog-box)
+  ;; Make a list describing a dialog box.
+     (let ((objects (if help (capitalize (nth 1 help))))
+           (action (if help (capitalize (nth 2 help)))))
+      (setq map `(("Yes" . act) ("No" . skip)
+                  ,@(mapcar (lambda (elt)
+                             (cons (with-syntax-table
+                                    text-mode-syntax-table
+                                    (capitalize (nth 2 elt)))
+                              (vector (nth 1 elt))))
+                     action-alist)
+                  (,(if help (concat action " This But No More")
+                     "Do This But No More") . act-and-exit)
+                  (,(if help (concat action " All " objects)
+                     "Do All") . automatic)
+                  ("No For All" . exit))
+       use-menus t
+       mouse-event last-nonmenu-event))
+     (setq user-keys (if action-alist
+                      (concat (mapconcat (lambda (elt)
+                                                 (key-description
+                                                  (vector (car elt))))
+                               action-alist ", ")
+                       " ")
+                      "")
+     ;; Make a map that defines each user key as a vector containing
+     ;; its definition.
+      map
+           (let ((map (make-sparse-keymap)))
+             (set-keymap-parent map query-replace-map)
+             (dolist (elt action-alist)
+               (define-key map (vector (car elt)) (vector (nth 1 elt))))
+             map)))
+    (unwind-protect
+     (progn
+      (if (stringp prompter)
+       (setq prompter (let ((prompter prompter))
+                       (lambda (object)
+                        (format prompter object)))))
+      (while (funcall next)
+       (setq prompt (funcall prompter elt))
+       (cond ((stringp prompt)
+      ;; Prompt the user about this object.
+              (setq quit-flag nil)
+              (if use-menus
+               (setq def (or (x-popup-dialog (or mouse-event use-menus)
+                              (cons prompt map))
+                          'quit))
+       ;; Prompt in the echo area.
+               (let ((cursor-in-echo-area (not no-cursor-in-echo-area)))
+                (message (apply 'propertize "%s(y, n, !, ., q, %sor %s) "
+                          minibuffer-prompt-properties)
+                 prompt user-keys
+                 (key-description (vector help-char)))
+                (if minibuffer-auto-raise
+                 (raise-frame (window-frame (minibuffer-window))))
+                (while (progn
+                        (setq char (read-event))
+      ;; If we get -1, from end of keyboard
+      ;; macro, try again.
+                        (equal char -1)))
+         ;; Show the answer to the question.
+                (message "%s(y, n, !, ., q, %sor %s) %s"
+                 prompt user-keys
+                 (key-description (vector help-char))
+                 (single-key-description char)))
+               (setq def (lookup-key map (vector char))))
+              (cond ((eq def 'exit)
+                     (setq next (lambda () nil)))
+               ((eq def 'act)
+      ;; Act on the object.
+                (funcall actor elt)
+                (setq actions (1+ actions)))
+               ((eq def 'skip))
+      ;; Skip the object.
+
+               ((eq def 'act-and-exit)
+      ;; Act on the object and then exit.
+                (funcall actor elt)
+                (setq actions (1+ actions)
+                 next (lambda () nil)))
+               ((eq def 'quit)
+                (setq quit-flag t)
+                (funcall try-again))
+               ((eq def 'automatic)
+      ;; Act on this and all following objects.
+                (if (funcall prompter elt)
+                 (progn
+                  (funcall actor elt)
+                  (setq actions (1+ actions))))
+                (while (funcall next)
+                 (if (funcall prompter elt)
+                  (progn
+                   (funcall actor elt)
+                   (setq actions (1+ actions))))))
+               ((eq def 'help)
+                (with-help-window (help-buffer)
+                 (princ
+                           (let ((object  (or (nth 0 help) "object"))
+                                 (objects (or (nth 1 help) "objects"))
+                                 (action  (or (nth 2 help) "act on")))
+                            (concat
+                                      (format-message
+                                       (substitute-command-keys "\
+Type \\`SPC' or \\`y' to %s the current %s;
+\\`DEL' or \\`n' to skip the current %s;
+\\`RET' or \\`q' to skip the current and all remaining %s;
+\\`C-g' to quit (cancel the whole command);
+\\`!' to %s all remaining %s;\n")
+                                       action object object objects action objects)
+                                      (mapconcat (lambda (elt)
+                                                   (format "%s to %s;\n"
+                                                           (single-key-description
+                                                            (nth 0 elt))
+                                                           (nth 2 elt)))
+                                       action-alist
+                                                 "")
+                                      (format
+                                       "or . (period) to %s the current %s and exit."
+                                       action object)))))
+
+                (funcall try-again))
+               ((and (symbolp def) (commandp def))
+                (call-interactively def)
+      ;; Regurgitated; try again.
+                (funcall try-again))
+               ((vectorp def)
+      ;; A user-defined key.
+                (if (funcall (aref def 0) elt) ;Call its function.
+          ;; The function has eaten this object.
+                 (setq actions (1+ actions))
+        ;; Regurgitated; try again.
+                 (funcall try-again)))
+               ((and (consp char)
+                 (eq (car char) 'switch-frame))
+      ;; switch-frame event.  Put it off until we're done.
+                (setq delayed-switch-frame char)
+                (funcall try-again))))
+      ;; (t
+      ;; Random char.
+      ;; (message "Type %s for help."
+      ;;      (key-description (vector help-char)))
+      ;; (beep)
+      ;; (sit-for 1)
+      ;; (funcall try-again))))
+        (prompt
+         (funcall actor elt)
+         (setq actions (1+ actions))))))
+     (if delayed-switch-frame
+      (setq unread-command-events
+       (cons delayed-switch-frame unread-command-events))))
+    ;; Clear the last prompt from the minibuffer, and restore the
+    ;; previous echo-area message, if any.
+    (let ((message-log-max nil))
+      (if msg
+          (message "%s" msg)
+        (message "")))
+    ;; Return the number of actions that were taken.
+    actions))
 #+END_SRC
 
 * Resources References
