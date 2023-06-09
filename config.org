@@ -199,10 +199,13 @@
 
 #+BEGIN_SRC emacs-lisp
 ;; install pcre(-devel) package first from system package manager
-(use-package pcre
-  :elpaca (pcre :host github :repo "syohex/emacs-pcre"
-                :files (:default "pcre.el" "pcre-core.so")
-                :pre-build ("make" "all")))
+;; (use-package pcre
+;;   :elpaca (pcre :host github :repo "syohex/emacs-pcre"
+;;                 :files (:default "pcre.el" "pcre-core.so")
+;;                 :pre-build ("make" "all")))
+;;
+;; nix-managed install
+(require 'pcre)
 
 (use-package hop
   :elpaca (hop :host github :repo "Animeshz/hop.el"))
