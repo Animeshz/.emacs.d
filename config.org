@@ -71,6 +71,11 @@
  "gp" 'hop-regex-pattern
  "gk" 'hop-line)
 
+(general-define-key
+  :states 'normal
+  :keymaps '(override org-mode-map)
+  "<RET>" 'org-cycle)
+
 (general-create-definer leader-key
   :states '(normal motion visual operator emacs)
   :keymaps '(override local global)
