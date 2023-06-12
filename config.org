@@ -24,6 +24,13 @@
 (setq-default evil-shift-width tab-width)
 #+END_SRC
 
+** Org Load Languages
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages 'org-babel-load-languages
+  '((shell . t)))
+#+END_SRC
+
 ** Set Keybinds
 
 #+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
@@ -90,7 +97,7 @@
   "s" 'switch-to-buffer
   "d" 'bookmark-jump
   "p" 'projectile-command-map
-  "/" 'comment-line)
+  "/" 'comment-dwim)
 #+END_SRC
 
 
