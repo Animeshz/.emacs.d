@@ -81,7 +81,13 @@
 (general-define-key
   :states 'normal
   :keymaps '(override org-mode-map)
-  "<RET>" 'org-cycle)
+  "<RET>" (lambda ()
+            (interactive)
+            (if (org-at-heading-p)
+              (org-cycle)
+              (if (org-in-regexp org-link-any-re)
+                (org-open-at-point)
+                (org-return)))))
 
 (general-create-definer leader-key
   :states '(normal motion visual operator emacs)
