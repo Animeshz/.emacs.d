@@ -42,6 +42,11 @@
  "TAB" 'tab-to-tab-stop)
 
 (general-define-key
+  :keymaps '(isearch-mode-map)  ; evil-search (/)
+
+  "C-S-v" 'isearch-yank-kill)
+
+(general-define-key
  :states 'insert
  "C-s" 'tempel-complete)
 (general-define-key
