@@ -9,6 +9,10 @@
 (setq org-src-preserve-indentation t
       org-export-preserve-breaks t)
 
+(setq history-length 100)
+(savehist-mode 1)
+(recentf-mode 1)
+
 (setq use-short-answers t)
 (setq electric-pair-mode t)     ; Auto add closing braces with opening
 (global-visual-line-mode t)     ; Word Wrap
@@ -100,7 +104,9 @@
   :prefix "SPC")
 
 (leader-key
+  "reload" 'revert-buffer
   "ff" 'find-file
+  "fr" 'consult-recent-file
   "tw" 'delete-trailing-whitespace
   "ev" 'eval-region
   "x" 'kill-this-buffer

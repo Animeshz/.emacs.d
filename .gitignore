@@ -11,6 +11,7 @@ bookmarks
 config.el
 history
 projectile-bookmarks.el*
+projectile.cache
 recentf
 
 *~
