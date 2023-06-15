@@ -241,6 +241,14 @@
   :elpaca (hop :host github :repo "Animeshz/hop.el"))
 #+END_SRC
 
+*** Chdir Support
+
+Syncing /proc/self/cwd with changes to (default-directory).
+
+#+BEGIN_SRC emacs-lisp
+(require 'chdir)
+#+END_SRC
+
 ** Customization
 
 *** Theme
