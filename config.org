@@ -312,10 +312,10 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :config
   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
 
-(use-package eglot
-  :hook (prog-mode . eglot-ensure)
-  :config
-  (add-to-list 'eglot-server-programs '(graphviz-dot-mode . ("dot-language-server" "--stdio"))))
+; (use-package eglot
+;   :hook (prog-mode . eglot-ensure)
+;   :config
+;   (add-to-list 'eglot-server-programs '(graphviz-dot-mode . ("dot-language-server" "--stdio"))))
 
 (use-package corfu
   :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
@@ -343,7 +343,7 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :config
   (global-tempel-abbrev-mode))
 
-(use-package tempel-collection)
+; (use-package tempel-collection)
 #+END_SRC
 
 *** Mermaid/GraphViz (Graph)
