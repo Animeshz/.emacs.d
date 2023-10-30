@@ -303,7 +303,16 @@ Syncing /proc/self/cwd with changes to (default-directory).
   (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
 #+END_SRC
 
-*** Highlighting, AutoCompletion, CodeActions & Snippets
+*** Highlighting
+
+#+BEGIN_SRC emacs-lisp
+(use-package nix-mode
+  :mode "\\.nix\\'")
+(use-package markdown-mode
+  :mode "\\.md\\'")
+#+END_SRC
+
+*** AutoCompletion, CodeActions & Snippets
 
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
