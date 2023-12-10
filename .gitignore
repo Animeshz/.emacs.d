@@ -4,6 +4,7 @@ eln-cache/
 elpaca/
 parinfer-rust/
 undohist/
+games/
 
 .lsp*
 .org-id-locations
