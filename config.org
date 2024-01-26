@@ -26,6 +26,11 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default evil-shift-width tab-width)
+
+; https://stackoverflow.com/a/10110113/11377112
+(setq initial-scratch-message "// This is scratch buffer, won't be saved unless saved as a file with :w <filename>.\n\n")
+(setq initial-major-mode 'text-mode)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 #+END_SRC
 
 ** Org Load Languages
@@ -364,6 +369,16 @@ Syncing /proc/self/cwd with changes to (default-directory).
   (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
   (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
 
+(use-package company
+  :config
+  (add-hook 'prog-mode-hook 'company-mode)
+  (setq company-idle-delay 0)
+  (setq company-show-numbers t))
+
+(use-package company-tabnine
+  :after company
+  :config
+  (add-to-list 'company-backends #'company-tabnine))
 #+END_SRC
 
 *** Mermaid/GraphViz (Graph)
