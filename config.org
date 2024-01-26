@@ -32,7 +32,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages 'org-babel-load-languages
-  '((shell . t)))
+                             '((shell . t)))
 #+END_SRC
 
 ** Set Keybinds
@@ -46,9 +46,8 @@
  "TAB" 'tab-to-tab-stop)
 
 (general-define-key
-  :keymaps '(isearch-mode-map)  ; evil-search (/)
-
-  "C-S-v" 'isearch-yank-kill)
+ :keymaps '(isearch-mode-map)  ; evil-search (/)
+ "C-S-v" 'isearch-yank-kill)
 
 (general-define-key
  :states 'insert
@@ -88,15 +87,15 @@
  "gk" 'hop-line)
 
 (general-define-key
-  :states 'normal
-  :keymaps '(override org-mode-map)
-  "<RET>" (lambda ()
-            (interactive)
-            (if (org-at-heading-p)
-              (org-cycle)
-              (if (org-in-regexp org-link-any-re)
-                (org-open-at-point)
-                (org-return)))))
+ :states 'normal
+ :keymaps '(override org-mode-map)
+ "<RET>" (lambda ()
+           (interactive)
+           (if (org-at-heading-p)
+               (org-cycle)
+             (if (org-in-regexp org-link-any-re)
+                 (org-open-at-point)
+               (org-return)))))
 
 (general-create-definer leader-key
   :states '(normal motion visual operator emacs)
@@ -323,11 +322,6 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :config
   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
 
-; (use-package eglot
-;   :hook (prog-mode . eglot-ensure)
-;   :config
-;   (add-to-list 'eglot-server-programs '(graphviz-dot-mode . ("dot-language-server" "--stdio"))))
-
 (use-package corfu
   :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
   :config
@@ -354,7 +348,22 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :config
   (global-tempel-abbrev-mode))
 
-; (use-package tempel-collection)
+(use-package tempel-collection)
+#+END_SRC
+
+*** LSP
+
+#+BEGIN_SRC emacs-lisp
+(use-package eglot
+  :hook (prog-mode . eglot-ensure)
+  :config
+  (setq debug-on-error nil)
+  (add-to-list 'eglot-server-programs '(kotlin-mode . ("kotlin-language-server")))
+  (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+  (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
+  (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
+  (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
+
 #+END_SRC
 
 *** Mermaid/GraphViz (Graph)
@@ -466,7 +475,7 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 
 #+BEGIN_SRC emacs-lisp
 (defun map-y-or-n-p (prompter actor list &optional help action-alist
-                     no-cursor-in-echo-area)
+                              no-cursor-in-echo-area)
   "Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.
 
 LIST is a list of objects, or a function of no arguments to return the next
@@ -526,7 +535,7 @@ The function's value is the number of actions taken."
   (let* ((actions 0)
          (msg (current-message))
          user-keys mouse-event map prompt char elt def
-   ;; Non-nil means we should use mouse menus to ask.
+         ;; Non-nil means we should use mouse menus to ask.
          use-menus
          delayed-switch-frame
          ;; Rebind other-window-scroll-buffer so that subfunctions can set
@@ -534,164 +543,164 @@ The function's value is the number of actions taken."
          (other-window-scroll-buffer other-window-scroll-buffer)
          (next (if (functionp list)
                    (lambda () (setq elt (funcall list)))
-                   (lambda () (when list
-                               (setq elt (pop list))
-                               t))))
+                 (lambda () (when list
+                              (setq elt (pop list))
+                              t))))
          (try-again (lambda ()
-                     (let ((x next))
-                      (setq next (lambda () (setq next x) elt))))))
+                      (let ((x next))
+                        (setq next (lambda () (setq next x) elt))))))
     (if (and (listp last-nonmenu-event)
-         use-dialog-box)
-  ;; Make a list describing a dialog box.
-     (let ((objects (if help (capitalize (nth 1 help))))
-           (action (if help (capitalize (nth 2 help)))))
-      (setq map `(("Yes" . act) ("No" . skip)
-                  ,@(mapcar (lambda (elt)
-                             (cons (with-syntax-table
-                                    text-mode-syntax-table
-                                    (capitalize (nth 2 elt)))
-                              (vector (nth 1 elt))))
-                     action-alist)
-                  (,(if help (concat action " This But No More")
-                     "Do This But No More") . act-and-exit)
-                  (,(if help (concat action " All " objects)
-                     "Do All") . automatic)
-                  ("No For All" . exit))
-       use-menus t
-       mouse-event last-nonmenu-event))
-     (setq user-keys (if action-alist
-                      (concat (mapconcat (lambda (elt)
-                                                 (key-description
-                                                  (vector (car elt))))
-                               action-alist ", ")
-                       " ")
-                      "")
-     ;; Make a map that defines each user key as a vector containing
-     ;; its definition.
-      map
-           (let ((map (make-sparse-keymap)))
-             (set-keymap-parent map query-replace-map)
-             (dolist (elt action-alist)
-               (define-key map (vector (car elt)) (vector (nth 1 elt))))
-             map)))
+             use-dialog-box)
+        ;; Make a list describing a dialog box.
+        (let ((objects (if help (capitalize (nth 1 help))))
+              (action (if help (capitalize (nth 2 help)))))
+          (setq map `(("Yes" . act) ("No" . skip)
+                      ,@(mapcar (lambda (elt)
+                                  (cons (with-syntax-table
+                                            text-mode-syntax-table
+                                          (capitalize (nth 2 elt)))
+                                        (vector (nth 1 elt))))
+                                action-alist)
+                      (,(if help (concat action " This But No More")
+                          "Do This But No More") . act-and-exit)
+                      (,(if help (concat action " All " objects)
+                          "Do All") . automatic)
+                      ("No For All" . exit))
+                use-menus t
+                mouse-event last-nonmenu-event))
+      (setq user-keys (if action-alist
+                          (concat (mapconcat (lambda (elt)
+                                               (key-description
+                                                (vector (car elt))))
+                                             action-alist ", ")
+                                  " ")
+                        "")
+            ;; Make a map that defines each user key as a vector containing
+            ;; its definition.
+            map
+            (let ((map (make-sparse-keymap)))
+              (set-keymap-parent map query-replace-map)
+              (dolist (elt action-alist)
+                (define-key map (vector (car elt)) (vector (nth 1 elt))))
+              map)))
     (unwind-protect
-     (progn
-      (if (stringp prompter)
-       (setq prompter (let ((prompter prompter))
-                       (lambda (object)
-                        (format prompter object)))))
-      (while (funcall next)
-       (setq prompt (funcall prompter elt))
-       (cond ((stringp prompt)
-      ;; Prompt the user about this object.
-              (setq quit-flag nil)
-              (if use-menus
-               (setq def (or (x-popup-dialog (or mouse-event use-menus)
-                              (cons prompt map))
-                          'quit))
-       ;; Prompt in the echo area.
-               (let ((cursor-in-echo-area (not no-cursor-in-echo-area)))
-                (message (apply 'propertize "%s(y, n, !, ., q, %sor %s) "
-                          minibuffer-prompt-properties)
-                 prompt user-keys
-                 (key-description (vector help-char)))
-                (if minibuffer-auto-raise
-                 (raise-frame (window-frame (minibuffer-window))))
-                (while (progn
-                        (setq char (read-event))
-      ;; If we get -1, from end of keyboard
-      ;; macro, try again.
-                        (equal char -1)))
-         ;; Show the answer to the question.
-                (message "%s(y, n, !, ., q, %sor %s) %s"
-                 prompt user-keys
-                 (key-description (vector help-char))
-                 (single-key-description char)))
-               (setq def (lookup-key map (vector char))))
-              (cond ((eq def 'exit)
-                     (setq next (lambda () nil)))
-               ((eq def 'act)
-      ;; Act on the object.
-                (funcall actor elt)
-                (setq actions (1+ actions)))
-               ((eq def 'skip))
-      ;; Skip the object.
+        (progn
+          (if (stringp prompter)
+              (setq prompter (let ((prompter prompter))
+                               (lambda (object)
+                                 (format prompter object)))))
+          (while (funcall next)
+            (setq prompt (funcall prompter elt))
+            (cond ((stringp prompt)
+                   ;; Prompt the user about this object.
+                   (setq quit-flag nil)
+                   (if use-menus
+                       (setq def (or (x-popup-dialog (or mouse-event use-menus)
+                                                     (cons prompt map))
+                                     'quit))
+                     ;; Prompt in the echo area.
+                     (let ((cursor-in-echo-area (not no-cursor-in-echo-area)))
+                       (message (apply 'propertize "%s(y, n, !, ., q, %sor %s) "
+                                       minibuffer-prompt-properties)
+                                prompt user-keys
+                                (key-description (vector help-char)))
+                       (if minibuffer-auto-raise
+                           (raise-frame (window-frame (minibuffer-window))))
+                       (while (progn
+                                (setq char (read-event))
+                                ;; If we get -1, from end of keyboard
+                                ;; macro, try again.
+                                (equal char -1)))
+                       ;; Show the answer to the question.
+                       (message "%s(y, n, !, ., q, %sor %s) %s"
+                                prompt user-keys
+                                (key-description (vector help-char))
+                                (single-key-description char)))
+                     (setq def (lookup-key map (vector char))))
+                   (cond ((eq def 'exit)
+                          (setq next (lambda () nil)))
+                         ((eq def 'act)
+                          ;; Act on the object.
+                          (funcall actor elt)
+                          (setq actions (1+ actions)))
+                         ((eq def 'skip))
+                         ;; Skip the object.
 
-               ((eq def 'act-and-exit)
-      ;; Act on the object and then exit.
-                (funcall actor elt)
-                (setq actions (1+ actions)
-                 next (lambda () nil)))
-               ((eq def 'quit)
-                (setq quit-flag t)
-                (funcall try-again))
-               ((eq def 'automatic)
-      ;; Act on this and all following objects.
-                (if (funcall prompter elt)
-                 (progn
-                  (funcall actor elt)
-                  (setq actions (1+ actions))))
-                (while (funcall next)
-                 (if (funcall prompter elt)
-                  (progn
-                   (funcall actor elt)
-                   (setq actions (1+ actions))))))
-               ((eq def 'help)
-                (with-help-window (help-buffer)
-                 (princ
-                           (let ((object  (or (nth 0 help) "object"))
-                                 (objects (or (nth 1 help) "objects"))
-                                 (action  (or (nth 2 help) "act on")))
-                            (concat
-                                      (format-message
-                                       (substitute-command-keys "\
+                         ((eq def 'act-and-exit)
+                          ;; Act on the object and then exit.
+                          (funcall actor elt)
+                          (setq actions (1+ actions)
+                                next (lambda () nil)))
+                         ((eq def 'quit)
+                          (setq quit-flag t)
+                          (funcall try-again))
+                         ((eq def 'automatic)
+                          ;; Act on this and all following objects.
+                          (if (funcall prompter elt)
+                              (progn
+                                (funcall actor elt)
+                                (setq actions (1+ actions))))
+                          (while (funcall next)
+                            (if (funcall prompter elt)
+                                (progn
+                                  (funcall actor elt)
+                                  (setq actions (1+ actions))))))
+                         ((eq def 'help)
+                          (with-help-window (help-buffer)
+                            (princ
+                             (let ((object  (or (nth 0 help) "object"))
+                                   (objects (or (nth 1 help) "objects"))
+                                   (action  (or (nth 2 help) "act on")))
+                               (concat
+                                (format-message
+                                 (substitute-command-keys "\
 Type \\`SPC' or \\`y' to %s the current %s;
 \\`DEL' or \\`n' to skip the current %s;
 \\`RET' or \\`q' to skip the current and all remaining %s;
 \\`C-g' to quit (cancel the whole command);
 \\`!' to %s all remaining %s;\n")
-                                       action object object objects action objects)
-                                      (mapconcat (lambda (elt)
-                                                   (format "%s to %s;\n"
-                                                           (single-key-description
-                                                            (nth 0 elt))
-                                                           (nth 2 elt)))
-                                       action-alist
-                                                 "")
-                                      (format
-                                       "or . (period) to %s the current %s and exit."
-                                       action object)))))
+                                 action object object objects action objects)
+                                (mapconcat (lambda (elt)
+                                             (format "%s to %s;\n"
+                                                     (single-key-description
+                                                      (nth 0 elt))
+                                                     (nth 2 elt)))
+                                           action-alist
+                                           "")
+                                (format
+                                 "or . (period) to %s the current %s and exit."
+                                 action object)))))
 
-                (funcall try-again))
-               ((and (symbolp def) (commandp def))
-                (call-interactively def)
-      ;; Regurgitated; try again.
-                (funcall try-again))
-               ((vectorp def)
-      ;; A user-defined key.
-                (if (funcall (aref def 0) elt) ;Call its function.
-          ;; The function has eaten this object.
-                 (setq actions (1+ actions))
-        ;; Regurgitated; try again.
-                 (funcall try-again)))
-               ((and (consp char)
-                 (eq (car char) 'switch-frame))
-      ;; switch-frame event.  Put it off until we're done.
-                (setq delayed-switch-frame char)
-                (funcall try-again))))
-      ;; (t
-      ;; Random char.
-      ;; (message "Type %s for help."
-      ;;      (key-description (vector help-char)))
-      ;; (beep)
-      ;; (sit-for 1)
-      ;; (funcall try-again))))
-        (prompt
-         (funcall actor elt)
-         (setq actions (1+ actions))))))
-     (if delayed-switch-frame
-      (setq unread-command-events
-       (cons delayed-switch-frame unread-command-events))))
+                          (funcall try-again))
+                         ((and (symbolp def) (commandp def))
+                          (call-interactively def)
+                          ;; Regurgitated; try again.
+                          (funcall try-again))
+                         ((vectorp def)
+                          ;; A user-defined key.
+                          (if (funcall (aref def 0) elt) ;Call its function.
+                              ;; The function has eaten this object.
+                              (setq actions (1+ actions))
+                            ;; Regurgitated; try again.
+                            (funcall try-again)))
+                         ((and (consp char)
+                               (eq (car char) 'switch-frame))
+                          ;; switch-frame event.  Put it off until we're done.
+                          (setq delayed-switch-frame char)
+                          (funcall try-again))))
+                  ;; (t
+                  ;; Random char.
+                  ;; (message "Type %s for help."
+                  ;;      (key-description (vector help-char)))
+                  ;; (beep)
+                  ;; (sit-for 1)
+                  ;; (funcall try-again))))
+                  (prompt
+                   (funcall actor elt)
+                   (setq actions (1+ actions))))))
+      (if delayed-switch-frame
+          (setq unread-command-events
+                (cons delayed-switch-frame unread-command-events))))
     ;; Clear the last prompt from the minibuffer, and restore the
     ;; previous echo-area message, if any.
     (let ((message-log-max nil))
@@ -708,5 +717,5 @@ These resources were very helpful in formation of my config. So a huge phrase of
 
 - [[https://opensource.com/sites/default/files/gated-content/cheat_sheet_emacs.pdf][Emacs Cheatsheet - Opensource.com]]
 - [[https://github.com/progfolio/.emacs.d][Progfolio's Emacs Config (Creator of Elpaca package manager we're currently using)]]
-- [[https://github.com/aadi58002/emacs-config/blob/main/init.org#avy-map][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]]
+- [[https://github.com/aadi58002/emacs-config/blob/main/init.org][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]]
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Luca's Emacs Config]] & [[https://www.karsdorp.io/posts/dotemacs/][Karsdorp's Emacs Config]] - Long list of useful options to use, like a reference-book!
