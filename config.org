@@ -1,20 +1,98 @@
-#+TITLE: Main Emacs Config (after early-init.el and init.el)
+#+TITLE: My Literate Emacs Configuration
 #+PROPERTIES: header-args :lexical t
 
-* General Tweaks
+* Preliminaries
 
-** Better Defaults (Mandatory)
+** Preface
+
+I was first introduced to Emacs by a friend at my college. I had been resistant to a lot of things in my life, like the
+4-finger claw for playing mobile games, 10-finger touch typing on laptops, learning vim keybindings, and this time,
+Emacs. I can only count how many times these things have saved me from a time-bubble burst. These seemingly obscure and
+optional(-looking) things have indeed proven to be a few of the most influential aspects of my life.
+
+[[https://www.csee.umbc.edu/resources/computer-science-help-center/resources-for-new-students/an-introduction-to-emacs][Emacs]] holds a special place at the nucleus of my technological toolkit. All my workflows simplify down, because of its
+indcredible ingrained & integrable plugin ecosystem. You can't imagine any other software working so well for a variety
+of use cases, sometimes even better than their recommended options. It has elevated my workflow as a programmer to a
+whole new level.
+
+** Introduction
+
+This file, even though looking like a documentation or a book is indeed my emacs configuration!
+(And also my ever updating notes while I'm learning emacs).
+
+This is possible because of the org-babel plugin (inbuilt in Emacs as of now) that allows Emacs to contain code-blocks
+within the org-mode documents. And this style of writing code within natural language is known as Literate Programming.
+
+You can view my configuration at:
+- [[https://github.com/Animeshz/.emacs.d][GitHub]]
+- TODO: Add Org Website Export
+
+* Getting Started
+
+** Installation
+
+Install as you wish, I prefer using nix + home-manager for installation.
+
+#+BEGIN_SRC nix :tangle no
+{ pkgs }:
+{
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29;
+
+    extraPackages = epkgs: with epkgs; with pkgs; [
+      custom.emacs-pcre
+      custom.emacs-chdir
+    ];
+  };
+}
+#+END_SRC
+
+I export emacs-pcre and emacs-chdir as custom packages on my [[https://github.com/Animeshz/linux-desktop][nix config]].
+
+** Basic Keybinds
+
+I like to remember a few keybinds so in-case my config had any error, I could still use emacs with these fallback
+keybinds. And these keybinds are in general good enough for my hands as well hence I mostly don't change them.
+
+- C = Ctrl
+- M = Alt
+- S = Shift
+
+| Scope      | Keybind         | Action                                       |
+|------------+-----------------+----------------------------------------------|
+| global     | M-x             | View Available Commands                      |
+|            | C-x C-f         | Find File                                    |
+|            | C-h [f / v / k] | Help on [functions / variables / key-chords] |
+| org-mode   | C-c C-c         | Run CodeBlock or Format Table                |
+|            | C-c C-l         | Insert Link                                  |
+| minibuffer | C-y             | Paste                                        |
+
+** Tutorials
+
+I like to recommend [[https://www.youtube.com/watch?v=B6jfrrwR10k][this video]] if you want to get familiarized with emacs! This packs a lot of information with
+effective presentations instead of most videos which talk way too much and delivers barely anything useful.
+
+* Configuration
+
+** Early-Init and Init
+
+The [[./early-init.el][early-init.el]] and [[./init.el][init.el]] files are the first two files emacs read when starting up.
+
+I kept them separated from this main configuration because the former do very naive stuffs
+(such as basic ui changes and performance optimization), and the latter contains bootstrap code for Elpaca the package
+manager which is a prerequisite for most of this config and also it loads this config in the end.
+
+** Better Defaults (Almost Mandatory)
 
 #+BEGIN_SRC emacs-lisp
-(setq org-src-preserve-indentation t
-      org-export-preserve-breaks t)
+(setq org-src-preserve-indentation t)
 
 (setq history-length 100)
 (savehist-mode 1)
 (recentf-mode 1)
 
 (setq use-short-answers t)
-(setq electric-pair-mode t)     ; Auto add closing braces with opening
 (global-visual-line-mode t)     ; Word Wrap
 
 (setq-default fill-column 120)
@@ -27,7 +105,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default evil-shift-width tab-width)
 
-; https://stackoverflow.com/a/10110113/11377112
+                                        ; https://stackoverflow.com/a/10110113/11377112
 (setq initial-scratch-message "// This is scratch buffer, won't be saved unless saved as a file with :w <filename>.\n\n")
 (setq initial-major-mode 'text-mode)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -133,7 +211,7 @@
 (use-package undo-fu)
 ;; save command history
 (use-package savehist
-  :elpaca nil
+  :ensure nil
   :init
   (savehist-mode))
 ;; keep file history between emacs sessions
@@ -234,7 +312,7 @@
 #+BEGIN_SRC emacs-lisp
 ;; install pcre(-devel) package first from system package manager
 ;; (use-package pcre
-;;   :elpaca (pcre :host github :repo "syohex/emacs-pcre"
+;;   :ensure (pcre :host github :repo "syohex/emacs-pcre"
 ;;                 :files (:default "pcre.el" "pcre-core.so")
 ;;                 :pre-build ("make" "all")))
 ;;
@@ -242,7 +320,7 @@
 (require 'pcre)
 
 (use-package hop
-  :elpaca (hop :host github :repo "Animeshz/hop.el"))
+  :ensure (hop :host github :repo "Animeshz/hop.el"))
 #+END_SRC
 
 *** Chdir Support
@@ -310,8 +388,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 *** Highlighting
 
 #+BEGIN_SRC emacs-lisp
-(use-package nix-mode
-  :mode "\\.nix\\'")
+;; (use-package nix-mode
+;;   :mode "\\.nix\\'")
 (use-package markdown-mode
   :mode "\\.md\\'")
 (use-package kotlin-mode
@@ -328,7 +406,7 @@ Syncing /proc/self/cwd with changes to (default-directory).
   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
 
 (use-package corfu
-  :elpaca (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
+  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
   :config
   ;; Setup corfu for popup like completion
   (setq corfu-cycle t  ; Allows cycling through candidates
@@ -359,26 +437,26 @@ Syncing /proc/self/cwd with changes to (default-directory).
 *** LSP
 
 #+BEGIN_SRC emacs-lisp
-(use-package eglot
-  :hook (prog-mode . eglot-ensure)
-  :config
-  (setq debug-on-error nil)
-  (add-to-list 'eglot-server-programs '(kotlin-mode . ("kotlin-language-server")))
-  (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-  (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
-  (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
-  (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
+;; (use-package eglot
+;;   :hook (prog-mode . eglot-ensure)
+;;   :config
+;;   (setq debug-on-error nil)
+;;   (add-to-list 'eglot-server-programs '(kotlin-mode . ("kotlin-language-server")))
+;;   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+;;   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
+;;   (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
+;;   (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
 
-(use-package company
-  :config
-  (add-hook 'prog-mode-hook 'company-mode)
-  (setq company-idle-delay 0)
-  (setq company-show-numbers t))
+;; (use-package company
+;;   :config
+;;   (add-hook 'prog-mode-hook 'company-mode)
+;;   (setq company-idle-delay 0)
+;;   (setq company-show-numbers t))
 
-(use-package company-tabnine
-  :after company
-  :config
-  (add-to-list 'company-backends #'company-tabnine))
+;; (use-package company-tabnine
+;;   :after company
+;;   :config
+;;   (add-to-list 'company-backends #'company-tabnine))
 #+END_SRC
 
 *** Mermaid/GraphViz (Graph)
