@@ -5,6 +5,7 @@ elpaca/
 parinfer-rust/
 undohist/
 games/
+transient/
 
 .lsp*
 .org-id-locations
@@ -14,6 +15,7 @@ history
 projectile-bookmarks.el*
 projectile.cache
 recentf
+config.html
 
 *~
 .\#*
