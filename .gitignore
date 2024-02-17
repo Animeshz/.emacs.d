@@ -1,6 +1,7 @@
 .cache/
 auto-save-list/
 eln-cache/
+elpa/
 elpaca/
 parinfer-rust/
 undohist/
