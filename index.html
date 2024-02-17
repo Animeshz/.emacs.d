@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-17 Sat 13:53 -->
+<!-- 2024-02-18 Sun 01:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -435,80 +435,81 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf42322f">1. Preliminaries</a>
+<li><a href="#org0000002">1. Preliminaries</a>
 <ul>
-<li><a href="#org4395a6b">1.1. Preface</a></li>
-<li><a href="#orge5d2937">1.2. Introduction</a></li>
+<li><a href="#org0000000">1.1. Preface</a></li>
+<li><a href="#org0000001">1.2. Introduction</a></li>
 </ul>
 </li>
-<li><a href="#org643c108">2. Getting Started</a>
+<li><a href="#org0000006">2. Getting Started</a>
 <ul>
-<li><a href="#org3ff77b4">2.1. Installation</a></li>
-<li><a href="#org62c62e4">2.2. Basic Keybinds</a></li>
-<li><a href="#org5b40769">2.3. Tutorials</a></li>
+<li><a href="#org0000003">2.1. Installation</a></li>
+<li><a href="#org0000004">2.2. Basic Keybinds</a></li>
+<li><a href="#org0000005">2.3. Tutorials</a></li>
 </ul>
 </li>
-<li><a href="#orgf25c753">3. Configuration</a>
+<li><a href="#org000000c">3. Configuration</a>
 <ul>
-<li><a href="#org34969e4">3.1. Early-Init and Init</a></li>
-<li><a href="#org819a9cf">3.2. Better Defaults (Almost Mandatory)</a></li>
-<li><a href="#org653ea0d">3.3. Org Load Languages</a></li>
-<li><a href="#orgcfee06f">3.4. Set Keybinds</a></li>
+<li><a href="#org0000007">3.1. Early-Init and Init</a></li>
+<li><a href="#org0000008">3.2. Better Defaults (Almost Mandatory)</a></li>
+<li><a href="#org0000009">3.3. Org Exports</a></li>
+<li><a href="#org000000a">3.4. Org Load Languages</a></li>
+<li><a href="#org000000b">3.5. Set Keybinds</a></li>
 </ul>
 </li>
-<li><a href="#org9d4c1cb">4. Packages</a>
+<li><a href="#org000001f">4. Packages</a>
 <ul>
-<li><a href="#orgb884af6">4.1. Productivity</a>
+<li><a href="#org0000014">4.1. Productivity</a>
 <ul>
-<li><a href="#orgbd4d96e">4.1.1. Undo History</a></li>
-<li><a href="#org2ead025">4.1.2. Evil + General (Vim-Keybind)</a></li>
-<li><a href="#org7bca914">4.1.3. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
-<li><a href="#org8774dcf">4.1.4. Embark + Consult + Marginalia</a></li>
-<li><a href="#orga42bcc5">4.1.5. Which Key</a></li>
-<li><a href="#orgc8708eb">4.1.6. Hop (Jump Anywhere on Buffer)</a></li>
-<li><a href="#orga6a9971">4.1.7. Chdir Support</a></li>
+<li><a href="#org000000d">4.1.1. Undo History</a></li>
+<li><a href="#org000000e">4.1.2. Evil + General (Vim-Keybind)</a></li>
+<li><a href="#org000000f">4.1.3. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
+<li><a href="#org0000010">4.1.4. Embark + Consult + Marginalia</a></li>
+<li><a href="#org0000011">4.1.5. Which Key</a></li>
+<li><a href="#org0000012">4.1.6. Hop (Jump Anywhere on Buffer)</a></li>
+<li><a href="#org0000013">4.1.7. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org58cc85d">4.2. Customization</a>
+<li><a href="#org0000018">4.2. Customization</a>
 <ul>
-<li><a href="#org39dbdbd">4.2.1. Theme</a></li>
-<li><a href="#orgf46f6d8">4.2.2. Org Export Themes</a></li>
-<li><a href="#orgf4212c2">4.2.3. Font</a></li>
+<li><a href="#org0000015">4.2.1. Theme</a></li>
+<li><a href="#org0000016">4.2.2. Org Export Themes</a></li>
+<li><a href="#org0000017">4.2.3. Font</a></li>
 </ul>
 </li>
-<li><a href="#org10f0cab">4.3. Programming</a>
+<li><a href="#org000001e">4.3. Programming</a>
 <ul>
-<li><a href="#org0de55c5">4.3.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
-<li><a href="#org03c96be">4.3.2. Highlighting</a></li>
-<li><a href="#org114ad9f">4.3.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
-<li><a href="#orga92dbe3">4.3.4. LSP</a></li>
-<li><a href="#orgccc8d0e">4.3.5. Mermaid/GraphViz (Graph)</a></li>
+<li><a href="#org0000019">4.3.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
+<li><a href="#org000001a">4.3.2. Highlighting</a></li>
+<li><a href="#org000001b">4.3.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
+<li><a href="#org000001c">4.3.4. LSP</a></li>
+<li><a href="#org000001d">4.3.5. Mermaid/GraphViz (Graph)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgc29a32c">5. Misc</a>
+<li><a href="#org0000027">5. Misc</a>
 <ul>
-<li><a href="#org451c0cc">5.1. Don't reset the cursor to the middle when scrolling</a></li>
-<li><a href="#org5c9d194">5.2. Highlight Trailing Whitespace</a></li>
-<li><a href="#org712d92a">5.3. Don't affect previous line with C-backspace</a></li>
-<li><a href="#orgdbd7a96">5.4. Change backup file dump path</a></li>
-<li><a href="#org0cefa13">5.5. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org9ddd793">5.6. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#orge6acc36">5.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org0000020">5.1. Don't reset the cursor to the middle when scrolling</a></li>
+<li><a href="#org0000021">5.2. Highlight Trailing Whitespace</a></li>
+<li><a href="#org0000022">5.3. Don't affect previous line with C-backspace</a></li>
+<li><a href="#org0000023">5.4. Change backup file dump path</a></li>
+<li><a href="#org0000024">5.5. Window Split Vertical-Horizontal Toggle</a></li>
+<li><a href="#org0000025">5.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org0000026">5.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
 </ul>
 </li>
-<li><a href="#org0ef83dc">6. Resources References</a></li>
+<li><a href="#org0000028">6. Resources References</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf42322f" class="outline-2">
-<h2 id="orgf42322f"><span class="section-number-2">1.</span> Preliminaries</h2>
+<div id="outline-container-org0000002" class="outline-2">
+<h2 id="org0000002"><span class="section-number-2">1.</span> Preliminaries</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org4395a6b" class="outline-3">
-<h3 id="org4395a6b"><span class="section-number-3">1.1.</span> Preface</h3>
+<div id="outline-container-org0000000" class="outline-3">
+<h3 id="org0000000"><span class="section-number-3">1.1.</span> Preface</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 I was first introduced to Emacs by a friend at my college. I had been resistant to a lot of things in my life, like the
@@ -526,8 +527,8 @@ whole new level.
 </div>
 </div>
 
-<div id="outline-container-orge5d2937" class="outline-3">
-<h3 id="orge5d2937"><span class="section-number-3">1.2.</span> Introduction</h3>
+<div id="outline-container-org0000001" class="outline-3">
+<h3 id="org0000001"><span class="section-number-3">1.2.</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 This file, even though looking like a documentation or a book is indeed my emacs configuration!
@@ -550,12 +551,12 @@ You can view my configuration at:
 </div>
 </div>
 
-<div id="outline-container-org643c108" class="outline-2">
-<h2 id="org643c108"><span class="section-number-2">2.</span> Getting Started</h2>
+<div id="outline-container-org0000006" class="outline-2">
+<h2 id="org0000006"><span class="section-number-2">2.</span> Getting Started</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org3ff77b4" class="outline-3">
-<h3 id="org3ff77b4"><span class="section-number-3">2.1.</span> Installation</h3>
+<div id="outline-container-org0000003" class="outline-3">
+<h3 id="org0000003"><span class="section-number-3">2.1.</span> Installation</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Install as you wish, I prefer using nix + home-manager for installation.
@@ -583,8 +584,8 @@ I export emacs-pcre and emacs-chdir as custom packages on my <a href="https://gi
 </div>
 </div>
 
-<div id="outline-container-org62c62e4" class="outline-3">
-<h3 id="org62c62e4"><span class="section-number-3">2.2.</span> Basic Keybinds</h3>
+<div id="outline-container-org0000004" class="outline-3">
+<h3 id="org0000004"><span class="section-number-3">2.2.</span> Basic Keybinds</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 I like to remember a few keybinds so in-case my config had any error, I could still use emacs with these fallback
@@ -655,8 +656,8 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 </div>
 </div>
 
-<div id="outline-container-org5b40769" class="outline-3">
-<h3 id="org5b40769"><span class="section-number-3">2.3.</span> Tutorials</h3>
+<div id="outline-container-org0000005" class="outline-3">
+<h3 id="org0000005"><span class="section-number-3">2.3.</span> Tutorials</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 I like to recommend <a href="https://www.youtube.com/watch?v=B6jfrrwR10k">this video</a> if you want to get familiarized with emacs! This packs a lot of information with
@@ -666,12 +667,12 @@ effective presentations instead of most videos which talk way too much and deliv
 </div>
 </div>
 
-<div id="outline-container-orgf25c753" class="outline-2">
-<h2 id="orgf25c753"><span class="section-number-2">3.</span> Configuration</h2>
+<div id="outline-container-org000000c" class="outline-2">
+<h2 id="org000000c"><span class="section-number-2">3.</span> Configuration</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org34969e4" class="outline-3">
-<h3 id="org34969e4"><span class="section-number-3">3.1.</span> Early-Init and Init</h3>
+<div id="outline-container-org0000007" class="outline-3">
+<h3 id="org0000007"><span class="section-number-3">3.1.</span> Early-Init and Init</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 The <a href="./early-init.el">early-init.el</a> and <a href="./init.el">init.el</a> files are the first two files emacs read when starting up.
@@ -685,8 +686,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org819a9cf" class="outline-3">
-<h3 id="org819a9cf"><span class="section-number-3">3.2.</span> Better Defaults (Almost Mandatory)</h3>
+<div id="outline-container-org0000008" class="outline-3">
+<h3 id="org0000008"><span class="section-number-3">3.2.</span> Better Defaults (Almost Mandatory)</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100<span style="color: #666666;">)</span>
@@ -706,7 +707,7 @@ manager which is a prerequisite for most of this config and also it loads this c
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> indent-tabs-mode nil<span style="color: #666666;">)</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> evil-shift-width tab-width<span style="color: #666666;">)</span>
 
-                                        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://stackoverflow.com/a/10110113/11377112</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://stackoverflow.com/a/10110113/11377112</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> initial-scratch-message <span style="color: var(--clr-string); background-color: var(--bg-string);">"// This is scratch buffer, won't be saved unless saved as a file with :w &lt;filename&gt;.\n\n"</span><span style="color: #666666;">)</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> initial-major-mode 'text-mode<span style="color: #666666;">)</span>
 (add-hook 'text-mode-hook 'turn-on-auto-fill<span style="color: #666666;">)</span>
@@ -715,9 +716,22 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org653ea0d" class="outline-3">
-<h3 id="org653ea0d"><span class="section-number-3">3.3.</span> Org Load Languages</h3>
+<div id="outline-container-org0000009" class="outline-3">
+<h3 id="org0000009"><span class="section-number-3">3.3.</span> Org Exports</h3>
 <div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">org-export-deterministic-reference</span> (references<span style="color: #666666;">)</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((new (/ (length references) 3))) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (rassq new references) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> new (+ new 1))) new<span style="color: #666666;">))</span>
+(advice-add #'org-export-new-reference <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:override</span> #'org-export-deterministic-reference<span style="color: #666666;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org000000a" class="outline-3">
+<h3 id="org000000a"><span class="section-number-3">3.4.</span> Org Load Languages</h3>
+<div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(org-babel-do-load-languages 'org-babel-load-languages
                              '((shell . t<span style="color: #666666;">)))</span>
@@ -726,9 +740,9 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-orgcfee06f" class="outline-3">
-<h3 id="orgcfee06f"><span class="section-number-3">3.4.</span> Set Keybinds</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org000000b" class="outline-3">
+<h3 id="org000000b"><span class="section-number-3">3.5.</span> Set Keybinds</h3>
+<div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(general-define-key
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion<span style="color: #666666;">)</span>
@@ -811,16 +825,16 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 
 
-<div id="outline-container-org9d4c1cb" class="outline-2">
-<h2 id="org9d4c1cb"><span class="section-number-2">4.</span> Packages</h2>
+<div id="outline-container-org000001f" class="outline-2">
+<h2 id="org000001f"><span class="section-number-2">4.</span> Packages</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgb884af6" class="outline-3">
-<h3 id="orgb884af6"><span class="section-number-3">4.1.</span> Productivity</h3>
+<div id="outline-container-org0000014" class="outline-3">
+<h3 id="org0000014"><span class="section-number-3">4.1.</span> Productivity</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-orgbd4d96e" class="outline-4">
-<h4 id="orgbd4d96e"><span class="section-number-4">4.1.1.</span> Undo History</h4>
+<div id="outline-container-org000000d" class="outline-4">
+<h4 id="org000000d"><span class="section-number-4">4.1.1.</span> Undo History</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep undo history</span>
@@ -841,8 +855,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org2ead025" class="outline-4">
-<h4 id="org2ead025"><span class="section-number-4">4.1.2.</span> Evil + General (Vim-Keybind)</h4>
+<div id="outline-container-org000000e" class="outline-4">
+<h4 id="org000000e"><span class="section-number-4">4.1.2.</span> Evil + General (Vim-Keybind)</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil</span>
@@ -953,8 +967,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org7bca914" class="outline-4">
-<h4 id="org7bca914"><span class="section-number-4">4.1.3.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
+<div id="outline-container-org000000f" class="outline-4">
+<h4 id="org000000f"><span class="section-number-4">4.1.3.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">vertico</span>
@@ -974,8 +988,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org8774dcf" class="outline-4">
-<h4 id="org8774dcf"><span class="section-number-4">4.1.4.</span> Embark + Consult + Marginalia</h4>
+<div id="outline-container-org0000010" class="outline-4">
+<h4 id="org0000010"><span class="section-number-4">4.1.4.</span> Embark + Consult + Marginalia</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <ul class="org-ul">
 <li>Embark: Quick Actions</li>
@@ -1003,8 +1017,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-orga42bcc5" class="outline-4">
-<h4 id="orga42bcc5"><span class="section-number-4">4.1.5.</span> Which Key</h4>
+<div id="outline-container-org0000011" class="outline-4">
+<h4 id="org0000011"><span class="section-number-4">4.1.5.</span> Which Key</h4>
 <div class="outline-text-4" id="text-4-1-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">which-key</span>
@@ -1017,8 +1031,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-orgc8708eb" class="outline-4">
-<h4 id="orgc8708eb"><span class="section-number-4">4.1.6.</span> Hop (Jump Anywhere on Buffer)</h4>
+<div id="outline-container-org0000012" class="outline-4">
+<h4 id="org0000012"><span class="section-number-4">4.1.6.</span> Hop (Jump Anywhere on Buffer)</h4>
 <div class="outline-text-4" id="text-4-1-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">install pcre(-devel) package first from system package manager</span>
@@ -1037,8 +1051,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-orga6a9971" class="outline-4">
-<h4 id="orga6a9971"><span class="section-number-4">4.1.7.</span> Chdir Support</h4>
+<div id="outline-container-org0000013" class="outline-4">
+<h4 id="org0000013"><span class="section-number-4">4.1.7.</span> Chdir Support</h4>
 <div class="outline-text-4" id="text-4-1-7">
 <p>
 Syncing /proc/self/cwd with changes to (default-directory).
@@ -1052,12 +1066,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org58cc85d" class="outline-3">
-<h3 id="org58cc85d"><span class="section-number-3">4.2.</span> Customization</h3>
+<div id="outline-container-org0000018" class="outline-3">
+<h3 id="org0000018"><span class="section-number-3">4.2.</span> Customization</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org39dbdbd" class="outline-4">
-<h4 id="org39dbdbd"><span class="section-number-4">4.2.1.</span> Theme</h4>
+<div id="outline-container-org0000015" class="outline-4">
+<h4 id="org0000015"><span class="section-number-4">4.2.1.</span> Theme</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">doom-themes</span>
@@ -1075,8 +1089,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-orgf46f6d8" class="outline-4">
-<h4 id="orgf46f6d8"><span class="section-number-4">4.2.2.</span> Org Export Themes</h4>
+<div id="outline-container-org0000016" class="outline-4">
+<h4 id="org0000016"><span class="section-number-4">4.2.2.</span> Org Export Themes</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hexrgb</span>
@@ -1091,19 +1105,16 @@ Syncing /proc/self/cwd with changes to (default-directory).
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"DogLooksGood/org-html-themify"</span>
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:files</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"*.el"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.js"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.css"</span><span style="color: #666666;">))</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (org-mode . org-html-themify-mode<span style="color: #666666;">)</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:custom</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-src-preserve-indentation nil
-        org-edit-src-content-indentation 0<span style="color: #666666;">)</span>
-  (org-html-themify-themes
-   '((dark . modus-vivendi<span style="color: #666666;">)</span>
-     (light . modus-operandi<span style="color: #666666;">))))</span>
+        org-edit-src-content-indentation 0<span style="color: #666666;">))</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf4212c2" class="outline-4">
-<h4 id="orgf4212c2"><span class="section-number-4">4.2.3.</span> Font</h4>
+<div id="outline-container-org0000017" class="outline-4">
+<h4 id="org0000017"><span class="section-number-4">4.2.3.</span> Font</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">try-fonts</span>
@@ -1126,12 +1137,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org10f0cab" class="outline-3">
-<h3 id="org10f0cab"><span class="section-number-3">4.3.</span> Programming</h3>
+<div id="outline-container-org000001e" class="outline-3">
+<h3 id="org000001e"><span class="section-number-3">4.3.</span> Programming</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org0de55c5" class="outline-4">
-<h4 id="org0de55c5"><span class="section-number-4">4.3.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
+<div id="outline-container-org0000019" class="outline-4">
+<h4 id="org0000019"><span class="section-number-4">4.3.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">parinfer-rust-mode</span>
@@ -1151,8 +1162,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org03c96be" class="outline-4">
-<h4 id="org03c96be"><span class="section-number-4">4.3.2.</span> Highlighting</h4>
+<div id="outline-container-org000001a" class="outline-4">
+<h4 id="org000001a"><span class="section-number-4">4.3.2.</span> Highlighting</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package nix-mode</span>
@@ -1166,8 +1177,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org114ad9f" class="outline-4">
-<h4 id="org114ad9f"><span class="section-number-4">4.3.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
+<div id="outline-container-org000001b" class="outline-4">
+<h4 id="org000001b"><span class="section-number-4">4.3.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">projectile</span>
@@ -1208,8 +1219,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-orga92dbe3" class="outline-4">
-<h4 id="orga92dbe3"><span class="section-number-4">4.3.4.</span> LSP</h4>
+<div id="outline-container-org000001c" class="outline-4">
+<h4 id="org000001c"><span class="section-number-4">4.3.4.</span> LSP</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package eglot</span>
@@ -1237,8 +1248,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-orgccc8d0e" class="outline-4">
-<h4 id="orgccc8d0e"><span class="section-number-4">4.3.5.</span> Mermaid/GraphViz (Graph)</h4>
+<div id="outline-container-org000001d" class="outline-4">
+<h4 id="org000001d"><span class="section-number-4">4.3.5.</span> Mermaid/GraphViz (Graph)</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">mermaid-mode</span><span style="color: #666666;">)</span>
@@ -1263,12 +1274,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 
-<div id="outline-container-orgc29a32c" class="outline-2">
-<h2 id="orgc29a32c"><span class="section-number-2">5.</span> Misc</h2>
+<div id="outline-container-org0000027" class="outline-2">
+<h2 id="org0000027"><span class="section-number-2">5.</span> Misc</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org451c0cc" class="outline-3">
-<h3 id="org451c0cc"><span class="section-number-3">5.1.</span> Don't reset the cursor to the middle when scrolling</h3>
+<div id="outline-container-org0000020" class="outline-3">
+<h3 id="org0000020"><span class="section-number-3">5.1.</span> Don't reset the cursor to the middle when scrolling</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-variables
@@ -1279,8 +1290,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org5c9d194" class="outline-3">
-<h3 id="org5c9d194"><span class="section-number-3">5.2.</span> Highlight Trailing Whitespace</h3>
+<div id="outline-container-org0000021" class="outline-3">
+<h3 id="org0000021"><span class="section-number-3">5.2.</span> Highlight Trailing Whitespace</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t<span style="color: #666666;">)</span>
@@ -1291,8 +1302,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org712d92a" class="outline-3">
-<h3 id="org712d92a"><span class="section-number-3">5.3.</span> Don't affect previous line with C-backspace</h3>
+<div id="outline-container-org0000022" class="outline-3">
+<h3 id="org0000022"><span class="section-number-3">5.3.</span> Don't affect previous line with C-backspace</h3>
 <div class="outline-text-3" id="text-5-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/backward-kill-word</span> (<span style="color: #666666;">)</span>
@@ -1306,8 +1317,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-orgdbd7a96" class="outline-3">
-<h3 id="orgdbd7a96"><span class="section-number-3">5.4.</span> Change backup file dump path</h3>
+<div id="outline-container-org0000023" class="outline-3">
+<h3 id="org0000023"><span class="section-number-3">5.4.</span> Change backup file dump path</h3>
 <div class="outline-text-3" id="text-5-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">user-temporary-file-directory</span>
@@ -1326,8 +1337,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org0cefa13" class="outline-3">
-<h3 id="org0cefa13"><span class="section-number-3">5.5.</span> Window Split Vertical-Horizontal Toggle</h3>
+<div id="outline-container-org0000024" class="outline-3">
+<h3 id="org0000024"><span class="section-number-3">5.5.</span> Window Split Vertical-Horizontal Toggle</h3>
 <div class="outline-text-3" id="text-5-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">window-split-toggle</span> (<span style="color: #666666;">)</span>
@@ -1348,8 +1359,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org9ddd793" class="outline-3">
-<h3 id="org9ddd793"><span class="section-number-3">5.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
+<div id="outline-container-org0000025" class="outline-3">
+<h3 id="org0000025"><span class="section-number-3">5.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
 <div class="outline-text-3" id="text-5-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> (<span style="color: #666666;">)</span>
@@ -1372,8 +1383,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-orge6acc36" class="outline-3">
-<h3 id="orge6acc36"><span class="section-number-3">5.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div id="outline-container-org0000026" class="outline-3">
+<h3 id="org0000026"><span class="section-number-3">5.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
 <div class="outline-text-3" id="text-5-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
@@ -1384,60 +1395,60 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                               no-cursor-in-echo-area<span style="color: #666666;">)</span>
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  LIST is a list of objects, or a function of no arguments to return the next</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  object; when it returns nil, the list of objects is considered exhausted.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      LIST is a list of objects, or a function of no arguments to return the next</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      object; when it returns nil, the list of objects is considered exhausted.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  If PROMPTER is a string, it should be a format string to be used to format</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  the question as </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(format PROMPTER OBJECT).</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  If PROMPTER is not a string, it should be a function of one argument, an</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  object from LIST, which returns a string to be used as the question for</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  that object.  If the function's return value is not a string, it may be</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  nil to ignore the object, or non-nil to act on the object with ACTOR</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  without asking the user.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If PROMPTER is a string, it should be a format string to be used to format</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the question as </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(format PROMPTER OBJECT).</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If PROMPTER is not a string, it should be a function of one argument, an</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      object from LIST, which returns a string to be used as the question for</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      that object.  If the function's return value is not a string, it may be</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      nil to ignore the object, or non-nil to act on the object with ACTOR</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      without asking the user.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  ACTOR is a function of one argument, an object from LIST,</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  which gets called with each object for which the user answers `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">yes</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">'</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  to the question presented by PROMPTER.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      ACTOR is a function of one argument, an object from LIST,</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      which gets called with each object for which the user answers `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">yes</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">'</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      to the question presented by PROMPTER.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  The user's answers to the questions may be one of the following:</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      The user's answers to the questions may be one of the following:</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - y, Y, or SPC to act on that object;</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - n, N, or DEL to skip that object;</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - ! to act on all following objects;</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - ESC or q to exit (skip all following objects);</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - . (period) to act on the current object and then exit; or</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">   - \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">] to get help.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - y, Y, or SPC to act on that object;</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - n, N, or DEL to skip that object;</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - ! to act on all following objects;</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - ESC or q to exit (skip all following objects);</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - . (period) to act on the current object and then exit; or</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">       - \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">] to get help.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  HELP provides information for displaying help when the user</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  types \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">].  If HELP is given, it should be a list of</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  the form (OBJECT OBJECTS ACTION), where OBJECT is a string giving</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  the singular noun describing an element of LIST; OBJECTS is the</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  plural noun describing several elements of LIST, and ACTION is a</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  transitive verb describing action by ACTOR on one or more elements</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  of LIST.  If HELP is omitted or nil, it defaults</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  to </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(\"object\" \"objects\" \"act on\").</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      HELP provides information for displaying help when the user</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      types \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">].  If HELP is given, it should be a list of</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the form (OBJECT OBJECTS ACTION), where OBJECT is a string giving</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the singular noun describing an element of LIST; OBJECTS is the</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      plural noun describing several elements of LIST, and ACTION is a</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      transitive verb describing action by ACTOR on one or more elements</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      of LIST.  If HELP is omitted or nil, it defaults</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      to </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(\"object\" \"objects\" \"act on\").</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  If ACTION-ALIST is given, it is an alist specifying additional keys</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  that will be accepted as an answer to the questions.  Each element</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  of the alist has the form (KEY FUNCTION HELP), where KEY is a character;</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  FUNCTION is a function of one argument (an object from LIST); and HELP</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  is a string.  When the user presses KEY, FUNCTION is called; if it</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  returns non-nil, the object is considered to have been \"acted upon\",</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  and `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">map-y-or-n-p</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' proceeds to the next object from LIST.  If</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  FUNCTION returns nil, the prompt is re-issued for the same object: this</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  comes in handy if FUNCTION produces some display that will allow the</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  user to make an intelligent decision whether the object in question</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  should be acted upon.  If the user types \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">], the string</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  given by HELP is used to describe the effect of KEY.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If ACTION-ALIST is given, it is an alist specifying additional keys</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      that will be accepted as an answer to the questions.  Each element</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      of the alist has the form (KEY FUNCTION HELP), where KEY is a character;</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      FUNCTION is a function of one argument (an object from LIST); and HELP</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      is a string.  When the user presses KEY, FUNCTION is called; if it</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      returns non-nil, the object is considered to have been \"acted upon\",</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      and `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">map-y-or-n-p</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' proceeds to the next object from LIST.  If</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      FUNCTION returns nil, the prompt is re-issued for the same object: this</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      comes in handy if FUNCTION produces some display that will allow the</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      user to make an intelligent decision whether the object in question</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      should be acted upon.  If the user types \\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">help-command</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">], the string</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      given by HELP is used to describe the effect of KEY.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  Optional argument NO-CURSOR-IN-ECHO-AREA, if non-nil, means not to set</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">cursor-in-echo-area</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' while prompting with the questions.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      Optional argument NO-CURSOR-IN-ECHO-AREA, if non-nil, means not to set</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">cursor-in-echo-area</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' while prompting with the questions.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  This function uses `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">query-replace-map</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' to define the standard responses,</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  but only some of the responses which `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">query-replace</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' understands</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  are meaningful here, as described above.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      This function uses `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">query-replace-map</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' to define the standard responses,</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      but only some of the responses which `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">query-replace</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">' understands</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      are meaningful here, as described above.</span>
 
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">  The function's value is the number of actions taken."</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      The function's value is the number of actions taken."</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((actions 0<span style="color: #666666;">)</span>
          (msg (current-message<span style="color: #666666;">))</span>
          user-keys mouse-event map prompt char elt def
@@ -1560,11 +1571,11 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                                (concat
                                 (format-message
                                  (substitute-command-keys <span style="color: var(--clr-string); background-color: var(--bg-string);">"\</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">  Type \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">SPC</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">y</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s the current %s;</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">  \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">DEL</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">n</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current %s;</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">  \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">RET</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">q</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current and all remaining %s;</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">  \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">C-g</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to quit (cancel the whole command);</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">  \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">!</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s all remaining %s;\n"</span><span style="color: #666666;">)</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      Type \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">SPC</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">y</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s the current %s;</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">DEL</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">n</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current %s;</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">RET</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">q</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current and all remaining %s;</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">C-g</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to quit (cancel the whole command);</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">!</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s all remaining %s;\n"</span><span style="color: #666666;">)</span>
                                  action object object objects action objects<span style="color: #666666;">)</span>
                                 (mapconcat (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt<span style="color: #666666;">)</span>
                                              (format <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s to %s;\n"</span>
@@ -1621,8 +1632,8 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </div>
 </div>
 
-<div id="outline-container-org0ef83dc" class="outline-2">
-<h2 id="org0ef83dc"><span class="section-number-2">6.</span> Resources References</h2>
+<div id="outline-container-org0000028" class="outline-2">
+<h2 id="org0000028"><span class="section-number-2">6.</span> Resources References</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.

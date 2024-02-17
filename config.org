@@ -104,10 +104,19 @@ manager which is a prerequisite for most of this config and also it loads this c
 (setq-default indent-tabs-mode nil)
 (setq-default evil-shift-width tab-width)
 
-                                        ; https://stackoverflow.com/a/10110113/11377112
+; https://stackoverflow.com/a/10110113/11377112
 (setq initial-scratch-message "// This is scratch buffer, won't be saved unless saved as a file with :w <filename>.\n\n")
 (setq initial-major-mode 'text-mode)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+#+END_SRC
+
+** Org Exports
+
+#+BEGIN_SRC emacs-lisp
+; https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/
+(defun org-export-deterministic-reference (references)
+  (let ((new (/ (length references) 3))) (while (rassq new references) (setq new (+ new 1))) new))
+(advice-add #'org-export-new-reference :override #'org-export-deterministic-reference)
 #+END_SRC
 
 ** Org Load Languages
@@ -360,12 +369,9 @@ Syncing /proc/self/cwd with changes to (default-directory).
    :repo "DogLooksGood/org-html-themify"
    :files ("*.el" "*.js" "*.css"))
   :hook (org-mode . org-html-themify-mode)
-  :custom
+  :config
   (setq org-src-preserve-indentation nil
-        org-edit-src-content-indentation 0)
-  (org-html-themify-themes
-   '((dark . modus-vivendi)
-     (light . modus-operandi))))
+        org-edit-src-content-indentation 0))
 #+END_SRC
 
 *** Font
@@ -592,60 +598,60 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                               no-cursor-in-echo-area)
   "Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.
 
-  LIST is a list of objects, or a function of no arguments to return the next
-  object; when it returns nil, the list of objects is considered exhausted.
+      LIST is a list of objects, or a function of no arguments to return the next
+      object; when it returns nil, the list of objects is considered exhausted.
 
-  If PROMPTER is a string, it should be a format string to be used to format
-  the question as \(format PROMPTER OBJECT).
-  If PROMPTER is not a string, it should be a function of one argument, an
-  object from LIST, which returns a string to be used as the question for
-  that object.  If the function's return value is not a string, it may be
-  nil to ignore the object, or non-nil to act on the object with ACTOR
-  without asking the user.
+      If PROMPTER is a string, it should be a format string to be used to format
+      the question as \(format PROMPTER OBJECT).
+      If PROMPTER is not a string, it should be a function of one argument, an
+      object from LIST, which returns a string to be used as the question for
+      that object.  If the function's return value is not a string, it may be
+      nil to ignore the object, or non-nil to act on the object with ACTOR
+      without asking the user.
 
-  ACTOR is a function of one argument, an object from LIST,
-  which gets called with each object for which the user answers `yes'
-  to the question presented by PROMPTER.
+      ACTOR is a function of one argument, an object from LIST,
+      which gets called with each object for which the user answers `yes'
+      to the question presented by PROMPTER.
 
-  The user's answers to the questions may be one of the following:
+      The user's answers to the questions may be one of the following:
 
-   - y, Y, or SPC to act on that object;
-   - n, N, or DEL to skip that object;
-   - ! to act on all following objects;
-   - ESC or q to exit (skip all following objects);
-   - . (period) to act on the current object and then exit; or
-   - \\[help-command] to get help.
+       - y, Y, or SPC to act on that object;
+       - n, N, or DEL to skip that object;
+       - ! to act on all following objects;
+       - ESC or q to exit (skip all following objects);
+       - . (period) to act on the current object and then exit; or
+       - \\[help-command] to get help.
 
-  HELP provides information for displaying help when the user
-  types \\[help-command].  If HELP is given, it should be a list of
-  the form (OBJECT OBJECTS ACTION), where OBJECT is a string giving
-  the singular noun describing an element of LIST; OBJECTS is the
-  plural noun describing several elements of LIST, and ACTION is a
-  transitive verb describing action by ACTOR on one or more elements
-  of LIST.  If HELP is omitted or nil, it defaults
-  to \(\"object\" \"objects\" \"act on\").
+      HELP provides information for displaying help when the user
+      types \\[help-command].  If HELP is given, it should be a list of
+      the form (OBJECT OBJECTS ACTION), where OBJECT is a string giving
+      the singular noun describing an element of LIST; OBJECTS is the
+      plural noun describing several elements of LIST, and ACTION is a
+      transitive verb describing action by ACTOR on one or more elements
+      of LIST.  If HELP is omitted or nil, it defaults
+      to \(\"object\" \"objects\" \"act on\").
 
-  If ACTION-ALIST is given, it is an alist specifying additional keys
-  that will be accepted as an answer to the questions.  Each element
-  of the alist has the form (KEY FUNCTION HELP), where KEY is a character;
-  FUNCTION is a function of one argument (an object from LIST); and HELP
-  is a string.  When the user presses KEY, FUNCTION is called; if it
-  returns non-nil, the object is considered to have been \"acted upon\",
-  and `map-y-or-n-p' proceeds to the next object from LIST.  If
-  FUNCTION returns nil, the prompt is re-issued for the same object: this
-  comes in handy if FUNCTION produces some display that will allow the
-  user to make an intelligent decision whether the object in question
-  should be acted upon.  If the user types \\[help-command], the string
-  given by HELP is used to describe the effect of KEY.
+      If ACTION-ALIST is given, it is an alist specifying additional keys
+      that will be accepted as an answer to the questions.  Each element
+      of the alist has the form (KEY FUNCTION HELP), where KEY is a character;
+      FUNCTION is a function of one argument (an object from LIST); and HELP
+      is a string.  When the user presses KEY, FUNCTION is called; if it
+      returns non-nil, the object is considered to have been \"acted upon\",
+      and `map-y-or-n-p' proceeds to the next object from LIST.  If
+      FUNCTION returns nil, the prompt is re-issued for the same object: this
+      comes in handy if FUNCTION produces some display that will allow the
+      user to make an intelligent decision whether the object in question
+      should be acted upon.  If the user types \\[help-command], the string
+      given by HELP is used to describe the effect of KEY.
 
-  Optional argument NO-CURSOR-IN-ECHO-AREA, if non-nil, means not to set
-  `cursor-in-echo-area' while prompting with the questions.
+      Optional argument NO-CURSOR-IN-ECHO-AREA, if non-nil, means not to set
+      `cursor-in-echo-area' while prompting with the questions.
 
-  This function uses `query-replace-map' to define the standard responses,
-  but only some of the responses which `query-replace' understands
-  are meaningful here, as described above.
+      This function uses `query-replace-map' to define the standard responses,
+      but only some of the responses which `query-replace' understands
+      are meaningful here, as described above.
 
-  The function's value is the number of actions taken."
+      The function's value is the number of actions taken."
   (let* ((actions 0)
          (msg (current-message))
          user-keys mouse-event map prompt char elt def
@@ -768,11 +774,11 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                                (concat
                                 (format-message
                                  (substitute-command-keys "\
-  Type \\`SPC' or \\`y' to %s the current %s;
-  \\`DEL' or \\`n' to skip the current %s;
-  \\`RET' or \\`q' to skip the current and all remaining %s;
-  \\`C-g' to quit (cancel the whole command);
-  \\`!' to %s all remaining %s;\n")
+      Type \\`SPC' or \\`y' to %s the current %s;
+      \\`DEL' or \\`n' to skip the current %s;
+      \\`RET' or \\`q' to skip the current and all remaining %s;
+      \\`C-g' to quit (cancel the whole command);
+      \\`!' to %s all remaining %s;\n")
                                  action object object objects action objects)
                                 (mapconcat (lambda (elt)
                                              (format "%s to %s;\n"
