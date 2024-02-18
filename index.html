@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-18 Sun 11:50 -->
+<!-- 2024-02-18 Sun 16:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -435,77 +435,76 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0000002">1. Preliminaries</a>
+<li><a href="#org0000006">1. Preliminaries</a>
 <ul>
 <li><a href="#org0000000">1.1. Preface</a></li>
-<li><a href="#org0000001">1.2. Introduction</a></li>
+<li><a href="#org0000003">1.2. Introduction</a></li>
 </ul>
 </li>
-<li><a href="#org0000006">2. Getting Started</a>
+<li><a href="#org0000012">2. Getting Started</a>
 <ul>
-<li><a href="#org0000003">2.1. Installation</a></li>
-<li><a href="#org0000004">2.2. Basic Keybinds</a></li>
-<li><a href="#org0000005">2.3. Tutorials</a></li>
+<li><a href="#org0000009">2.1. Installation</a></li>
+<li><a href="#org000000c">2.2. Basic Keybinds</a></li>
+<li><a href="#org000000f">2.3. Tutorials</a></li>
 </ul>
 </li>
-<li><a href="#org000000c">3. Emacs Configuration</a>
+<li><a href="#org0000024">3. Emacs Configuration</a>
 <ul>
-<li><a href="#org0000007">3.1. Early-Init and Init</a></li>
-<li><a href="#org0000008">3.2. Better Defaults (Almost Mandatory)</a></li>
-<li><a href="#org0000009">3.3. Org Exports</a></li>
-<li><a href="#org000000a">3.4. Org Load Languages</a></li>
-<li><a href="#org000000b">3.5. Set Keybinds</a></li>
+<li><a href="#org0000015">3.1. Early-Init and Init</a></li>
+<li><a href="#org0000018">3.2. Better Defaults (Almost Mandatory)</a></li>
+<li><a href="#org000001b">3.3. Better Org-Mode Defaults</a></li>
+<li><a href="#org000001e">3.4. Set Fonts</a></li>
+<li><a href="#org0000021">3.5. Set Keybinds</a></li>
 </ul>
 </li>
-<li><a href="#org000001f">4. Packages</a>
+<li><a href="#org000005a">4. Packages</a>
 <ul>
-<li><a href="#org0000014">4.1. Productivity</a>
+<li><a href="#org000003c">4.1. Productivity</a>
 <ul>
-<li><a href="#org000000d">4.1.1. Undo History</a></li>
-<li><a href="#org000000e">4.1.2. Evil + General (Vim-Keybind)</a></li>
-<li><a href="#org000000f">4.1.3. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
-<li><a href="#org0000010">4.1.4. Embark + Consult + Marginalia</a></li>
-<li><a href="#org0000011">4.1.5. Which Key</a></li>
-<li><a href="#org0000012">4.1.6. Hop (Jump Anywhere on Buffer)</a></li>
-<li><a href="#org0000013">4.1.7. Chdir Support</a></li>
+<li><a href="#org0000027">4.1.1. Undo History</a></li>
+<li><a href="#org000002a">4.1.2. Evil + General (Vim-Keybind)</a></li>
+<li><a href="#org000002d">4.1.3. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
+<li><a href="#org0000030">4.1.4. Embark + Consult + Marginalia</a></li>
+<li><a href="#org0000033">4.1.5. Which Key</a></li>
+<li><a href="#org0000036">4.1.6. Hop (Jump Anywhere on Buffer)</a></li>
+<li><a href="#org0000039">4.1.7. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org0000018">4.2. Customization</a>
+<li><a href="#org0000045">4.2. Customization</a>
 <ul>
-<li><a href="#org0000015">4.2.1. Theme</a></li>
-<li><a href="#org0000016">4.2.2. Org Export Themes</a></li>
-<li><a href="#org0000017">4.2.3. Font</a></li>
+<li><a href="#org000003f">4.2.1. Theme</a></li>
+<li><a href="#org0000042">4.2.2. Org Export Themes</a></li>
 </ul>
 </li>
-<li><a href="#org000001e">4.3. Programming</a>
+<li><a href="#org0000057">4.3. Programming</a>
 <ul>
-<li><a href="#org0000019">4.3.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
-<li><a href="#org000001a">4.3.2. Highlighting</a></li>
-<li><a href="#org000001b">4.3.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
-<li><a href="#org000001c">4.3.4. LSP</a></li>
-<li><a href="#org000001d">4.3.5. Mermaid/GraphViz (Graph)</a></li>
+<li><a href="#org0000048">4.3.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
+<li><a href="#org000004b">4.3.2. Highlighting</a></li>
+<li><a href="#org000004e">4.3.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
+<li><a href="#org0000051">4.3.4. LSP</a></li>
+<li><a href="#org0000054">4.3.5. Mermaid/GraphViz (Graph)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0000027">5. Misc</a>
+<li><a href="#org0000072">5. Misc</a>
 <ul>
-<li><a href="#org0000020">5.1. Don't reset the cursor to the middle when scrolling</a></li>
-<li><a href="#org0000021">5.2. Highlight Trailing Whitespace</a></li>
-<li><a href="#org0000022">5.3. Don't affect previous line with C-backspace</a></li>
-<li><a href="#org0000023">5.4. Change backup file dump path</a></li>
-<li><a href="#org0000024">5.5. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org0000025">5.6. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#org0000026">5.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org000005d">5.1. Don't reset the cursor to the middle when scrolling</a></li>
+<li><a href="#org0000060">5.2. Highlight Trailing Whitespace</a></li>
+<li><a href="#org0000063">5.3. Don't affect previous line with C-backspace</a></li>
+<li><a href="#org0000066">5.4. Change backup file dump path</a></li>
+<li><a href="#org0000069">5.5. Window Split Vertical-Horizontal Toggle</a></li>
+<li><a href="#org000006c">5.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org000006f">5.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
 </ul>
 </li>
-<li><a href="#org0000028">6. Resources References</a></li>
+<li><a href="#org0000075">6. Resources References</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0000002" class="outline-2">
-<h2 id="org0000002"><span class="section-number-2">1.</span> Preliminaries</h2>
+<div id="outline-container-org0000006" class="outline-2">
+<h2 id="org0000006"><span class="section-number-2">1.</span> Preliminaries</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 <div id="outline-container-org0000000" class="outline-3">
@@ -527,8 +526,8 @@ whole new level.
 </div>
 </div>
 
-<div id="outline-container-org0000001" class="outline-3">
-<h3 id="org0000001"><span class="section-number-3">1.2.</span> Introduction</h3>
+<div id="outline-container-org0000003" class="outline-3">
+<h3 id="org0000003"><span class="section-number-3">1.2.</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 This file, even though looking like a documentation or a book is indeed my emacs configuration!
@@ -551,12 +550,12 @@ You can view my configuration at:
 </div>
 </div>
 
-<div id="outline-container-org0000006" class="outline-2">
-<h2 id="org0000006"><span class="section-number-2">2.</span> Getting Started</h2>
+<div id="outline-container-org0000012" class="outline-2">
+<h2 id="org0000012"><span class="section-number-2">2.</span> Getting Started</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org0000003" class="outline-3">
-<h3 id="org0000003"><span class="section-number-3">2.1.</span> Installation</h3>
+<div id="outline-container-org0000009" class="outline-3">
+<h3 id="org0000009"><span class="section-number-3">2.1.</span> Installation</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Install as you wish, I prefer using nix + home-manager for installation.
@@ -584,8 +583,8 @@ I export emacs-pcre and emacs-chdir as custom packages on my <a href="https://gi
 </div>
 </div>
 
-<div id="outline-container-org0000004" class="outline-3">
-<h3 id="org0000004"><span class="section-number-3">2.2.</span> Basic Keybinds</h3>
+<div id="outline-container-org000000c" class="outline-3">
+<h3 id="org000000c"><span class="section-number-3">2.2.</span> Basic Keybinds</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 I like to remember a few keybinds so in-case my config had any error, I could still use emacs with these fallback
@@ -656,8 +655,8 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 </div>
 </div>
 
-<div id="outline-container-org0000005" class="outline-3">
-<h3 id="org0000005"><span class="section-number-3">2.3.</span> Tutorials</h3>
+<div id="outline-container-org000000f" class="outline-3">
+<h3 id="org000000f"><span class="section-number-3">2.3.</span> Tutorials</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 I like to recommend <a href="https://www.youtube.com/watch?v=B6jfrrwR10k">this video</a> if you want to get familiarized with emacs! This packs a lot of information with
@@ -667,12 +666,12 @@ effective presentations instead of most videos which talk way too much and deliv
 </div>
 </div>
 
-<div id="outline-container-org000000c" class="outline-2">
-<h2 id="org000000c"><span class="section-number-2">3.</span> Emacs Configuration</h2>
+<div id="outline-container-org0000024" class="outline-2">
+<h2 id="org0000024"><span class="section-number-2">3.</span> Emacs Configuration</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org0000007" class="outline-3">
-<h3 id="org0000007"><span class="section-number-3">3.1.</span> Early-Init and Init</h3>
+<div id="outline-container-org0000015" class="outline-3">
+<h3 id="org0000015"><span class="section-number-3">3.1.</span> Early-Init and Init</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 The <a href="./early-init.el">early-init.el</a> and <a href="./init.el">init.el</a> files are the first two files emacs read when starting up.
@@ -686,8 +685,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 </div>
 </div>
 
-<div id="outline-container-org0000008" class="outline-3">
-<h3 id="org0000008"><span class="section-number-3">3.2.</span> Better Defaults (Almost Mandatory)</h3>
+<div id="outline-container-org0000018" class="outline-3">
+<h3 id="org0000018"><span class="section-number-3">3.2.</span> Better Defaults (Almost Mandatory)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Emacs requires some essential tweaks to become somewhat usable.
@@ -695,92 +694,109 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable minibuffer history</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100<span style="color: #666666;">)</span>
-(savehist-mode 1<span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100)
+(savehist-mode 1)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable recording recent files &amp; window configuration for going back and forth</span>
 (recentf-mode 1)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-f-r</span>
 (winner-mode 1)   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C-c [left / right]</span>
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Set relative lines</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> display-line-numbers-type 'relative<span style="color: #666666;">)</span>
-(global-display-line-numbers-mode t<span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Configure automatic line breaks and word-wrap (just in case)</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> fill-column 120  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-c</span>
-              auto-fill-function 'do-auto-fill<span style="color: #666666;">)</span>
-(global-visual-line-mode t<span style="color: #666666;">)</span>
+              auto-fill-function 'do-auto-fill)
+(global-visual-line-mode t)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">I prefer indentation with spaces</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> tab-width 4
               indent-tabs-mode nil
-              evil-shift-width tab-width<span style="color: #666666;">)</span>
+              evil-shift-width tab-width)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Make scratch buffer text-mode</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> initial-scratch-message nil
-              initial-major-mode 'text-mode<span style="color: #666666;">)</span>
+              initial-major-mode 'text-mode)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Replace yes/no with y/n</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> use-short-answers t<span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> use-short-answers t)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Modeline</span>
-(column-number-mode 1<span style="color: #666666;">)</span>
+(column-number-mode 1)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000009" class="outline-3">
-<h3 id="org0000009"><span class="section-number-3">3.3.</span> Org Exports</h3>
+<div id="outline-container-org000001b" class="outline-3">
+<h3 id="org000001b"><span class="section-number-3">3.3.</span> Better Org-Mode Defaults</h3>
 <div class="outline-text-3" id="text-3-3">
+<p>
+Same goes for <code>org-mode</code>.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">org-export-deterministic-reference</span> (references<span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((new (/ (length references) 3))) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (rassq new references) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> new (+ new 1))) new<span style="color: #666666;">))</span>
-(advice-add #'org-export-new-reference <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:override</span> #'org-export-deterministic-reference<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Allow these languages for code evaluation in org-mode documents</span>
+(org-babel-do-load-languages 'org-babel-load-languages
+                             '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t)))  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C-c C-c</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Give org html export a deterministic id so it doesn't pollute git history</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/org-deterministic-reference</span> (references)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cl-loop</span> for new from (length references) until (not (rassq new references))
+           finally return new))
+(advice-add #'org-export-new-reference <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:override</span> #'my/org-deterministic-reference)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000000a" class="outline-3">
-<h3 id="org000000a"><span class="section-number-3">3.4.</span> Org Load Languages</h3>
+<div id="outline-container-org000001e" class="outline-3">
+<h3 id="org000001e"><span class="section-number-3">3.4.</span> Set Fonts</h3>
 <div class="outline-text-3" id="text-3-4">
+<p>
+Set global font, whichever is available in the <code>preferred-fonts</code>.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(org-babel-do-load-languages 'org-babel-load-languages
-                             '((shell . t<span style="color: #666666;">)))</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">preferred-fonts</span>
+  (list <span style="color: var(--clr-string); background-color: var(--bg-string);">"CaskaydiaCove Nerd Font Mono"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Fira Code Mono"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Jetbrains Mono"</span>))
+
+(custom-set-faces
+ '(default ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:family</span> (cl-find-if font-info preferred-fonts) <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:height</span> 120)))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000000b" class="outline-3">
-<h3 id="org000000b"><span class="section-number-3">3.5.</span> Set Keybinds</h3>
+
+<div id="outline-container-org0000021" class="outline-3">
+<h3 id="org0000021"><span class="section-number-3">3.5.</span> Set Keybinds</h3>
 <div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(general-define-key
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion<span style="color: #666666;">)</span>
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(local global<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion)
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(local global)
 
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'evil-paste-before-cursor-after
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tab-to-tab-stop<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tab-to-tab-stop)
 
 (general-define-key
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(isearch-mode-map)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">evil-search (/)</span>
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'isearch-yank-kill<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'isearch-yank-kill)
 
 (general-define-key
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'insert
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-s"</span> 'tempel-complete<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-s"</span> 'tempel-complete)
 (general-define-key
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert normal<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert normal)
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> 'tempel-map
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"S-TAB"</span> 'tempel-previous
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tempel-next<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tempel-next)
 
 (general-define-key
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs<span style="color: #666666;">)</span>
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
 
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"H"</span> 'evil-beginning-of-line
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"J"</span> 'evil-goto-line
@@ -793,7 +809,7 @@ Emacs requires some essential tweaks to become somewhat usable.
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-+"</span> 'text-scale-increase
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-_"</span> 'text-scale-decrease
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C--"</span> 'text-scale-decrease
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max<span style="color: #666666;">)))</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max)))
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-p"</span> 'execute-extended-command  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">M-x</span>
 
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;escape&gt;"</span> 'keyboard-escape-quit
@@ -802,23 +818,23 @@ Emacs requires some essential tweaks to become somewhat usable.
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"go"</span> 'hop-word
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"gl"</span> 'hop-char
  <span style="color: var(--clr-string); background-color: var(--bg-string);">"gp"</span> 'hop-regex-pattern
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"gk"</span> 'hop-line<span style="color: #666666;">)</span>
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"gk"</span> 'hop-line)
 
 (general-define-key
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'normal
- <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override org-mode-map<span style="color: #666666;">)</span>
- <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (<span style="color: #666666;">)</span>
-           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span><span style="color: #666666;">)</span>
-           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-at-heading-p<span style="color: #666666;">)</span>
-               (org-cycle<span style="color: #666666;">)</span>
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-in-regexp org-link-any-re<span style="color: #666666;">)</span>
-                 (org-open-at-point<span style="color: #666666;">)</span>
-               (org-return<span style="color: #666666;">)))))</span>
+ <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override org-mode-map)
+ <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-at-heading-p)
+               (org-cycle)
+             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-in-regexp org-link-any-re)
+                 (org-open-at-point)
+               (org-return)))))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-create-definer</span> leader-key
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs<span style="color: #666666;">)</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global<span style="color: #666666;">)</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span><span style="color: #666666;">)</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span>)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"reload"</span> 'revert-buffer
@@ -831,7 +847,7 @@ Emacs requires some essential tweaks to become somewhat usable.
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"s"</span> 'switch-to-buffer
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span> 'bookmark-jump
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"p"</span> 'projectile-command-map
-  <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> 'comment-dwim<span style="color: #666666;">)</span>
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> 'comment-dwim)
 </pre>
 </div>
 </div>
@@ -839,56 +855,56 @@ Emacs requires some essential tweaks to become somewhat usable.
 </div>
 
 
-<div id="outline-container-org000001f" class="outline-2">
-<h2 id="org000001f"><span class="section-number-2">4.</span> Packages</h2>
+<div id="outline-container-org000005a" class="outline-2">
+<h2 id="org000005a"><span class="section-number-2">4.</span> Packages</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org0000014" class="outline-3">
-<h3 id="org0000014"><span class="section-number-3">4.1.</span> Productivity</h3>
+<div id="outline-container-org000003c" class="outline-3">
+<h3 id="org000003c"><span class="section-number-3">4.1.</span> Productivity</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org000000d" class="outline-4">
-<h4 id="org000000d"><span class="section-number-4">4.1.1.</span> Undo History</h4>
+<div id="outline-container-org0000027" class="outline-4">
+<h4 id="org0000027"><span class="section-number-4">4.1.1.</span> Undo History</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep undo history</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undo-fu</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undo-fu</span>)
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">save command history</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep file history between emacs sessions</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undohist</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> undo-tree-history-directory-alist '(((concat user-emacs-directory <span style="color: var(--clr-string); background-color: var(--bg-string);">"/undohist"</span><span style="color: #666666;">))))</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> undo-tree-history-directory-alist '(((concat user-emacs-directory <span style="color: var(--clr-string); background-color: var(--bg-string);">"/undohist"</span>))))
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (undohist-initialize<span style="color: #666666;">))</span>
+  (undohist-initialize))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000000e" class="outline-4">
-<h4 id="org000000e"><span class="section-number-4">4.1.2.</span> Evil + General (Vim-Keybind)</h4>
+<div id="outline-container-org000002a" class="outline-4">
+<h4 id="org000002a"><span class="section-number-4">4.1.2.</span> Evil + General (Vim-Keybind)</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> undo-fu
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-want-keybinding nil<span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-undo-system 'undo-fu<span style="color: #666666;">)</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-want-keybinding nil)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-undo-system 'undo-fu)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (evil-mode 1<span style="color: #666666;">)</span>
+  (evil-mode 1)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">evil-want-fine-undo t</span>
    evil-want-minibuffer nil         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&lt;esc&gt; works iirc</span>
    evil-vsplit-window-right t
    evil-split-window-below t
-   evil-cross-lines t<span style="color: #666666;">))</span>
+   evil-cross-lines t))
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">helpful</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">helpful</span>)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">general</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> (evil helpful hop consult<span style="color: #666666;">)</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> (evil helpful hop consult)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (general-override-mode<span style="color: #666666;">)</span>
-  (general-auto-unbind-keys<span style="color: #666666;">)</span>
-  (general-evil-setup t<span style="color: #666666;">)</span>
+  (general-override-mode)
+  (general-auto-unbind-keys)
+  (general-evil-setup t)
 
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Remap C-h to helpful package</span>
   (general-define-key
@@ -897,30 +913,30 @@ Emacs requires some essential tweaks to become somewhat usable.
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"v"</span> #'helpful-variable
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"k"</span> #'helpful-key
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"F"</span> #'helpful-function
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C"</span> #'helpful-command<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C"</span> #'helpful-command)
   (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion<span style="color: #666666;">)</span>
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(local global<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion)
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(local global)
 
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'evil-paste-before-cursor-after
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tab-to-tab-stop<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tab-to-tab-stop)
 
   (general-define-key
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(isearch-mode-map)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">evil-search (/)</span>
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'isearch-yank-kill<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'isearch-yank-kill)
 
   (general-define-key
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'insert
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-s"</span> 'tempel-complete<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-s"</span> 'tempel-complete)
   (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert normal<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert normal)
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> 'tempel-map
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"S-TAB"</span> 'tempel-previous
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tempel-next<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tempel-next)
 
   (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs<span style="color: #666666;">)</span>
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
 
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"H"</span> 'evil-beginning-of-line
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"J"</span> 'evil-goto-line
@@ -933,7 +949,7 @@ Emacs requires some essential tweaks to become somewhat usable.
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-+"</span> 'text-scale-increase
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-_"</span> 'text-scale-decrease
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C--"</span> 'text-scale-decrease
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max<span style="color: #666666;">)))</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max)))
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-p"</span> 'execute-extended-command  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">M-x</span>
 
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;escape&gt;"</span> 'keyboard-escape-quit
@@ -942,23 +958,23 @@ Emacs requires some essential tweaks to become somewhat usable.
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"go"</span> 'hop-word
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"gl"</span> 'hop-char
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"gp"</span> 'hop-regex-pattern
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"gk"</span> 'hop-line<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"gk"</span> 'hop-line)
 
   (general-define-key
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'normal
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override org-mode-map<span style="color: #666666;">)</span>
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (<span style="color: #666666;">)</span>
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span><span style="color: #666666;">)</span>
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-at-heading-p<span style="color: #666666;">)</span>
-                 (org-cycle<span style="color: #666666;">)</span>
-               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-in-regexp org-link-any-re<span style="color: #666666;">)</span>
-                   (org-open-at-point<span style="color: #666666;">)</span>
-                 (org-return<span style="color: #666666;">)))))</span>
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override org-mode-map)
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-at-heading-p)
+                 (org-cycle)
+               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-in-regexp org-link-any-re)
+                   (org-open-at-point)
+                 (org-return)))))
 
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-create-definer</span> leader-key
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs<span style="color: #666666;">)</span>
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global<span style="color: #666666;">)</span>
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span><span style="color: #666666;">)</span>
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
+    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span>)
 
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
     <span style="color: var(--clr-string); background-color: var(--bg-string);">"reload"</span> 'revert-buffer
@@ -971,35 +987,35 @@ Emacs requires some essential tweaks to become somewhat usable.
     <span style="color: var(--clr-string); background-color: var(--bg-string);">"s"</span> 'switch-to-buffer
     <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span> 'bookmark-jump
     <span style="color: var(--clr-string); background-color: var(--bg-string);">"p"</span> 'projectile-command-map
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> 'comment-dwim<span style="color: #666666;">))</span>
+    <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> 'comment-dwim))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000000f" class="outline-4">
-<h4 id="org000000f"><span class="section-number-4">4.1.3.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
+<div id="outline-container-org000002d" class="outline-4">
+<h4 id="org000002d"><span class="section-number-4">4.1.3.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">vertico</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> vertico-count 20
         vertico-resize nil
-        vertico-cycle t<span style="color: #666666;">)</span>
-  (vertico-mode<span style="color: #666666;">))</span>
+        vertico-cycle t)
+  (vertico-mode))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">orderless</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:custom</span>
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))</span>
-  (completion-styles '(orderless<span style="color: #666666;">))</span>
-  (completion-category-overrides '((file (styles partial-completion<span style="color: #666666;">)))))</span>
+  (completion-styles '(orderless))
+  (completion-category-overrides '((file (styles partial-completion)))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000010" class="outline-4">
-<h4 id="org0000010"><span class="section-number-4">4.1.4.</span> Embark + Consult + Marginalia</h4>
+<div id="outline-container-org0000030" class="outline-4">
+<h4 id="org0000030"><span class="section-number-4">4.1.4.</span> Embark + Consult + Marginalia</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <ul class="org-ul">
 <li>Embark: Quick Actions</li>
@@ -1009,40 +1025,40 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bind</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"C-;"</span> . 'embark-act<span style="color: #666666;">)</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bind</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"C-;"</span> . 'embark-act)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prefix-help-command #'embark-prefix-help-command
-        embark-quit-after-action nil<span style="color: #666666;">))</span>
+        embark-quit-after-action nil))
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">consult</span><span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark-consult</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">consult</span>)
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark-consult</span>)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">marginalia</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (marginalia-mode<span style="color: #666666;">)</span>
+  (marginalia-mode)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> marginalia-align 'center
-        marginalia-align-offset 20<span style="color: #666666;">))</span>
+        marginalia-align-offset 20))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000011" class="outline-4">
-<h4 id="org0000011"><span class="section-number-4">4.1.5.</span> Which Key</h4>
+<div id="outline-container-org0000033" class="outline-4">
+<h4 id="org0000033"><span class="section-number-4">4.1.5.</span> Which Key</h4>
 <div class="outline-text-4" id="text-4-1-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">which-key</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (which-key-mode<span style="color: #666666;">)</span>
+  (which-key-mode)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> which-key-idle-delay 0.4<span style="color: #666666;">))</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> which-key-idle-delay 0.4))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000012" class="outline-4">
-<h4 id="org0000012"><span class="section-number-4">4.1.6.</span> Hop (Jump Anywhere on Buffer)</h4>
+<div id="outline-container-org0000036" class="outline-4">
+<h4 id="org0000036"><span class="section-number-4">4.1.6.</span> Hop (Jump Anywhere on Buffer)</h4>
 <div class="outline-text-4" id="text-4-1-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">install pcre(-devel) package first from system package manager</span>
@@ -1052,60 +1068,60 @@ Emacs requires some essential tweaks to become somewhat usable.
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;                 </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:pre-build ("make" "all")))</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">nix-managed install</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">pcre</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">pcre</span>)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hop</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> (hop <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Animeshz/hop.el"</span><span style="color: #666666;">))</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> (hop <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Animeshz/hop.el"</span>))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000013" class="outline-4">
-<h4 id="org0000013"><span class="section-number-4">4.1.7.</span> Chdir Support</h4>
+<div id="outline-container-org0000039" class="outline-4">
+<h4 id="org0000039"><span class="section-number-4">4.1.7.</span> Chdir Support</h4>
 <div class="outline-text-4" id="text-4-1-7">
 <p>
 Syncing /proc/self/cwd with changes to (default-directory).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">chdir</span><span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">chdir</span>)
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000018" class="outline-3">
-<h3 id="org0000018"><span class="section-number-3">4.2.</span> Customization</h3>
+<div id="outline-container-org0000045" class="outline-3">
+<h3 id="org0000045"><span class="section-number-3">4.2.</span> Customization</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org0000015" class="outline-4">
-<h4 id="org0000015"><span class="section-number-4">4.2.1.</span> Theme</h4>
+<div id="outline-container-org000003f" class="outline-4">
+<h4 id="org000003f"><span class="section-number-4">4.2.1.</span> Theme</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">doom-themes</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (global-hl-line-mode 1<span style="color: #666666;">)</span>
+  (global-hl-line-mode 1)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> doom-themes-enable-bold t
-        doom-themes-enable-italic t<span style="color: #666666;">)</span>
-  (doom-themes-visual-bell-config<span style="color: #666666;">)</span>
-  (load-theme 'doom-city-lights t<span style="color: #666666;">)</span>
+        doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-city-lights t)
   (custom-set-faces
-   '(doom-themes-visual-bell (( t(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#00FFFF"</span><span style="color: #666666;">))))</span>
-   '(org-ellipsis (( t(<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#C678DD"</span><span style="color: #666666;">))))))</span>
+   '(doom-themes-visual-bell ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#00FFFF"</span>))))
+   '(org-ellipsis ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"#C678DD"</span>))))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000016" class="outline-4">
-<h4 id="org0000016"><span class="section-number-4">4.2.2.</span> Org Export Themes</h4>
+<div id="outline-container-org0000042" class="outline-4">
+<h4 id="org0000042"><span class="section-number-4">4.2.2.</span> Org Export Themes</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hexrgb</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span>
-  (hexrgb <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"emacsmirror/hexrgb"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:main</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"hexrgb.el"</span><span style="color: #666666;">))</span>
+  (hexrgb <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"emacsmirror/hexrgb"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:main</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"hexrgb.el"</span>))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">org-html-themify</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> hexrgb
@@ -1113,92 +1129,69 @@ Syncing /proc/self/cwd with changes to (default-directory).
   (org-html-themify
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"DogLooksGood/org-html-themify"</span>
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:files</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"*.el"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.js"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.css"</span><span style="color: #666666;">))</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (org-mode . org-html-themify-mode<span style="color: #666666;">)</span>
+   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:files</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"*.el"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.js"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"*.css"</span>))
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (org-mode . org-html-themify-mode)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-src-preserve-indentation nil
-        org-edit-src-content-indentation 0<span style="color: #666666;">))</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0000017" class="outline-4">
-<h4 id="org0000017"><span class="section-number-4">4.2.3.</span> Font</h4>
-<div class="outline-text-4" id="text-4-2-3">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">try-fonts</span>
-  (list
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"CaskaydiaCove Nerd Font Mono"</span><span style="color: #666666;">))</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">default-font</span> nil
-  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"The default font"</span><span style="color: #666666;">)</span>
-
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((try try-fonts<span style="color: #666666;">))</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> try (not (font-info (car try<span style="color: #666666;">))))</span>
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> try (cdr try<span style="color: #666666;">)))</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> default-font (car try<span style="color: #666666;">)))</span>
-
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">unless</span> (eq default-font nil<span style="color: #666666;">)</span>
-  (set-face-attribute 'default nil <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:font</span> default-font<span style="color: #666666;">))</span>
-(set-face-attribute 'default nil <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:height</span> 125<span style="color: #666666;">)</span>
+        org-edit-src-content-indentation 0))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000001e" class="outline-3">
-<h3 id="org000001e"><span class="section-number-3">4.3.</span> Programming</h3>
+<div id="outline-container-org0000057" class="outline-3">
+<h3 id="org0000057"><span class="section-number-3">4.3.</span> Programming</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org0000019" class="outline-4">
-<h4 id="org0000019"><span class="section-number-4">4.3.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
+<div id="outline-container-org0000048" class="outline-4">
+<h4 id="org0000048"><span class="section-number-4">4.3.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">parinfer-rust-mode</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> '(emacs-lisp-mode<span style="color: #666666;">)</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> parinfer-rust-auto-download t<span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> parinfer-rust-troublesome-modes nil<span style="color: #666666;">)</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my-enable-minor-mode-for-special-file</span> (<span style="color: #666666;">)</span>
-    <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Enable my-minor-mode for my-special-file.txt."</span>
-    (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s"</span> (buffer-name<span style="color: #666666;">))</span>
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">when</span> (string= (buffer-name) <span style="color: var(--clr-string); background-color: var(--bg-string);">"config.org"</span><span style="color: #666666;">)</span>
-      (parinfer-rust-mode<span style="color: #666666;">)))</span>
-  (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file<span style="color: #666666;">))</span>
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package parinfer-rust-mode</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hook '(emacs-lisp-mode)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:init</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq parinfer-rust-auto-download t)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq parinfer-rust-troublesome-modes nil)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:config</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(defun my-enable-minor-mode-for-special-file ()</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;     </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">"Enable my-minor-mode for my-special-file.txt."</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;     </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(message "%s" (buffer-name))</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;     </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(when (string= (buffer-name) "config.org")</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;       </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(parinfer-rust-mode)))</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000001a" class="outline-4">
-<h4 id="org000001a"><span class="section-number-4">4.3.2.</span> Highlighting</h4>
+<div id="outline-container-org000004b" class="outline-4">
+<h4 id="org000004b"><span class="section-number-4">4.3.2.</span> Highlighting</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package nix-mode</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:mode "\\.nix\\'")</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">markdown-mode</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.md\\'"</span><span style="color: #666666;">)</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.md\\'"</span>)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">kotlin-mode</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.kt</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">|</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\.kts\\'"</span><span style="color: #666666;">)</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.kt</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">|</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\.kts\\'"</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000001b" class="outline-4">
-<h4 id="org000001b"><span class="section-number-4">4.3.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
+<div id="outline-container-org000004e" class="outline-4">
+<h4 id="org000004e"><span class="section-number-4">4.3.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">projectile</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (projectile-mode +1<span style="color: #666666;">)</span>
+  (projectile-mode +1)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (define-key projectile-command-map (kbd <span style="color: var(--clr-string); background-color: var(--bg-string);">"ESC"</span>) 'keyboard-escape-quit<span style="color: #666666;">))</span>
+  (define-key projectile-command-map (kbd <span style="color: var(--clr-string); background-color: var(--bg-string);">"ESC"</span>) 'keyboard-escape-quit))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">corfu</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> (corfu <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"minad/corfu"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:files</span> (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:defaults</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"extensions/*.el"</span><span style="color: #666666;">))</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> (corfu <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"minad/corfu"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:files</span> (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:defaults</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"extensions/*.el"</span>))
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Setup corfu for popup like completion</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> corfu-cycle t  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Allows cycling through candidates</span>
@@ -1208,29 +1201,29 @@ Syncing /proc/self/cwd with changes to (default-directory).
         corfu-echo-documentation t <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Echo docs for current completion option</span>
         corfu-popupinfo-delay 0.0
         corfu-quit-no-match 'separator
-        corfu-quit-at-boundary 'insert<span style="color: #666666;">)</span>
+        corfu-quit-at-boundary 'insert)
 
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Silence the pcomplete capf, no errors or messages!</span>
-  (advice-add 'pcomplete-completions-at-point <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'cape-wrap-silent<span style="color: #666666;">)</span>
+  (advice-add 'pcomplete-completions-at-point <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'cape-wrap-silent)
 
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Ensure that pcomplete does not write to the buffer</span>
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">and behaves as a pure `</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">completion-at-point-function</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">'.</span>
-  (advice-add 'pcomplete-completions-at-point <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'cape-wrap-purify<span style="color: #666666;">)</span>
-  (global-corfu-mode 1<span style="color: #666666;">)</span>
-  (corfu-popupinfo-mode 1<span style="color: #666666;">))</span>
+  (advice-add 'pcomplete-completions-at-point <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'cape-wrap-purify)
+  (global-corfu-mode 1)
+  (corfu-popupinfo-mode 1))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">tempel</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (global-tempel-abbrev-mode<span style="color: #666666;">))</span>
+  (global-tempel-abbrev-mode))
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">tempel-collection</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">tempel-collection</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org000001c" class="outline-4">
-<h4 id="org000001c"><span class="section-number-4">4.3.4.</span> LSP</h4>
+<div id="outline-container-org0000051" class="outline-4">
+<h4 id="org0000051"><span class="section-number-4">4.3.4.</span> LSP</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package eglot</span>
@@ -1258,24 +1251,24 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org000001d" class="outline-4">
-<h4 id="org000001d"><span class="section-number-4">4.3.5.</span> Mermaid/GraphViz (Graph)</h4>
+<div id="outline-container-org0000054" class="outline-4">
+<h4 id="org0000054"><span class="section-number-4">4.3.5.</span> Mermaid/GraphViz (Graph)</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">mermaid-mode</span><span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">mermaid-mode</span>)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">ob-mermaid</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (add-hook 'org-babel-after-execute-hook (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (<span style="color: #666666;">)</span>
-                                            (org-redisplay-inline-images<span style="color: #666666;">)))</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-startup-with-inline-images t<span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-confirm-babel-evaluate nil<span style="color: #666666;">)</span>
-  (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t<span style="color: #666666;">))))</span>
+  (add-hook 'org-babel-after-execute-hook (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+                                            (org-redisplay-inline-images)))
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-startup-with-inline-images t)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t))))
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">graphviz-dot-mode</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (org-babel-do-load-languages 'org-babel-load-languages '((dot . t<span style="color: #666666;">))))</span>
+  (org-babel-do-load-languages 'org-babel-load-languages '((dot . t))))
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">ob-svgbob</span><span style="color: #666666;">)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">ob-svgbob</span>)
 </pre>
 </div>
 </div>
@@ -1284,117 +1277,117 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 
-<div id="outline-container-org0000027" class="outline-2">
-<h2 id="org0000027"><span class="section-number-2">5.</span> Misc</h2>
+<div id="outline-container-org0000072" class="outline-2">
+<h2 id="org0000072"><span class="section-number-2">5.</span> Misc</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org0000020" class="outline-3">
-<h3 id="org0000020"><span class="section-number-3">5.1.</span> Don't reset the cursor to the middle when scrolling</h3>
+<div id="outline-container-org000005d" class="outline-3">
+<h3 id="org000005d"><span class="section-number-3">5.1.</span> Don't reset the cursor to the middle when scrolling</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-variables
- '(scroll-conservatively 200<span style="color: #666666;">)</span>
- '(scroll-margin 3<span style="color: #666666;">))</span>
+ '(scroll-conservatively 200)
+ '(scroll-margin 3))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000021" class="outline-3">
-<h3 id="org0000021"><span class="section-number-3">5.2.</span> Highlight Trailing Whitespace</h3>
+<div id="outline-container-org0000060" class="outline-3">
+<h3 id="org0000060"><span class="section-number-3">5.2.</span> Highlight Trailing Whitespace</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t)
 (add-hook 'prog-mode-hook
-          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (font-lock-add-keywords nil '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\s-+$"</span> 0 'trailing-whitespace<span style="color: #666666;">)))))</span>
+          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (font-lock-add-keywords nil '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\s-+$"</span> 0 'trailing-whitespace)))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000022" class="outline-3">
-<h3 id="org0000022"><span class="section-number-3">5.3.</span> Don't affect previous line with C-backspace</h3>
+<div id="outline-container-org0000063" class="outline-3">
+<h3 id="org0000063"><span class="section-number-3">5.3.</span> Don't affect previous line with C-backspace</h3>
 <div class="outline-text-3" id="text-5-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/backward-kill-word</span> (<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/backward-kill-word</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Kill backward to the beginning of the current word, but do not cross lines."</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span><span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (not (looking-back <span style="color: var(--clr-string); background-color: var(--bg-string);">"^\\s-*"</span>)) (backward-kill-word 1) (delete-horizontal-space<span style="color: #666666;">)))</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (not (looking-back <span style="color: var(--clr-string); background-color: var(--bg-string);">"^\\s-*"</span>)) (backward-kill-word 1) (delete-horizontal-space)))
 
-(global-set-key (kbd <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;C-backspace&gt;"</span>) 'my/backward-kill-word<span style="color: #666666;">)</span>
+(global-set-key (kbd <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;C-backspace&gt;"</span>) 'my/backward-kill-word)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000023" class="outline-3">
-<h3 id="org0000023"><span class="section-number-3">5.4.</span> Change backup file dump path</h3>
+<div id="outline-container-org0000066" class="outline-3">
+<h3 id="org0000066"><span class="section-number-3">5.4.</span> Change backup file dump path</h3>
 <div class="outline-text-3" id="text-5-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">user-temporary-file-directory</span>
-  (concat temporary-file-directory user-login-name <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span><span style="color: #666666;">))</span>
-(make-directory user-temporary-file-directory t<span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> backup-by-copying t<span style="color: #666666;">)</span>
+  (concat temporary-file-directory user-login-name <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span>))
+(make-directory user-temporary-file-directory t)
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> backup-by-copying t)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> backup-directory-alist
-      `((<span style="color: var(--clr-string); background-color: var(--bg-string);">"."</span> . ,user-temporary-file-directory<span style="color: #666666;">)</span>
-        (,tramp-file-name-regexp nil<span style="color: #666666;">)))</span>
+      `((<span style="color: var(--clr-string); background-color: var(--bg-string);">"."</span> . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> auto-save-list-file-prefix
-      (concat user-temporary-file-directory <span style="color: var(--clr-string); background-color: var(--bg-string);">".auto-saves-"</span><span style="color: #666666;">))</span>
+      (concat user-temporary-file-directory <span style="color: var(--clr-string); background-color: var(--bg-string);">".auto-saves-"</span>))
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> auto-save-file-name-transforms
-      `((<span style="color: var(--clr-string); background-color: var(--bg-string);">".*"</span> ,user-temporary-file-directory t<span style="color: #666666;">)))</span>
+      `((<span style="color: var(--clr-string); background-color: var(--bg-string);">".*"</span> ,user-temporary-file-directory t)))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000024" class="outline-3">
-<h3 id="org0000024"><span class="section-number-3">5.5.</span> Window Split Vertical-Horizontal Toggle</h3>
+<div id="outline-container-org0000069" class="outline-3">
+<h3 id="org0000069"><span class="section-number-3">5.5.</span> Window Split Vertical-Horizontal Toggle</h3>
 <div class="outline-text-3" id="text-5-5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">window-split-toggle</span> (<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">window-split-toggle</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Toggle between horizontal and vertical split with two windows."</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span><span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (&gt; (length (window-list)) 2<span style="color: #666666;">)</span>
-      (<span style="color: #EBBF83;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span><span style="color: #666666;">)</span>
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((func (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (window-full-height-p<span style="color: #666666;">)</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (&gt; (length (window-list)) 2)
+      (<span style="color: #EBBF83;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span>)
+    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((func (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (window-full-height-p)
                     #'split-window-vertically
-                  #'split-window-horizontally<span style="color: #666666;">)))</span>
-      (delete-other-windows<span style="color: #666666;">)</span>
-      (funcall func<span style="color: #666666;">)</span>
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-selected-window</span>
-        (other-window 1<span style="color: #666666;">)</span>
-        (switch-to-buffer (other-buffer<span style="color: #666666;">))))))</span>
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000025" class="outline-3">
-<h3 id="org0000025"><span class="section-number-3">5.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
+<div id="outline-container-org000006c" class="outline-3">
+<h3 id="org000006c"><span class="section-number-3">5.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
 <div class="outline-text-3" id="text-5-6">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> (<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Open URL at point."</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span><span style="color: #666666;">)</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((link-regexp <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\[\\[</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">.*?</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">)</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\]\\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">.*?\\</span><span style="color: var(--clr-string); background-color: var(--bg-string);">]\\]"</span><span style="color: #666666;">)</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((link-regexp <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\[\\[</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">.*?</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">)</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\]\\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">.*?\\</span><span style="color: var(--clr-string); background-color: var(--bg-string);">]\\]"</span>)
          (link (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-excursion</span>
-                 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">when</span> (re-search-backward link-regexp nil t<span style="color: #666666;">)</span>
-                   (match-string 1<span style="color: #666666;">)))))</span>
-    (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s"</span> link<span style="color: #666666;">)</span>
+                 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">when</span> (re-search-backward link-regexp nil t)
+                   (match-string 1)))))
+    (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s"</span> link)
     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span>
-     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"windows-nt"</span><span style="color: #666666;">)</span>
-      (w32-shell-execute <span style="color: var(--clr-string); background-color: var(--bg-string);">"open"</span> (replace-regexp-in-string <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\"</span> link t t<span style="color: #666666;">)))</span>
-     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"darwin"</span><span style="color: #666666;">)</span>
-      (shell-command (format <span style="color: var(--clr-string); background-color: var(--bg-string);">"open \"%s\""</span> link<span style="color: #666666;">)))</span>
-     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"gnu/linux"</span><span style="color: #666666;">)</span>
-      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((process-connection-type nil)) (start-process <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> nil <span style="color: var(--clr-string); background-color: var(--bg-string);">"xdg-open"</span> link<span style="color: #666666;">))))))</span>
+     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"windows-nt"</span>)
+      (w32-shell-execute <span style="color: var(--clr-string); background-color: var(--bg-string);">"open"</span> (replace-regexp-in-string <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\"</span> link t t)))
+     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"darwin"</span>)
+      (shell-command (format <span style="color: var(--clr-string); background-color: var(--bg-string);">"open \"%s\""</span> link)))
+     ((string-equal system-type <span style="color: var(--clr-string); background-color: var(--bg-string);">"gnu/linux"</span>)
+      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((process-connection-type nil)) (start-process <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span> nil <span style="color: var(--clr-string); background-color: var(--bg-string);">"xdg-open"</span> link))))))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000026" class="outline-3">
-<h3 id="org0000026"><span class="section-number-3">5.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div id="outline-container-org000006f" class="outline-3">
+<h3 id="org000006f"><span class="section-number-3">5.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
 <div class="outline-text-3" id="text-5-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
@@ -1402,7 +1395,7 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">map-y-or-n-p</span> (prompter actor list <span style="color: #EBBF83;">&amp;optional</span> help action-alist
-                              no-cursor-in-echo-area<span style="color: #666666;">)</span>
+                              no-cursor-in-echo-area)
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.</span>
 
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      LIST is a list of objects, or a function of no arguments to return the next</span>
@@ -1459,125 +1452,125 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      are meaningful here, as described above.</span>
 
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      The function's value is the number of actions taken."</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((actions 0<span style="color: #666666;">)</span>
-         (msg (current-message<span style="color: #666666;">))</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((actions 0)
+         (msg (current-message))
          user-keys mouse-event map prompt char elt def
          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Non-nil means we should use mouse menus to ask.</span>
          use-menus
          delayed-switch-frame
          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Rebind other-window-scroll-buffer so that subfunctions can set</span>
          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">it temporarily, without risking affecting the caller.</span>
-         (other-window-scroll-buffer other-window-scroll-buffer<span style="color: #666666;">)</span>
-         (next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (functionp list<span style="color: #666666;">)</span>
-                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> elt (funcall list<span style="color: #666666;">)))</span>
+         (other-window-scroll-buffer other-window-scroll-buffer)
+         (next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (functionp list)
+                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> elt (funcall list)))
                  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">when</span> list
-                              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> elt (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">pop</span> list<span style="color: #666666;">))</span>
-                              t<span style="color: #666666;">))))</span>
-         (try-again (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (<span style="color: #666666;">)</span>
-                      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((x next<span style="color: #666666;">))</span>
-                        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next x) elt<span style="color: #666666;">))))))</span>
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (listp last-nonmenu-event<span style="color: #666666;">)</span>
-             use-dialog-box<span style="color: #666666;">)</span>
+                              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> elt (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">pop</span> list))
+                              t))))
+         (try-again (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+                      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((x next))
+                        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next x) elt))))))
+    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (listp last-nonmenu-event)
+             use-dialog-box)
         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Make a list describing a dialog box.</span>
-        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((objects (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (capitalize (nth 1 help<span style="color: #666666;">))))</span>
-              (action (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (capitalize (nth 2 help<span style="color: #666666;">)))))</span>
-          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> map `((<span style="color: var(--clr-string); background-color: var(--bg-string);">"Yes"</span> . act) (<span style="color: var(--clr-string); background-color: var(--bg-string);">"No"</span> . skip<span style="color: #666666;">)</span>
-                      ,@(mapcar (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt<span style="color: #666666;">)</span>
+        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((objects (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (capitalize (nth 1 help))))
+              (action (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (capitalize (nth 2 help)))))
+          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> map `((<span style="color: var(--clr-string); background-color: var(--bg-string);">"Yes"</span> . act) (<span style="color: var(--clr-string); background-color: var(--bg-string);">"No"</span> . skip)
+                      ,@(mapcar (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt)
                                   (cons (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with-syntax-table</span>
                                             text-mode-syntax-table
-                                          (capitalize (nth 2 elt<span style="color: #666666;">)))</span>
-                                        (vector (nth 1 elt<span style="color: #666666;">))))</span>
-                                action-alist<span style="color: #666666;">)</span>
-                      (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" This But No More"</span><span style="color: #666666;">)</span>
-                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do This But No More"</span>) <span style="color: #EBBF83;">. act-and-exit</span><span style="color: #EBBF83;">)</span>
-                      (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" All "</span> objects<span style="color: #666666;">)</span>
-                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do All"</span>) <span style="color: #EBBF83;">. automatic</span><span style="color: #EBBF83;">)</span>
-                      (<span style="color: var(--clr-string); background-color: var(--bg-string);">"No For All"</span> . exit<span style="color: #666666;">))</span>
+                                          (capitalize (nth 2 elt)))
+                                        (vector (nth 1 elt))))
+                                action-alist)
+                      (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" This But No More"</span>)
+                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do This But No More"</span>) <span style="color: #EBBF83;">. act-and-exit)</span>
+                      (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" All "</span> objects)
+                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do All"</span>) <span style="color: #EBBF83;">. automatic)</span>
+                      (<span style="color: var(--clr-string); background-color: var(--bg-string);">"No For All"</span> . exit))
                 use-menus t
-                mouse-event last-nonmenu-event<span style="color: #666666;">))</span>
+                mouse-event last-nonmenu-event))
       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> user-keys (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> action-alist
-                          (concat (mapconcat (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt<span style="color: #666666;">)</span>
+                          (concat (mapconcat (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt)
                                                (key-description
-                                                (vector (car elt<span style="color: #666666;">))))</span>
-                                             action-alist <span style="color: var(--clr-string); background-color: var(--bg-string);">", "</span><span style="color: #666666;">)</span>
-                                  <span style="color: var(--clr-string); background-color: var(--bg-string);">" "</span><span style="color: #666666;">)</span>
-                        <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span><span style="color: #666666;">)</span>
+                                                (vector (car elt))))
+                                             action-alist <span style="color: var(--clr-string); background-color: var(--bg-string);">", "</span>)
+                                  <span style="color: var(--clr-string); background-color: var(--bg-string);">" "</span>)
+                        <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)
             <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Make a map that defines each user key as a vector containing</span>
             <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">its definition.</span>
             map
-            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((map (make-sparse-keymap<span style="color: #666666;">)))</span>
-              (set-keymap-parent map query-replace-map<span style="color: #666666;">)</span>
-              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">dolist</span> (elt action-alist<span style="color: #666666;">)</span>
-                (define-key map (vector (car elt)) (vector (nth 1 elt<span style="color: #666666;">))))</span>
-              map<span style="color: #666666;">)))</span>
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((map (make-sparse-keymap)))
+              (set-keymap-parent map query-replace-map)
+              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">dolist</span> (elt action-alist)
+                (define-key map (vector (car elt)) (vector (nth 1 elt))))
+              map)))
     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">unwind-protect</span>
         (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">progn</span>
-          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (stringp prompter<span style="color: #666666;">)</span>
-              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prompter (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((prompter prompter<span style="color: #666666;">))</span>
-                               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (object<span style="color: #666666;">)</span>
-                                 (format prompter object<span style="color: #666666;">)))))</span>
-          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (funcall next<span style="color: #666666;">)</span>
-            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prompt (funcall prompter elt<span style="color: #666666;">))</span>
-            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span> ((stringp prompt<span style="color: #666666;">)</span>
+          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (stringp prompter)
+              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prompter (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((prompter prompter))
+                               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (object)
+                                 (format prompter object)))))
+          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (funcall next)
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prompt (funcall prompter elt))
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span> ((stringp prompt)
                    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Prompt the user about this object.</span>
-                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> quit-flag nil<span style="color: #666666;">)</span>
+                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> quit-flag nil)
                    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> use-menus
-                       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> def (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (x-popup-dialog (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> mouse-event use-menus<span style="color: #666666;">)</span>
-                                                     (cons prompt map<span style="color: #666666;">))</span>
-                                     'quit<span style="color: #666666;">))</span>
+                       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> def (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (x-popup-dialog (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> mouse-event use-menus)
+                                                     (cons prompt map))
+                                     'quit))
                      <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Prompt in the echo area.</span>
-                     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((cursor-in-echo-area (not no-cursor-in-echo-area<span style="color: #666666;">)))</span>
+                     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((cursor-in-echo-area (not no-cursor-in-echo-area)))
                        (message (apply 'propertize <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s(y, n, !, ., q, %sor %s) "</span>
-                                       minibuffer-prompt-properties<span style="color: #666666;">)</span>
+                                       minibuffer-prompt-properties)
                                 prompt user-keys
-                                (key-description (vector help-char<span style="color: #666666;">)))</span>
+                                (key-description (vector help-char)))
                        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> minibuffer-auto-raise
-                           (raise-frame (window-frame (minibuffer-window<span style="color: #666666;">))))</span>
+                           (raise-frame (window-frame (minibuffer-window))))
                        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">progn</span>
-                                (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> char (read-event<span style="color: #666666;">))</span>
+                                (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> char (read-event))
                                 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">If we get -1, from end of keyboard</span>
                                 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">macro, try again.</span>
-                                (equal char -1<span style="color: #666666;">)))</span>
+                                (equal char -1)))
                        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Show the answer to the question.</span>
                        (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s(y, n, !, ., q, %sor %s) %s"</span>
                                 prompt user-keys
-                                (key-description (vector help-char<span style="color: #666666;">))</span>
-                                (single-key-description char<span style="color: #666666;">)))</span>
-                     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> def (lookup-key map (vector char<span style="color: #666666;">))))</span>
-                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span> ((eq def 'exit<span style="color: #666666;">)</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () nil<span style="color: #666666;">)))</span>
-                         ((eq def 'act<span style="color: #666666;">)</span>
+                                (key-description (vector help-char))
+                                (single-key-description char)))
+                     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> def (lookup-key map (vector char))))
+                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span> ((eq def 'exit)
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () nil)))
+                         ((eq def 'act)
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Act on the object.</span>
-                          (funcall actor elt<span style="color: #666666;">)</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">)))</span>
-                         ((eq def 'skip<span style="color: #666666;">))</span>
+                          (funcall actor elt)
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions)))
+                         ((eq def 'skip))
                          <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Skip the object.</span>
 
-                         ((eq def 'act-and-exit<span style="color: #666666;">)</span>
+                         ((eq def 'act-and-exit)
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Act on the object and then exit.</span>
-                          (funcall actor elt<span style="color: #666666;">)</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">)</span>
-                                next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () nil<span style="color: #666666;">)))</span>
-                         ((eq def 'quit<span style="color: #666666;">)</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> quit-flag t<span style="color: #666666;">)</span>
-                          (funcall try-again<span style="color: #666666;">))</span>
-                         ((eq def 'automatic<span style="color: #666666;">)</span>
+                          (funcall actor elt)
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions)
+                                next (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () nil)))
+                         ((eq def 'quit)
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> quit-flag t)
+                          (funcall try-again))
+                         ((eq def 'automatic)
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Act on this and all following objects.</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (funcall prompter elt<span style="color: #666666;">)</span>
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (funcall prompter elt)
                               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">progn</span>
-                                (funcall actor elt<span style="color: #666666;">)</span>
-                                (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">))))</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (funcall next<span style="color: #666666;">)</span>
-                            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (funcall prompter elt<span style="color: #666666;">)</span>
+                                (funcall actor elt)
+                                (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions))))
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (funcall next)
+                            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (funcall prompter elt)
                                 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">progn</span>
-                                  (funcall actor elt<span style="color: #666666;">)</span>
-                                  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">))))))</span>
-                         ((eq def 'help<span style="color: #666666;">)</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with-help-window</span> (help-buffer<span style="color: #666666;">)</span>
+                                  (funcall actor elt)
+                                  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions))))))
+                         ((eq def 'help)
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with-help-window</span> (help-buffer)
                             (princ
-                             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((object  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 0 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"object"</span><span style="color: #666666;">))</span>
-                                   (objects (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 1 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"objects"</span><span style="color: #666666;">))</span>
-                                   (action  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 2 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"act on"</span><span style="color: #666666;">)))</span>
+                             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((object  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 0 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"object"</span>))
+                                   (objects (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 1 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"objects"</span>))
+                                   (action  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">or</span> (nth 2 help) <span style="color: var(--clr-string); background-color: var(--bg-string);">"act on"</span>)))
                                (concat
                                 (format-message
                                  (substitute-command-keys <span style="color: var(--clr-string); background-color: var(--bg-string);">"\</span>
@@ -1585,36 +1578,36 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 <span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">DEL</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">n</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current %s;</span>
 <span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">RET</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' or \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">q</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to skip the current and all remaining %s;</span>
 <span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">C-g</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to quit (cancel the whole command);</span>
-<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">!</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s all remaining %s;\n"</span><span style="color: #666666;">)</span>
-                                 action object object objects action objects<span style="color: #666666;">)</span>
-                                (mapconcat (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt<span style="color: #666666;">)</span>
+<span style="color: var(--clr-string); background-color: var(--bg-string);">      \\`</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">!</span><span style="color: var(--clr-string); background-color: var(--bg-string);">' to %s all remaining %s;\n"</span>)
+                                 action object object objects action objects)
+                                (mapconcat (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> (elt)
                                              (format <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s to %s;\n"</span>
                                                      (single-key-description
-                                                      (nth 0 elt<span style="color: #666666;">))</span>
-                                                     (nth 2 elt<span style="color: #666666;">)))</span>
+                                                      (nth 0 elt))
+                                                     (nth 2 elt)))
                                            action-alist
-                                           <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span><span style="color: #666666;">)</span>
+                                           <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)
                                 (format
                                  <span style="color: var(--clr-string); background-color: var(--bg-string);">"or . (period) to %s the current %s and exit."</span>
-                                 action object<span style="color: #666666;">)))))</span>
+                                 action object)))))
 
-                          (funcall try-again<span style="color: #666666;">))</span>
-                         ((<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (symbolp def) (commandp def<span style="color: #666666;">))</span>
-                          (call-interactively def<span style="color: #666666;">)</span>
+                          (funcall try-again))
+                         ((<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (symbolp def) (commandp def))
+                          (call-interactively def)
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Regurgitated; try again.</span>
-                          (funcall try-again<span style="color: #666666;">))</span>
-                         ((vectorp def<span style="color: #666666;">)</span>
+                          (funcall try-again))
+                         ((vectorp def)
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">A user-defined key.</span>
                           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (funcall (aref def 0) elt) <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Call its function.</span>
                               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">The function has eaten this object.</span>
-                              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">))</span>
+                              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions))
                             <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Regurgitated; try again.</span>
-                            (funcall try-again<span style="color: #666666;">)))</span>
-                         ((<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (consp char<span style="color: #666666;">)</span>
-                               (eq (car char) 'switch-frame<span style="color: #666666;">))</span>
+                            (funcall try-again)))
+                         ((<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">and</span> (consp char)
+                               (eq (car char) 'switch-frame))
                           <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">switch-frame event.  Put it off until we're done.</span>
-                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> delayed-switch-frame char<span style="color: #666666;">)</span>
-                          (funcall try-again<span style="color: #666666;">))))</span>
+                          (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> delayed-switch-frame char)
+                          (funcall try-again))))
                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(t</span>
                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Random char.</span>
                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(message "Type %s for help."</span>
@@ -1623,27 +1616,27 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(sit-for 1)</span>
                   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(funcall try-again))))</span>
                   (prompt
-                   (funcall actor elt<span style="color: #666666;">)</span>
-                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions<span style="color: #666666;">))))))</span>
+                   (funcall actor elt)
+                   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> actions (1+ actions))))))
       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> delayed-switch-frame
           (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> unread-command-events
-                (cons delayed-switch-frame unread-command-events<span style="color: #666666;">))))</span>
+                (cons delayed-switch-frame unread-command-events))))
     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Clear the last prompt from the minibuffer, and restore the</span>
     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">previous echo-area message, if any.</span>
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((message-log-max nil<span style="color: #666666;">))</span>
+    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((message-log-max nil))
       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> msg
-          (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s"</span> msg<span style="color: #666666;">)</span>
-        (message <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span><span style="color: #666666;">)))</span>
+          (message <span style="color: var(--clr-string); background-color: var(--bg-string);">"%s"</span> msg)
+        (message <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>)))
     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Return the number of actions that were taken.</span>
-    actions<span style="color: #666666;">))</span>
+    actions))
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000028" class="outline-2">
-<h2 id="org0000028"><span class="section-number-2">6.</span> Resources References</h2>
+<div id="outline-container-org0000075" class="outline-2">
+<h2 id="org0000075"><span class="section-number-2">6.</span> Resources References</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.

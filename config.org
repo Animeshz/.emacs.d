@@ -122,21 +122,34 @@ Emacs requires some essential tweaks to become somewhat usable.
 (column-number-mode 1)
 #+END_SRC
 
-** Org Exports
+** Better Org-Mode Defaults
+
+Same goes for =org-mode=.
 
 #+BEGIN_SRC emacs-lisp
-;; https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/
-(defun org-export-deterministic-reference (references)
-  (let ((new (/ (length references) 3))) (while (rassq new references) (setq new (+ new 1))) new))
-(advice-add #'org-export-new-reference :override #'org-export-deterministic-reference)
-#+END_SRC
-
-** Org Load Languages
-
-#+BEGIN_SRC emacs-lisp
+;; Allow these languages for code evaluation in org-mode documents
 (org-babel-do-load-languages 'org-babel-load-languages
-                             '((shell . t)))
+                             '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t)))  ; C-c C-c
+
+;; Give org html export a deterministic id so it doesn't pollute git history
+(defun my/org-deterministic-reference (references)
+  (cl-loop for new from (length references) until (not (rassq new references))
+           finally return new))
+(advice-add #'org-export-new-reference :override #'my/org-deterministic-reference)
 #+END_SRC
+
+** Set Fonts
+
+Set global font, whichever is available in the =preferred-fonts=.
+
+#+BEGIN_SRC emacs-lisp
+(defvar preferred-fonts
+  (list "CaskaydiaCove Nerd Font Mono" "Fira Code Mono" "Jetbrains Mono"))
+
+(custom-set-faces
+ '(default ((t (:family (cl-find-if font-info preferred-fonts) :height 120)))))
+#+END_SRC
+
 
 ** Set Keybinds
 
@@ -358,8 +371,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
   (doom-themes-visual-bell-config)
   (load-theme 'doom-city-lights t)
   (custom-set-faces
-   '(doom-themes-visual-bell (( t(:background "#00FFFF"))))
-   '(org-ellipsis (( t(:foreground "#C678DD"))))))
+   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
+   '(org-ellipsis ((t (:foreground "#C678DD"))))))
 #+END_SRC
 
 *** Org Export Themes
@@ -382,42 +395,23 @@ Syncing /proc/self/cwd with changes to (default-directory).
         org-edit-src-content-indentation 0))
 #+END_SRC
 
-*** Font
-
-#+BEGIN_SRC emacs-lisp
-(defvar try-fonts
-  (list
-   "CaskaydiaCove Nerd Font Mono"))
-(defvar default-font nil
-  "The default font")
-
-(let ((try try-fonts))
-  (while (and try (not (font-info (car try))))
-    (setq try (cdr try)))
-  (setq default-font (car try)))
-
-(unless (eq default-font nil)
-  (set-face-attribute 'default nil :font default-font))
-(set-face-attribute 'default nil :height 125)
-#+END_SRC
-
 ** Programming
 
 *** Parinfer (Lisp Auto-Parenthesis)
 
 #+BEGIN_SRC emacs-lisp
-(use-package parinfer-rust-mode
-  :hook '(emacs-lisp-mode)
-  :init
-  (setq parinfer-rust-auto-download t)
-  (setq parinfer-rust-troublesome-modes nil)
-  :config
-  (defun my-enable-minor-mode-for-special-file ()
-    "Enable my-minor-mode for my-special-file.txt."
-    (message "%s" (buffer-name))
-    (when (string= (buffer-name) "config.org")
-      (parinfer-rust-mode)))
-  (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
+;; (use-package parinfer-rust-mode
+;;   :hook '(emacs-lisp-mode)
+;;   :init
+;;   (setq parinfer-rust-auto-download t)
+;;   (setq parinfer-rust-troublesome-modes nil)
+;;   :config
+;;   (defun my-enable-minor-mode-for-special-file ()
+;;     "Enable my-minor-mode for my-special-file.txt."
+;;     (message "%s" (buffer-name))
+;;     (when (string= (buffer-name) "config.org")
+;;       (parinfer-rust-mode)))
+;;   (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
 #+END_SRC
 
 *** Highlighting

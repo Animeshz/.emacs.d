@@ -44,8 +44,8 @@
     gcs-done))
 
 (with-eval-after-load 'elpaca
-  (add-hook 'elpaca-after-init-hook '+profiling)
-  (add-hook 'elpaca-after-init-hook '+reset-init-values))
+  (add-hook 'elpaca-after-init-hook #'+profiling)
+  (add-hook 'elpaca-after-init-hook #'+reset-init-values))
 
 ;; Disable the default & generally ugly UI elements
 (menu-bar-mode -1)
