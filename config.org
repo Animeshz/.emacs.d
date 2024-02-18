@@ -74,7 +74,7 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 I like to recommend [[https://www.youtube.com/watch?v=B6jfrrwR10k][this video]] if you want to get familiarized with emacs! This packs a lot of information with
 effective presentations instead of most videos which talk way too much and delivers barely anything useful.
 
-* Configuration
+* Emacs Configuration
 
 ** Early-Init and Init
 
@@ -86,34 +86,46 @@ manager which is a prerequisite for most of this config and also it loads this c
 
 ** Better Defaults (Almost Mandatory)
 
+Emacs requires some essential tweaks to become somewhat usable.
+
 #+BEGIN_SRC emacs-lisp
+;; Enable minibuffer history
 (setq history-length 100)
 (savehist-mode 1)
-(recentf-mode 1)
 
-(setq use-short-answers t)
-(global-visual-line-mode t)     ; Word Wrap
+;; Enable recording recent files & window configuration for going back and forth
+(recentf-mode 1)  ; SPC-f-r
+(winner-mode 1)   ; C-c [left / right]
 
-(setq-default fill-column 120)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-
-(global-display-line-numbers-mode t)
+;; Set relative lines
 (setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
 
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq-default evil-shift-width tab-width)
+;; Configure automatic line breaks and word-wrap (just in case)
+(setq-default fill-column 120  ; SPC-c
+              auto-fill-function 'do-auto-fill)
+(global-visual-line-mode t)
 
-; https://stackoverflow.com/a/10110113/11377112
-(setq initial-scratch-message "// This is scratch buffer, won't be saved unless saved as a file with :w <filename>.\n\n")
-(setq initial-major-mode 'text-mode)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; I prefer indentation with spaces
+(setq-default tab-width 4
+              indent-tabs-mode nil
+              evil-shift-width tab-width)
+
+;; Make scratch buffer text-mode
+(setq-default initial-scratch-message nil
+              initial-major-mode 'text-mode)
+
+;; Replace yes/no with y/n
+(setq use-short-answers t)
+
+;; Modeline
+(column-number-mode 1)
 #+END_SRC
 
 ** Org Exports
 
 #+BEGIN_SRC emacs-lisp
-; https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/
+;; https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/
 (defun org-export-deterministic-reference (references)
   (let ((new (/ (length references) 3))) (while (rassq new references) (setq new (+ new 1))) new))
 (advice-add #'org-export-new-reference :override #'org-export-deterministic-reference)
@@ -216,10 +228,6 @@ manager which is a prerequisite for most of this config and also it loads this c
 ;; keep undo history
 (use-package undo-fu)
 ;; save command history
-(use-package savehist
-  :ensure nil
-  :init
-  (savehist-mode))
 ;; keep file history between emacs sessions
 (use-package undohist
   :init

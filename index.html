@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-18 Sun 01:28 -->
+<!-- 2024-02-18 Sun 11:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -448,7 +448,7 @@ img {
 <li><a href="#org0000005">2.3. Tutorials</a></li>
 </ul>
 </li>
-<li><a href="#org000000c">3. Configuration</a>
+<li><a href="#org000000c">3. Emacs Configuration</a>
 <ul>
 <li><a href="#org0000007">3.1. Early-Init and Init</a></li>
 <li><a href="#org0000008">3.2. Better Defaults (Almost Mandatory)</a></li>
@@ -668,7 +668,7 @@ effective presentations instead of most videos which talk way too much and deliv
 </div>
 
 <div id="outline-container-org000000c" class="outline-2">
-<h2 id="org000000c"><span class="section-number-2">3.</span> Configuration</h2>
+<h2 id="org000000c"><span class="section-number-2">3.</span> Emacs Configuration</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 <div id="outline-container-org0000007" class="outline-3">
@@ -689,28 +689,42 @@ manager which is a prerequisite for most of this config and also it loads this c
 <div id="outline-container-org0000008" class="outline-3">
 <h3 id="org0000008"><span class="section-number-3">3.2.</span> Better Defaults (Almost Mandatory)</h3>
 <div class="outline-text-3" id="text-3-2">
+<p>
+Emacs requires some essential tweaks to become somewhat usable.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100<span style="color: #666666;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable minibuffer history</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100<span style="color: #666666;">)</span>
 (savehist-mode 1<span style="color: #666666;">)</span>
-(recentf-mode 1<span style="color: #666666;">)</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> use-short-answers t<span style="color: #666666;">)</span>
-(global-visual-line-mode t)     <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Word Wrap</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable recording recent files &amp; window configuration for going back and forth</span>
+(recentf-mode 1)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-f-r</span>
+(winner-mode 1)   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C-c [left / right]</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> fill-column 120<span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil<span style="color: #666666;">)))</span>
-
-(global-display-line-numbers-mode t<span style="color: #666666;">)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Set relative lines</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> display-line-numbers-type 'relative<span style="color: #666666;">)</span>
+(global-display-line-numbers-mode t<span style="color: #666666;">)</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> tab-width 4<span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> indent-tabs-mode nil<span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> evil-shift-width tab-width<span style="color: #666666;">)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Configure automatic line breaks and word-wrap (just in case)</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> fill-column 120  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-c</span>
+              auto-fill-function 'do-auto-fill<span style="color: #666666;">)</span>
+(global-visual-line-mode t<span style="color: #666666;">)</span>
 
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://stackoverflow.com/a/10110113/11377112</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> initial-scratch-message <span style="color: var(--clr-string); background-color: var(--bg-string);">"// This is scratch buffer, won't be saved unless saved as a file with :w &lt;filename&gt;.\n\n"</span><span style="color: #666666;">)</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> initial-major-mode 'text-mode<span style="color: #666666;">)</span>
-(add-hook 'text-mode-hook 'turn-on-auto-fill<span style="color: #666666;">)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">I prefer indentation with spaces</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> tab-width 4
+              indent-tabs-mode nil
+              evil-shift-width tab-width<span style="color: #666666;">)</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Make scratch buffer text-mode</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> initial-scratch-message nil
+              initial-major-mode 'text-mode<span style="color: #666666;">)</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Replace yes/no with y/n</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> use-short-answers t<span style="color: #666666;">)</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Modeline</span>
+(column-number-mode 1<span style="color: #666666;">)</span>
 </pre>
 </div>
 </div>
@@ -720,7 +734,7 @@ manager which is a prerequisite for most of this config and also it loads this c
 <h3 id="org0000009"><span class="section-number-3">3.3.</span> Org Exports</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/</span>
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">https://www.reddit.com/r/orgmode/comments/aagmfh/export_to_html_with_useful_nonrandom_ids_and/</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">org-export-deterministic-reference</span> (references<span style="color: #666666;">)</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((new (/ (length references) 3))) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">while</span> (rassq new references) (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> new (+ new 1))) new<span style="color: #666666;">))</span>
 (advice-add #'org-export-new-reference <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:override</span> #'org-export-deterministic-reference<span style="color: #666666;">)</span>
@@ -840,10 +854,6 @@ manager which is a prerequisite for most of this config and also it loads this c
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep undo history</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undo-fu</span><span style="color: #666666;">)</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">save command history</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">savehist</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> nil
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (savehist-mode<span style="color: #666666;">))</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep file history between emacs sessions</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undohist</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
