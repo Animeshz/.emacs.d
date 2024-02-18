@@ -251,7 +251,7 @@ Set global font, whichever is available in the =preferred-fonts=.
 
 *** Evil + General (Vim-Keybind)
 
-#+BEGIN_SRC emacs-lisp :noweb yes
+#+BEGIN_SRC emacs-lisp :noweb no-export
 (use-package evil
   :after undo-fu
   :init

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-18 Sun 18:21 -->
+<!-- 2024-02-18 Sun 18:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -914,80 +914,7 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"k"</span> #'helpful-key
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"F"</span> #'helpful-function
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"C"</span> #'helpful-command)
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion)
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(local global)
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'evil-paste-before-cursor-after
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tab-to-tab-stop)
-
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(isearch-mode-map)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">evil-search (/)</span>
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> 'isearch-yank-kill)
-
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'insert
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-s"</span> 'tempel-complete)
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert normal)
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> 'tempel-map
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"S-TAB"</span> 'tempel-previous
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"TAB"</span> 'tempel-next)
-
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"H"</span> 'evil-beginning-of-line
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"J"</span> 'evil-goto-line
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"K"</span> 'evil-goto-first-line
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"L"</span> 'evil-end-of-line
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">","</span> 'evil-scroll-line-down
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"."</span> 'evil-scroll-line-up
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-+"</span> 'text-scale-increase
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-_"</span> 'text-scale-decrease
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C--"</span> 'text-scale-decrease
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max)))
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-p"</span> 'execute-extended-command  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">M-x</span>
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;escape&gt;"</span> 'keyboard-escape-quit
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"?"</span> 'consult-line
-
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"go"</span> 'hop-word
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"gl"</span> 'hop-char
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"gp"</span> 'hop-regex-pattern
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"gk"</span> 'hop-line)
-
-  (general-define-key
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> 'normal
-   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override org-mode-map)
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-at-heading-p)
-                 (org-cycle)
-               (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (org-in-regexp org-link-any-re)
-                   (org-open-at-point)
-                 (org-return)))))
-
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-create-definer</span> leader-key
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> '(override local global)
-    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span>)
-
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"reload"</span> 'revert-buffer
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"ff"</span> 'find-file
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"fr"</span> 'consult-recent-file
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"tw"</span> 'delete-trailing-whitespace
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"ev"</span> 'eval-region
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"x"</span> 'kill-this-buffer
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"c"</span> 'display-fill-column-indicator-mode
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"s"</span> 'switch-to-buffer
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span> 'bookmark-jump
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"p"</span> 'projectile-command-map
-    <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> 'comment-dwim))
+  &lt;&lt;general-config&gt;&gt;)
 </pre>
 </div>
 </div>
