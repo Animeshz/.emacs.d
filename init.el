@@ -1,5 +1,6 @@
-;; References: https://www.reddit.com/r/emacs/comments/v62ef0/parallel_package_installation <=> https://github.com/progfolio/elpaca
+;;; This file is called after early-init.el, bootstraps elpaca and loads config.org | -*- lexical-binding: t; -*-
 
+;; References: https://www.reddit.com/r/emacs/comments/v62ef0/parallel_package_installation <=> https://github.com/progfolio/elpaca
 (defvar elpaca-installer-version 0.6)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))

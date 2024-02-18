@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-18 Sun 18:29 -->
+<!-- 2024-02-19 Mon 00:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -448,41 +448,41 @@ img {
 <li><a href="#org000000f">2.3. Tutorials</a></li>
 </ul>
 </li>
-<li><a href="#org0000024">3. Emacs Configuration</a>
+<li><a href="#org0000027">3. Emacs Configuration</a>
 <ul>
 <li><a href="#org0000015">3.1. Early-Init and Init</a></li>
 <li><a href="#org0000018">3.2. Better Defaults (Almost Mandatory)</a></li>
 <li><a href="#org000001b">3.3. Better Org-Mode Defaults</a></li>
-<li><a href="#org000001e">3.4. Set Fonts</a></li>
-<li><a href="#org0000021">3.5. Set Keybinds</a></li>
+<li><a href="#org000001e">3.4. Base Packages</a></li>
+<li><a href="#org0000021">3.5. Set Fonts</a></li>
+<li><a href="#org0000024">3.6. Set Keybinds</a></li>
 </ul>
 </li>
-<li><a href="#org000005a">4. Packages</a>
+<li><a href="#org000005a">4. Productivity Enhancers</a>
 <ul>
-<li><a href="#org000003c">4.1. Productivity</a>
+<li><a href="#org000002a">4.1. Undo History</a></li>
+<li><a href="#org000003c">4.2. Better Help</a>
 <ul>
-<li><a href="#org0000027">4.1.1. Undo History</a></li>
-<li><a href="#org000002a">4.1.2. Evil + General (Vim-Keybind)</a></li>
-<li><a href="#org000002d">4.1.3. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
-<li><a href="#org0000030">4.1.4. Embark + Consult + Marginalia</a></li>
-<li><a href="#org0000033">4.1.5. Which Key</a></li>
-<li><a href="#org0000036">4.1.6. Hop (Jump Anywhere on Buffer)</a></li>
-<li><a href="#org0000039">4.1.7. Chdir Support</a></li>
+<li><a href="#org000002d">4.2.1. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
+<li><a href="#org0000030">4.2.2. Embark + Consult + Marginalia</a></li>
+<li><a href="#org0000033">4.2.3. Which Key</a></li>
+<li><a href="#org0000036">4.2.4. Hop (Jump Anywhere on Buffer)</a></li>
+<li><a href="#org0000039">4.2.5. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org0000045">4.2. Customization</a>
+<li><a href="#org0000045">4.3. Customization</a>
 <ul>
-<li><a href="#org000003f">4.2.1. Theme</a></li>
-<li><a href="#org0000042">4.2.2. Org Export Themes</a></li>
+<li><a href="#org000003f">4.3.1. Theme</a></li>
+<li><a href="#org0000042">4.3.2. Org Export Themes</a></li>
 </ul>
 </li>
-<li><a href="#org0000057">4.3. Programming</a>
+<li><a href="#org0000057">4.4. Programming</a>
 <ul>
-<li><a href="#org0000048">4.3.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
-<li><a href="#org000004b">4.3.2. Highlighting</a></li>
-<li><a href="#org000004e">4.3.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
-<li><a href="#org0000051">4.3.4. LSP</a></li>
-<li><a href="#org0000054">4.3.5. Mermaid/GraphViz (Graph)</a></li>
+<li><a href="#org0000048">4.4.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
+<li><a href="#org000004b">4.4.2. Highlighting</a></li>
+<li><a href="#org000004e">4.4.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
+<li><a href="#org0000051">4.4.4. LSP</a></li>
+<li><a href="#org0000054">4.4.5. Mermaid/GraphViz (Graph)</a></li>
 </ul>
 </li>
 </ul>
@@ -646,6 +646,12 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 </tr>
 
 <tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-c C-,</td>
+<td class="org-left">Insert Snippets</td>
+</tr>
+
+<tr>
 <td class="org-left">minibuffer</td>
 <td class="org-left">C-y</td>
 <td class="org-left">Paste</td>
@@ -666,8 +672,8 @@ effective presentations instead of most videos which talk way too much and deliv
 </div>
 </div>
 
-<div id="outline-container-org0000024" class="outline-2">
-<h2 id="org0000024"><span class="section-number-2">3.</span> Emacs Configuration</h2>
+<div id="outline-container-org0000027" class="outline-2">
+<h2 id="org0000027"><span class="section-number-2">3.</span> Emacs Configuration</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 <div id="outline-container-org0000015" class="outline-3">
@@ -693,7 +699,9 @@ Emacs requires some essential tweaks to become somewhat usable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable minibuffer history</span>
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">This file is generated from config.org | -*- lexical-binding: t; -*-</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable minibuffer history</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> history-length 100)
 (savehist-mode 1)
 
@@ -712,8 +720,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">I prefer indentation with spaces</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> tab-width 4
-              indent-tabs-mode nil
-              evil-shift-width tab-width)
+              indent-tabs-mode nil)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Make scratch buffer text-mode</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> initial-scratch-message nil
@@ -752,8 +759,47 @@ Same goes for <code>org-mode</code>.
 </div>
 
 <div id="outline-container-org000001e" class="outline-3">
-<h3 id="org000001e"><span class="section-number-3">3.4.</span> Set Fonts</h3>
+<h3 id="org000001e"><span class="section-number-3">3.4.</span> Base Packages</h3>
 <div class="outline-text-3" id="text-3-4">
+<p>
+These core packages are the scaffold upon which the entire configuration below is assembled.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Used to set keybinds</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">general</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (general-override-mode)
+  (general-auto-unbind-keys))
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Emulates vim keybinds &amp; modal editing</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-v$-excludes-newline t       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">$ in visual doesn't include \n</span>
+        evil-kill-on-visual-paste nil    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">pasting in visual mode won't copy replaced text to clipboard</span>
+        evil-auto-indent nil             <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">o and O doesn't add indents</span>
+        evil-cross-lines t               <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">h and l to move to newline</span>
+        evil-respect-visual-line-mode t  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">physical line as $ anchor instead of \n</span>
+        evil-shift-width tab-width       <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&lt;&lt; and &gt;&gt;</span>
+        evil-split-window-below t
+        evil-vsplit-window-right t)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (evil-mode 1))
+
+(elpaca-wait)
+</pre>
+</div>
+
+<p>
+The <code>evil</code> package provides Vim's Modal Editing in Emacs. I have notes on <a href="https://animeshz.github.io/site/notes/20-29--DevEnvironment/21--Linux/21.03-Cli-Utilities.html#n-vim">the only Vim keybind you need to know</a> on my
+site.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0000021" class="outline-3">
+<h3 id="org0000021"><span class="section-number-3">3.5.</span> Set Fonts</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 Set global font, whichever is available in the <code>preferred-fonts</code>.
 </p>
@@ -766,13 +812,21 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
  '(default ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:family</span> (cl-find-if font-info preferred-fonts) <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:height</span> 120)))))
 </pre>
 </div>
+
+<p>
+I didn't set <code>variable-pitch</code> and <code>fixed-pitch</code> faces separately and forced Mono font everywhere, although that's also
+an option.
+</p>
 </div>
 </div>
 
+<div id="outline-container-org0000024" class="outline-3">
+<h3 id="org0000024"><span class="section-number-3">3.6.</span> Set Keybinds</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Keybinds references functions from various different packages
+</p>
 
-<div id="outline-container-org0000021" class="outline-3">
-<h3 id="org0000021"><span class="section-number-3">3.5.</span> Set Keybinds</h3>
-<div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(general-define-key
  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(insert motion)
@@ -854,21 +908,18 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 </div>
 
-
 <div id="outline-container-org000005a" class="outline-2">
-<h2 id="org000005a"><span class="section-number-2">4.</span> Packages</h2>
+<h2 id="org000005a"><span class="section-number-2">4.</span> Productivity Enhancers</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org000003c" class="outline-3">
-<h3 id="org000003c"><span class="section-number-3">4.1.</span> Productivity</h3>
+<div id="outline-container-org000002a" class="outline-3">
+<h3 id="org000002a"><span class="section-number-3">4.1.</span> Undo History</h3>
 <div class="outline-text-3" id="text-4-1">
-</div>
-<div id="outline-container-org0000027" class="outline-4">
-<h4 id="org0000027"><span class="section-number-4">4.1.1.</span> Undo History</h4>
-<div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep undo history</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undo-fu</span>)
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undo-fu</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-undo-system 'undo-fu))
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">save command history</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">keep file history between emacs sessions</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">undohist</span>
@@ -881,31 +932,13 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 </div>
 
-<div id="outline-container-org000002a" class="outline-4">
-<h4 id="org000002a"><span class="section-number-4">4.1.2.</span> Evil + General (Vim-Keybind)</h4>
-<div class="outline-text-4" id="text-4-1-2">
+<div id="outline-container-org000003c" class="outline-3">
+<h3 id="org000003c"><span class="section-number-3">4.2.</span> Better Help</h3>
+<div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> undo-fu
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-want-keybinding nil)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> evil-undo-system 'undo-fu)
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Setup better help</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">helpful</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (evil-mode 1)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">evil-want-fine-undo t</span>
-   evil-want-minibuffer nil         <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">&lt;esc&gt; works iirc</span>
-   evil-vsplit-window-right t
-   evil-split-window-below t
-   evil-cross-lines t))
-
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">helpful</span>)
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">general</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> (evil helpful hop consult)
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (general-override-mode)
-  (general-auto-unbind-keys)
-  (general-evil-setup t)
-
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Remap C-h to helpful package</span>
   (general-define-key
    <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-h"</span>
@@ -913,16 +946,14 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"v"</span> #'helpful-variable
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"k"</span> #'helpful-key
    <span style="color: var(--clr-string); background-color: var(--bg-string);">"F"</span> #'helpful-function
-   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C"</span> #'helpful-command)
-  &lt;&lt;general-config&gt;&gt;)
+   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C"</span> #'helpful-command))
 </pre>
-</div>
 </div>
 </div>
 
 <div id="outline-container-org000002d" class="outline-4">
-<h4 id="org000002d"><span class="section-number-4">4.1.3.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
-<div class="outline-text-4" id="text-4-1-3">
+<h4 id="org000002d"><span class="section-number-4">4.2.1.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h4>
+<div class="outline-text-4" id="text-4-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">vertico</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
@@ -942,8 +973,8 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 
 <div id="outline-container-org0000030" class="outline-4">
-<h4 id="org0000030"><span class="section-number-4">4.1.4.</span> Embark + Consult + Marginalia</h4>
-<div class="outline-text-4" id="text-4-1-4">
+<h4 id="org0000030"><span class="section-number-4">4.2.2.</span> Embark + Consult + Marginalia</h4>
+<div class="outline-text-4" id="text-4-2-2">
 <ul class="org-ul">
 <li>Embark: Quick Actions</li>
 <li>Consult: Extend default commands</li>
@@ -971,8 +1002,8 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 
 <div id="outline-container-org0000033" class="outline-4">
-<h4 id="org0000033"><span class="section-number-4">4.1.5.</span> Which Key</h4>
-<div class="outline-text-4" id="text-4-1-5">
+<h4 id="org0000033"><span class="section-number-4">4.2.3.</span> Which Key</h4>
+<div class="outline-text-4" id="text-4-2-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">which-key</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
@@ -984,8 +1015,8 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 
 <div id="outline-container-org0000036" class="outline-4">
-<h4 id="org0000036"><span class="section-number-4">4.1.6.</span> Hop (Jump Anywhere on Buffer)</h4>
-<div class="outline-text-4" id="text-4-1-6">
+<h4 id="org0000036"><span class="section-number-4">4.2.4.</span> Hop (Jump Anywhere on Buffer)</h4>
+<div class="outline-text-4" id="text-4-2-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">install pcre(-devel) package first from system package manager</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package pcre</span>
@@ -1004,8 +1035,8 @@ Set global font, whichever is available in the <code>preferred-fonts</code>.
 </div>
 
 <div id="outline-container-org0000039" class="outline-4">
-<h4 id="org0000039"><span class="section-number-4">4.1.7.</span> Chdir Support</h4>
-<div class="outline-text-4" id="text-4-1-7">
+<h4 id="org0000039"><span class="section-number-4">4.2.5.</span> Chdir Support</h4>
+<div class="outline-text-4" id="text-4-2-5">
 <p>
 Syncing /proc/self/cwd with changes to (default-directory).
 </p>
@@ -1019,12 +1050,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org0000045" class="outline-3">
-<h3 id="org0000045"><span class="section-number-3">4.2.</span> Customization</h3>
-<div class="outline-text-3" id="text-4-2">
+<h3 id="org0000045"><span class="section-number-3">4.3.</span> Customization</h3>
+<div class="outline-text-3" id="text-4-3">
 </div>
 <div id="outline-container-org000003f" class="outline-4">
-<h4 id="org000003f"><span class="section-number-4">4.2.1.</span> Theme</h4>
-<div class="outline-text-4" id="text-4-2-1">
+<h4 id="org000003f"><span class="section-number-4">4.3.1.</span> Theme</h4>
+<div class="outline-text-4" id="text-4-3-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">doom-themes</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
@@ -1042,8 +1073,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org0000042" class="outline-4">
-<h4 id="org0000042"><span class="section-number-4">4.2.2.</span> Org Export Themes</h4>
-<div class="outline-text-4" id="text-4-2-2">
+<h4 id="org0000042"><span class="section-number-4">4.3.2.</span> Org Export Themes</h4>
+<div class="outline-text-4" id="text-4-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hexrgb</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span>
@@ -1067,12 +1098,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org0000057" class="outline-3">
-<h3 id="org0000057"><span class="section-number-3">4.3.</span> Programming</h3>
-<div class="outline-text-3" id="text-4-3">
+<h3 id="org0000057"><span class="section-number-3">4.4.</span> Programming</h3>
+<div class="outline-text-3" id="text-4-4">
 </div>
 <div id="outline-container-org0000048" class="outline-4">
-<h4 id="org0000048"><span class="section-number-4">4.3.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
-<div class="outline-text-4" id="text-4-3-1">
+<h4 id="org0000048"><span class="section-number-4">4.4.1.</span> Parinfer (Lisp Auto-Parenthesis)</h4>
+<div class="outline-text-4" id="text-4-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package parinfer-rust-mode</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hook '(emacs-lisp-mode)</span>
@@ -1092,8 +1123,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org000004b" class="outline-4">
-<h4 id="org000004b"><span class="section-number-4">4.3.2.</span> Highlighting</h4>
-<div class="outline-text-4" id="text-4-3-2">
+<h4 id="org000004b"><span class="section-number-4">4.4.2.</span> Highlighting</h4>
+<div class="outline-text-4" id="text-4-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package nix-mode</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:mode "\\.nix\\'")</span>
@@ -1107,8 +1138,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org000004e" class="outline-4">
-<h4 id="org000004e"><span class="section-number-4">4.3.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
-<div class="outline-text-4" id="text-4-3-3">
+<h4 id="org000004e"><span class="section-number-4">4.4.3.</span> AutoCompletion, CodeActions &amp; Snippets</h4>
+<div class="outline-text-4" id="text-4-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">projectile</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
@@ -1149,8 +1180,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org0000051" class="outline-4">
-<h4 id="org0000051"><span class="section-number-4">4.3.4.</span> LSP</h4>
-<div class="outline-text-4" id="text-4-3-4">
+<h4 id="org0000051"><span class="section-number-4">4.4.4.</span> LSP</h4>
+<div class="outline-text-4" id="text-4-4-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package eglot</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hook (prog-mode . eglot-ensure)</span>
@@ -1178,8 +1209,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 
 <div id="outline-container-org0000054" class="outline-4">
-<h4 id="org0000054"><span class="section-number-4">4.3.5.</span> Mermaid/GraphViz (Graph)</h4>
-<div class="outline-text-4" id="text-4-3-5">
+<h4 id="org0000054"><span class="section-number-4">4.4.5.</span> Mermaid/GraphViz (Graph)</h4>
+<div class="outline-text-4" id="text-4-4-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">mermaid-mode</span>)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">ob-mermaid</span>

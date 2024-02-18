@@ -67,6 +67,7 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 |            | C-h [f / v / k] | Help on [functions / variables / key-chords] |
 | org-mode   | C-c C-c         | Run CodeBlock or Format Table                |
 |            | C-c C-l         | Insert Link                                  |
+|            | C-c C-,         | Insert Snippets                              |
 | minibuffer | C-y             | Paste                                        |
 
 ** Tutorials
@@ -89,6 +90,8 @@ manager which is a prerequisite for most of this config and also it loads this c
 Emacs requires some essential tweaks to become somewhat usable.
 
 #+BEGIN_SRC emacs-lisp
+;;; This file is generated from config.org | -*- lexical-binding: t; -*-
+
 ;; Enable minibuffer history
 (setq history-length 100)
 (savehist-mode 1)
@@ -108,8 +111,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 ;; I prefer indentation with spaces
 (setq-default tab-width 4
-              indent-tabs-mode nil
-              evil-shift-width tab-width)
+              indent-tabs-mode nil)
 
 ;; Make scratch buffer text-mode
 (setq-default initial-scratch-message nil
@@ -138,6 +140,37 @@ Same goes for =org-mode=.
 (advice-add #'org-export-new-reference :override #'my/org-deterministic-reference)
 #+END_SRC
 
+** Base Packages
+
+These core packages are the scaffold upon which the entire configuration below is assembled.
+
+#+BEGIN_SRC emacs-lisp
+;; Used to set keybinds
+(use-package general
+  :config
+  (general-override-mode)
+  (general-auto-unbind-keys))
+
+;; Emulates vim keybinds & modal editing
+(use-package evil
+  :init
+  (setq evil-v$-excludes-newline t       ; $ in visual doesn't include \n
+        evil-kill-on-visual-paste nil    ; pasting in visual mode won't copy replaced text to clipboard
+        evil-auto-indent nil             ; o and O doesn't add indents
+        evil-cross-lines t               ; h and l to move to newline
+        evil-respect-visual-line-mode t  ; physical line as $ anchor instead of \n
+        evil-shift-width tab-width       ; << and >>
+        evil-split-window-below t
+        evil-vsplit-window-right t)
+  :config
+  (evil-mode 1))
+
+(elpaca-wait)
+#+END_SRC
+
+The =evil= package provides Vim's Modal Editing in Emacs. I have notes on [[https://animeshz.github.io/site/notes/20-29--DevEnvironment/21--Linux/21.03-Cli-Utilities.html#n-vim][the only Vim keybind you need to know]] on my
+site.
+
 ** Set Fonts
 
 Set global font, whichever is available in the =preferred-fonts=.
@@ -150,10 +183,14 @@ Set global font, whichever is available in the =preferred-fonts=.
  '(default ((t (:family (cl-find-if font-info preferred-fonts) :height 120)))))
 #+END_SRC
 
+I didn't set =variable-pitch= and =fixed-pitch= faces separately and forced Mono font everywhere, although that's also
+an option.
 
 ** Set Keybinds
 
-#+BEGIN_SRC emacs-lisp :noweb-ref general-config :tangle no
+Keybinds references functions from various different packages
+
+#+BEGIN_SRC emacs-lisp
 (general-define-key
  :states '(insert motion)
  :keymaps '(local global)
@@ -230,16 +267,15 @@ Set global font, whichever is available in the =preferred-fonts=.
   "/" 'comment-dwim)
 #+END_SRC
 
+* Productivity Enhancers
 
-* Packages
-
-** Productivity
-
-*** Undo History
+** Undo History
 
 #+BEGIN_SRC emacs-lisp
 ;; keep undo history
-(use-package undo-fu)
+(use-package undo-fu
+  :config
+  (setq evil-undo-system 'undo-fu))
 ;; save command history
 ;; keep file history between emacs sessions
 (use-package undohist
@@ -249,30 +285,12 @@ Set global font, whichever is available in the =preferred-fonts=.
   (undohist-initialize))
 #+END_SRC
 
-*** Evil + General (Vim-Keybind)
+** Better Help
 
-#+BEGIN_SRC emacs-lisp :noweb no-export
-(use-package evil
-  :after undo-fu
-  :init
-  (setq evil-want-keybinding nil)
-  (setq evil-undo-system 'undo-fu)
+#+BEGIN_SRC emacs-lisp
+;; Setup better help
+(use-package helpful
   :config
-  (evil-mode 1)
-  (setq ;evil-want-fine-undo t
-   evil-want-minibuffer nil         ; <esc> works iirc
-   evil-vsplit-window-right t
-   evil-split-window-below t
-   evil-cross-lines t))
-
-(use-package helpful)
-(use-package general
-  :after (evil helpful hop consult)
-  :config
-  (general-override-mode)
-  (general-auto-unbind-keys)
-  (general-evil-setup t)
-
   ;; Remap C-h to helpful package
   (general-define-key
    :prefix "C-h"
@@ -280,8 +298,7 @@ Set global font, whichever is available in the =preferred-fonts=.
    "v" #'helpful-variable
    "k" #'helpful-key
    "F" #'helpful-function
-   "C" #'helpful-command)
-  <<general-config>>)
+   "C" #'helpful-command))
 #+END_SRC
 
 *** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
