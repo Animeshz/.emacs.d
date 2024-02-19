@@ -199,6 +199,8 @@ General keybinds which are not specific to any package.
 
 *** Normal Keybinds
 
+Keybinds without prefix.
+
 #+BEGIN_SRC emacs-lisp
 (general-def '(normal motion visual operator)
   ;; Adjust font size
@@ -216,6 +218,8 @@ General keybinds which are not specific to any package.
 #+END_SRC
 
 *** Leader Keybinds
+
+Keybinds with =SPC= prefix.
 
 #+BEGIN_SRC emacs-lisp
 (general-create-definer leader-key
@@ -245,8 +249,11 @@ Ergonomic UX on insert-like modes,
   "<tab>" #'tab-to-tab-stop
   "C-S-v" #'evil-paste-before-cursor-after)
 
-(general-def isearch-mode-map
+(general-def '(isearch-mode-map)
   "C-S-v" #'isearch-yank-kill)
+
+(general-def '(minibuffer-mode-map)
+  "C-S-v" #'yank)
 #+END_SRC
 
 Some org mode enhancements
@@ -267,27 +274,29 @@ Some org mode enhancements
 
 ** Undo History
 
+Preserving undo history is probably the first productivity enhancer I can think of.
+
 #+BEGIN_SRC emacs-lisp
 ;; keep undo history
 (use-package undo-fu
   :config
-  (setq evil-undo-system 'undo-fu))
+  (general-setq evil-undo-system 'undo-fu))
 
 ;; keep file's undo history between emacs sessions
 (use-package undo-fu-session
   :config
-  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   (undo-fu-session-global-mode))
 
 ;; make undo history a tree on-the-fly
-;; TODO: install from fork till https://github.com/casouri/vundo/pull/105 gets merged
 (use-package vundo
-  :ensure (vundo :host github :repo "Animeshz/vundo")
+  :ensure (vundo :host github :repo "casouri/vundo")
   :config
   (general-def 'normal vundo-mode-map "<escape>" #'vundo-quit))
 #+END_SRC
 
 ** Which Key
+
+This is really important as my memory is dum dum.
 
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
@@ -298,14 +307,9 @@ Some org mode enhancements
 
 ** Hop (Jump Anywhere on Buffer)
 
+This was my most missing feature from nvim, so much so I wrote this package myself. Read more on [[https://github.com/Animeshz/hop.el][hop.el]].
+
 #+BEGIN_SRC emacs-lisp
-;; install pcre(-devel) package first from system package manager
-;; (use-package pcre
-;;   :ensure (pcre :host github :repo "syohex/emacs-pcre"
-;;                 :files (:default "pcre.el" "pcre-core.so")
-;;                 :pre-build ("make" "all")))
-;;
-;; nix-managed install
 (require 'pcre)
 
 (use-package hop
@@ -364,43 +368,6 @@ Syncing /proc/self/cwd with changes to (default-directory).
 
 #+BEGIN_SRC emacs-lisp
 (require 'chdir)
-#+END_SRC
-
-** Customization
-
-*** Theme
-
-#+BEGIN_SRC emacs-lisp
-(use-package doom-themes
-  :config
-  (global-hl-line-mode 1)
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (doom-themes-visual-bell-config)
-  (load-theme 'doom-city-lights t)
-  (custom-set-faces
-   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
-   '(org-ellipsis ((t (:foreground "#C678DD"))))))
-#+END_SRC
-
-*** Org Export Themes
-
-#+BEGIN_SRC emacs-lisp
-(use-package hexrgb
-  :ensure
-  (hexrgb :host github :repo "emacsmirror/hexrgb" :main "hexrgb.el"))
-
-(use-package org-html-themify
-  :after hexrgb
-  :ensure
-  (org-html-themify
-   :host github
-   :repo "DogLooksGood/org-html-themify"
-   :files ("*.el" "*.js" "*.css"))
-  :hook (org-mode . org-html-themify-mode)
-  :config
-  (setq org-src-preserve-indentation nil
-        org-edit-src-content-indentation 0))
 #+END_SRC
 
 * Programming
@@ -525,6 +492,47 @@ Syncing /proc/self/cwd with changes to (default-directory).
 #+END_SRC
 
 * Miscellaneous
+** Themes
+
+*** Set Editor Theme
+
+The main theme when opening emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (global-hl-line-mode 1)
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-city-lights t)
+  (custom-set-faces
+   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
+   '(org-ellipsis ((t (:foreground "#C678DD"))))))
+#+END_SRC
+
+*** Org Export Theme
+
+Theme of the exported website when running =org-html-export-to-html=, this copies theme that is applied above.
+
+#+BEGIN_SRC emacs-lisp
+(use-package hexrgb
+  :ensure
+  (hexrgb :host github :repo "emacsmirror/hexrgb" :main "hexrgb.el"))
+
+(use-package org-html-themify
+  :after hexrgb
+  :ensure
+  (org-html-themify
+   :host github
+   :repo "DogLooksGood/org-html-themify"
+   :files ("*.el" "*.js" "*.css"))
+  :hook (org-mode . org-html-themify-mode)
+  :config
+  (setq org-src-preserve-indentation nil
+        org-edit-src-content-indentation 0))
+#+END_SRC
+
 ** Better Help
 
 #+BEGIN_SRC emacs-lisp
