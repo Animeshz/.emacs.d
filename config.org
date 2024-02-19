@@ -1,4 +1,5 @@
 #+TITLE: My Literate Emacs Configuration
+#+STARTUP: overview
 #+EXPORT_FILE_NAME: index.html
 #+PROPERTIES: header-args :lexical t
 
@@ -92,7 +93,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 #+BEGIN_SRC emacs-lisp
 ;;; This file is generated from config.org | -*- lexical-binding: t; -*-
 
-;; Enable minibuffer history
+;; Enable minibuffer history, prioritizes M-x & vim commands with most recent commands issued
 (setq history-length 100)
 (savehist-mode 1)
 
@@ -158,12 +159,18 @@ These core packages are the scaffold upon which the entire configuration below i
         evil-kill-on-visual-paste nil    ; pasting in visual mode won't copy replaced text to clipboard
         evil-auto-indent nil             ; o and O doesn't add indents
         evil-cross-lines t               ; h and l to move to newline
-        evil-respect-visual-line-mode t  ; physical line as $ anchor instead of \n
+        ;; evil-respect-visual-line-mode t  ; physical line as $ anchor instead of \n, caveat: dj dk doesn't work as intended
         evil-shift-width tab-width       ; << and >>
+        evil-want-keybinding nil         ; required by =evil-collection=
         evil-split-window-below t
         evil-vsplit-window-right t)
   :config
   (evil-mode 1))
+
+;; Extend support of vim keybindings on to various other packages
+(use-package evil-collection
+  :config
+  (evil-collection-init))
 
 (elpaca-wait)
 #+END_SRC
@@ -188,83 +195,72 @@ an option.
 
 ** Set Keybinds
 
-Keybinds references functions from various different packages
+General keybinds which are not specific to any package.
+
+*** Normal Keybinds
 
 #+BEGIN_SRC emacs-lisp
-(general-define-key
- :states '(insert motion)
- :keymaps '(local global)
+(general-def '(normal motion visual operator)
+  ;; Adjust font size
+  "C-+" #'text-scale-increase
+  "C-_" #'text-scale-decrease
 
- "C-S-v" 'evil-paste-before-cursor-after
- "TAB" 'tab-to-tab-stop)
+  ;; Move lines without moving cursor
+  "," #'evil-scroll-line-down
+  "." #'evil-scroll-line-up
 
-(general-define-key
- :keymaps '(isearch-mode-map)  ; evil-search (/)
- "C-S-v" 'isearch-yank-kill)
+  ;; Indent region (same keybind as vscode lol)
+  "C-S-i" '(lambda () (interactive) (indent-region (point-min) (point-max)))
 
-(general-define-key
- :states 'insert
- "C-s" 'tempel-complete)
-(general-define-key
- :states '(insert normal)
- :keymaps 'tempel-map
- "S-TAB" 'tempel-previous
- "TAB" 'tempel-next)
+  "<escape>" #'keyboard-escape-quit)
+#+END_SRC
 
-(general-define-key
- :states '(normal motion visual operator emacs)
- :keymaps '(override local global)
+*** Leader Keybinds
 
- "H" 'evil-beginning-of-line
- "J" 'evil-goto-line
- "K" 'evil-goto-first-line
- "L" 'evil-end-of-line
-
- "," 'evil-scroll-line-down
- "." 'evil-scroll-line-up
-
- "C-+" 'text-scale-increase
- "C-_" 'text-scale-decrease
- "C--" 'text-scale-decrease
- "C-S-i" '(lambda () (interactive) (indent-region (point-min) (point-max)))
- "C-S-p" 'execute-extended-command  ; M-x
-
- "<escape>" 'keyboard-escape-quit
- "?" 'consult-line
-
- "go" 'hop-word
- "gl" 'hop-char
- "gp" 'hop-regex-pattern
- "gk" 'hop-line)
-
-(general-define-key
- :states 'normal
- :keymaps '(override org-mode-map)
- "<RET>" (lambda ()
-           (interactive)
-           (if (org-at-heading-p)
-               (org-cycle)
-             (if (org-in-regexp org-link-any-re)
-                 (org-open-at-point)
-               (org-return)))))
-
+#+BEGIN_SRC emacs-lisp
 (general-create-definer leader-key
   :states '(normal motion visual operator emacs)
-  :keymaps '(override local global)
   :prefix "SPC")
 
 (leader-key
-  "reload" 'revert-buffer
-  "ff" 'find-file
-  "fr" 'consult-recent-file
-  "tw" 'delete-trailing-whitespace
-  "ev" 'eval-region
-  "x" 'kill-this-buffer
-  "c" 'display-fill-column-indicator-mode
-  "s" 'switch-to-buffer
-  "d" 'bookmark-jump
-  "p" 'projectile-command-map
-  "/" 'comment-dwim)
+  "reload" #'revert-buffer
+  "ff" #'find-file
+  "fr" #'consult-recent-file
+  "tw" #'delete-trailing-whitespace
+  "ev" #'eval-region
+  "x" #'kill-this-buffer
+  "c" #'display-fill-column-indicator-mode
+  "s" #'switch-to-buffer
+  "d" #'bookmark-jump
+  "p" #'projectile-command-map
+  "/" #'comment-dwim)
+#+END_SRC
+
+*** Miscellaneous
+
+Ergonomic UX on insert-like modes,
+
+#+BEGIN_SRC emacs-lisp
+(general-def 'insert
+  "<tab>" #'tab-to-tab-stop
+  "C-S-v" #'evil-paste-before-cursor-after)
+
+(general-def isearch-mode-map
+  "C-S-v" #'isearch-yank-kill)
+#+END_SRC
+
+Some org mode enhancements
+
+#+BEGIN_SRC emacs-lisp
+;; Toggle folding org headings with tab/ret
+(general-def 'normal org-mode-map
+  "<tab>" #'evil-toggle-fold
+  "<RET>" '(lambda ()
+             (interactive)
+             (cond
+              ((org-at-heading-p) (evil-toggle-fold))
+              ((org-in-regexp org-link-any-re) (org-open-at-point))
+              (t (evil-ret)))))
 #+END_SRC
 
 * Productivity Enhancers
@@ -276,32 +272,53 @@ Keybinds references functions from various different packages
 (use-package undo-fu
   :config
   (setq evil-undo-system 'undo-fu))
-;; save command history
-;; keep file history between emacs sessions
-(use-package undohist
-  :init
-  (setq undo-tree-history-directory-alist '(((concat user-emacs-directory "/undohist"))))
+
+;; keep file's undo history between emacs sessions
+(use-package undo-fu-session
   :config
-  (undohist-initialize))
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+  (undo-fu-session-global-mode))
+
+;; make undo history a tree on-the-fly
+;; TODO: install from fork till https://github.com/casouri/vundo/pull/105 gets merged
+(use-package vundo
+  :ensure (vundo :host github :repo "Animeshz/vundo")
+  :config
+  (general-def 'normal vundo-mode-map "<escape>" #'vundo-quit))
 #+END_SRC
 
-** Better Help
+** Which Key
 
 #+BEGIN_SRC emacs-lisp
-;; Setup better help
-(use-package helpful
+(use-package which-key
   :config
-  ;; Remap C-h to helpful package
-  (general-define-key
-   :prefix "C-h"
-   "f" #'helpful-callable
-   "v" #'helpful-variable
-   "k" #'helpful-key
-   "F" #'helpful-function
-   "C" #'helpful-command))
+  (setq which-key-idle-delay 0.4)
+  (which-key-mode))
 #+END_SRC
 
-*** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
+** Hop (Jump Anywhere on Buffer)
+
+#+BEGIN_SRC emacs-lisp
+;; install pcre(-devel) package first from system package manager
+;; (use-package pcre
+;;   :ensure (pcre :host github :repo "syohex/emacs-pcre"
+;;                 :files (:default "pcre.el" "pcre-core.so")
+;;                 :pre-build ("make" "all")))
+;;
+;; nix-managed install
+(require 'pcre)
+
+(use-package hop
+  :ensure (hop :host github :repo "Animeshz/hop.el")
+  :config
+  (general-def '(normal motion visual operator)
+    "go" 'hop-word
+    "gl" 'hop-char
+    "gp" 'hop-regex-pattern
+    "gk" 'hop-line))
+#+END_SRC
+
+** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
 
 #+BEGIN_SRC emacs-lisp
 (use-package vertico
@@ -318,7 +335,7 @@ Keybinds references functions from various different packages
   (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
-*** Embark + Consult + Marginalia
+** Embark + Consult + Marginalia
 
 - Embark: Quick Actions
 - Consult: Extend default commands
@@ -341,32 +358,7 @@ Keybinds references functions from various different packages
         marginalia-align-offset 20))
 #+END_SRC
 
-*** Which Key
-
-#+BEGIN_SRC emacs-lisp
-(use-package which-key
-  :config
-  (setq which-key-idle-delay 0.4)
-  (which-key-mode))
-#+END_SRC
-
-*** Hop (Jump Anywhere on Buffer)
-
-#+BEGIN_SRC emacs-lisp
-;; install pcre(-devel) package first from system package manager
-;; (use-package pcre
-;;   :ensure (pcre :host github :repo "syohex/emacs-pcre"
-;;                 :files (:default "pcre.el" "pcre-core.so")
-;;                 :pre-build ("make" "all")))
-;;
-;; nix-managed install
-(require 'pcre)
-
-(use-package hop
-  :ensure (hop :host github :repo "Animeshz/hop.el"))
-#+END_SRC
-
-*** Chdir Support
+** Chdir Support
 
 Syncing /proc/self/cwd with changes to (default-directory).
 
@@ -411,9 +403,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
         org-edit-src-content-indentation 0))
 #+END_SRC
 
-** Programming
-
-*** Parinfer (Lisp Auto-Parenthesis)
+* Programming
+** Parinfer (Lisp Auto-Parenthesis)
 
 #+BEGIN_SRC emacs-lisp
 ;; (use-package parinfer-rust-mode
@@ -430,7 +421,7 @@ Syncing /proc/self/cwd with changes to (default-directory).
 ;;   (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
 #+END_SRC
 
-*** Highlighting
+** Highlighting
 
 #+BEGIN_SRC emacs-lisp
 ;; (use-package nix-mode
@@ -441,7 +432,7 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :mode "\\.kt\\|\\.kts\\'")
 #+END_SRC
 
-*** AutoCompletion, CodeActions & Snippets
+** AutoCompletion, CodeActions & Snippets
 
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
@@ -476,10 +467,20 @@ Syncing /proc/self/cwd with changes to (default-directory).
   :config
   (global-tempel-abbrev-mode))
 
+(general-define-key
+ :states 'insert
+ "C-s" 'tempel-complete)
+(general-define-key
+ :states '(insert normal)
+ :keymaps 'tempel-map
+ "S-TAB" 'tempel-previous
+ "TAB" 'tempel-next)
+
+
 (use-package tempel-collection)
 #+END_SRC
 
-*** LSP
+** LSP
 
 #+BEGIN_SRC emacs-lisp
 ;; (use-package eglot
@@ -504,7 +505,7 @@ Syncing /proc/self/cwd with changes to (default-directory).
 ;;   (add-to-list 'company-backends #'company-tabnine))
 #+END_SRC
 
-*** Mermaid/GraphViz (Graph)
+** Mermaid/GraphViz (Graph)
 
 #+BEGIN_SRC emacs-lisp
 (use-package mermaid-mode)
@@ -523,6 +524,22 @@ Syncing /proc/self/cwd with changes to (default-directory).
 (use-package ob-svgbob)
 #+END_SRC
 
+* Miscellaneous
+** Better Help
+
+#+BEGIN_SRC emacs-lisp
+;; Setup better help
+(use-package helpful
+  :config
+  ;; Remap C-h to helpful package
+  (general-define-key
+   :prefix "C-h"
+   "f" #'helpful-callable
+   "v" #'helpful-variable
+   "k" #'helpful-key
+   "F" #'helpful-function
+   "C" #'helpful-command))
+#+END_SRC
 
 * Misc
 
