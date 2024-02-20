@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-20 Tue 01:13 -->
+<!-- 2024-02-21 Wed 04:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -464,48 +464,54 @@ img {
 </li>
 </ul>
 </li>
-<li><a href="#org0000045">4. Productivity Enhancers</a>
+<li><a href="#org0000042">4. Productivity Enhancers</a>
 <ul>
 <li><a href="#org0000033">4.1. Undo History</a></li>
 <li><a href="#org0000036">4.2. Which Key</a></li>
 <li><a href="#org0000039">4.3. Hop (Jump Anywhere on Buffer)</a></li>
 <li><a href="#org000003c">4.4. Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</a></li>
 <li><a href="#org000003f">4.5. Embark + Consult + Marginalia</a></li>
-<li><a href="#org0000042">4.6. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org0000057">5. Programming</a>
+<li><a href="#org0000048">5. Integrations</a>
 <ul>
-<li><a href="#org0000048">5.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
-<li><a href="#org000004b">5.2. Highlighting</a></li>
-<li><a href="#org000004e">5.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
-<li><a href="#org0000051">5.4. LSP</a></li>
-<li><a href="#org0000054">5.5. Mermaid/GraphViz (Graph)</a></li>
+<li><a href="#org0000045">5.1. Remote Execution</a></li>
 </ul>
 </li>
-<li><a href="#org0000066">6. Miscellaneous</a>
+<li><a href="#org000005a">6. Programming</a>
 <ul>
-<li><a href="#org0000060">6.1. Themes</a>
+<li><a href="#org000004b">6.1. Parinfer (Lisp Auto-Parenthesis)</a></li>
+<li><a href="#org000004e">6.2. Highlighting</a></li>
+<li><a href="#org0000051">6.3. AutoCompletion, CodeActions &amp; Snippets</a></li>
+<li><a href="#org0000054">6.4. LSP</a></li>
+<li><a href="#org0000057">6.5. Mermaid/GraphViz (Graph)</a></li>
+</ul>
+</li>
+<li><a href="#org000006f">7. Miscellaneous</a>
 <ul>
-<li><a href="#org000005a">6.1.1. Set Editor Theme</a></li>
-<li><a href="#org000005d">6.1.2. Org Export Theme</a></li>
-</ul>
-</li>
-<li><a href="#org0000063">6.2. Better Help</a></li>
-</ul>
-</li>
-<li><a href="#org000007e">7. Misc</a>
+<li><a href="#org0000066">7.1. Themes</a>
 <ul>
-<li><a href="#org0000069">7.1. Don't reset the cursor to the middle when scrolling</a></li>
-<li><a href="#org000006c">7.2. Highlight Trailing Whitespace</a></li>
-<li><a href="#org000006f">7.3. Don't affect previous line with C-backspace</a></li>
-<li><a href="#org0000072">7.4. Change backup file dump path</a></li>
-<li><a href="#org0000075">7.5. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org0000078">7.6. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#org000007b">7.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org000005d">7.1.1. Set Editor Theme</a></li>
+<li><a href="#org0000060">7.1.2. Org Export Theme</a></li>
+<li><a href="#org0000063">7.1.3. Highlight Todo</a></li>
 </ul>
 </li>
-<li><a href="#org0000081">8. Resources References</a></li>
+<li><a href="#org0000069">7.2. Better Help</a></li>
+<li><a href="#org000006c">7.3. Chdir Support</a></li>
+</ul>
+</li>
+<li><a href="#org0000087">8. Misc</a>
+<ul>
+<li><a href="#org0000072">8.1. Don't reset the cursor to the middle when scrolling</a></li>
+<li><a href="#org0000075">8.2. Highlight Trailing Whitespace</a></li>
+<li><a href="#org0000078">8.3. Don't affect previous line with C-backspace</a></li>
+<li><a href="#org000007b">8.4. Change backup file dump path</a></li>
+<li><a href="#org000007e">8.5. Window Split Vertical-Horizontal Toggle</a></li>
+<li><a href="#org0000081">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org0000084">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+</ul>
+</li>
+<li><a href="#org000008a">9. Resources References</a></li>
 </ul>
 </div>
 </div>
@@ -641,6 +647,18 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 </tr>
 
 <tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-x [2 / 3 / 0 / 1]</td>
+<td class="org-left">Window Split [Down / Right / Switch / Close / Close All Except This]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-x o / C-w C-w (Evil)</td>
+<td class="org-left">Switch Window Split</td>
+</tr>
+
+<tr>
 <td class="org-left">org-mode</td>
 <td class="org-left">C-c C-c</td>
 <td class="org-left">Run CodeBlock or Format Table</td>
@@ -665,6 +683,11 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 </tr>
 </tbody>
 </table>
+
+<p>
+<code>M-&lt;number&gt;</code> is a shorthand for <code>C-u &lt;number&gt;</code>, and is used to pass first argument <code>number</code> in interactive commands
+via M-x or keybind.
+</p>
 </div>
 </div>
 
@@ -674,6 +697,10 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 <p>
 I like to recommend <a href="https://www.youtube.com/watch?v=B6jfrrwR10k">this video</a> if you want to get familiarized with emacs! This packs a lot of information with
 effective presentations instead of most videos which talk way too much and delivers barely anything useful.
+</p>
+
+<p>
+<a href="https://www.youtube.com/playlist?list=PLlHHtPGox8K6bcuruX10Evf4AYGzYQKiz">This playlist</a> is good for getting quick short videos for further learning emacs on your own pace.
 </p>
 </div>
 </div>
@@ -796,6 +823,7 @@ These core packages are the scaffold upon which the entire configuration below i
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Extend support of vim keybindings on to various other packages</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil-collection</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> evil
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   (evil-collection-init))
 
@@ -839,6 +867,11 @@ an option.
 <p>
 General keybinds which are not specific to any package.
 </p>
+
+<p>
+Almost everything is mode, and has a mode-map associated with it. In a buffer, there's a major mode and multiple minor
+modes. Read more about them <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html">here</a>.
+</p>
 </div>
 
 <div id="outline-container-org0000024" class="outline-4">
@@ -877,6 +910,7 @@ Keybinds with <code>SPC</code> prefix.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-create-definer</span> leader-key
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:states</span> '(normal motion visual operator emacs)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:keymaps</span> 'override
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:prefix</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"SPC"</span>)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
@@ -889,6 +923,7 @@ Keybinds with <code>SPC</code> prefix.
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"c"</span> #'display-fill-column-indicator-mode
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"s"</span> #'switch-to-buffer
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"d"</span> #'bookmark-jump
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"w"</span> #'visual-line-mode  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">toggle word-wrap</span>
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"p"</span> #'projectile-command-map
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span> #'comment-dwim)
 </pre>
@@ -937,8 +972,8 @@ Some org mode enhancements
 </div>
 </div>
 
-<div id="outline-container-org0000045" class="outline-2">
-<h2 id="org0000045"><span class="section-number-2">4.</span> Productivity Enhancers</h2>
+<div id="outline-container-org0000042" class="outline-2">
+<h2 id="org0000042"><span class="section-number-2">4.</span> Productivity Enhancers</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 <div id="outline-container-org0000033" class="outline-3">
@@ -1013,18 +1048,18 @@ This was my most missing feature from nvim, so much so I wrote this package myse
 <h3 id="org000003c"><span class="section-number-3">4.4.</span> Vertico + Orderless (Autosuggestion &amp; Fuzzy Finder)</h3>
 <div class="outline-text-3" id="text-4-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">vertico</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> vertico-count 20
-        vertico-resize nil
-        vertico-cycle t)
-  (vertico-mode))
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package vertico</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:init</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq vertico-count 20</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">vertico-resize nil</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">vertico-cycle t)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(vertico-mode))</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">orderless</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:custom</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))</span>
-  (completion-styles '(orderless))
-  (completion-category-overrides '((file (styles partial-completion)))))
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package orderless</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:custom</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">;; (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(completion-styles '(orderless))</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(completion-category-overrides '((file (styles partial-completion)))))</span>
 </pre>
 </div>
 </div>
@@ -1040,47 +1075,42 @@ This was my most missing feature from nvim, so much so I wrote this package myse
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bind</span> (<span style="color: var(--clr-string); background-color: var(--bg-string);">"C-;"</span> . 'embark-act)
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> prefix-help-command #'embark-prefix-help-command
-        embark-quit-after-action nil))
+<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package embark</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:bind ("C-;" . 'embark-act)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:init</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq prefix-help-command #'embark-prefix-help-command</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">embark-quit-after-action nil))</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">consult</span>)
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark-consult</span>)
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package consult)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package embark-consult)</span>
 
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">marginalia</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
-  (marginalia-mode)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> marginalia-align 'center
-        marginalia-align-offset 20))
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0000042" class="outline-3">
-<h3 id="org0000042"><span class="section-number-3">4.6.</span> Chdir Support</h3>
-<div class="outline-text-3" id="text-4-6">
-<p>
-Syncing /proc/self/cwd with changes to (default-directory).
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">chdir</span>)
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package marginalia</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:config</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(marginalia-mode)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq marginalia-align 'center</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">marginalia-align-offset 20))</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0000057" class="outline-2">
-<h2 id="org0000057"><span class="section-number-2">5.</span> Programming</h2>
+<div id="outline-container-org0000048" class="outline-2">
+<h2 id="org0000048"><span class="section-number-2">5.</span> Integrations</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org0000048" class="outline-3">
-<h3 id="org0000048"><span class="section-number-3">5.1.</span> Parinfer (Lisp Auto-Parenthesis)</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-org0000045" class="outline-3">
+<h3 id="org0000045"><span class="section-number-3">5.1.</span> Remote Execution</h3>
+</div>
+</div>
+
+<div id="outline-container-org000005a" class="outline-2">
+<h2 id="org000005a"><span class="section-number-2">6.</span> Programming</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org000004b" class="outline-3">
+<h3 id="org000004b"><span class="section-number-3">6.1.</span> Parinfer (Lisp Auto-Parenthesis)</h3>
+<div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package parinfer-rust-mode</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hook '(emacs-lisp-mode)</span>
@@ -1099,9 +1129,9 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org000004b" class="outline-3">
-<h3 id="org000004b"><span class="section-number-3">5.2.</span> Highlighting</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-org000004e" class="outline-3">
+<h3 id="org000004e"><span class="section-number-3">6.2.</span> Highlighting</h3>
+<div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package nix-mode</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:mode "\\.nix\\'")</span>
@@ -1114,9 +1144,9 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org000004e" class="outline-3">
-<h3 id="org000004e"><span class="section-number-3">5.3.</span> AutoCompletion, CodeActions &amp; Snippets</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-org0000051" class="outline-3">
+<h3 id="org0000051"><span class="section-number-3">6.3.</span> AutoCompletion, CodeActions &amp; Snippets</h3>
+<div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">projectile</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
@@ -1166,9 +1196,9 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org0000051" class="outline-3">
-<h3 id="org0000051"><span class="section-number-3">5.4.</span> LSP</h3>
-<div class="outline-text-3" id="text-5-4">
+<div id="outline-container-org0000054" class="outline-3">
+<h3 id="org0000054"><span class="section-number-3">6.4.</span> LSP</h3>
+<div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package eglot</span>
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hook (prog-mode . eglot-ensure)</span>
@@ -1195,9 +1225,9 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org0000054" class="outline-3">
-<h3 id="org0000054"><span class="section-number-3">5.5.</span> Mermaid/GraphViz (Graph)</h3>
-<div class="outline-text-3" id="text-5-5">
+<div id="outline-container-org0000057" class="outline-3">
+<h3 id="org0000057"><span class="section-number-3">6.5.</span> Mermaid/GraphViz (Graph)</h3>
+<div class="outline-text-3" id="text-6-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">mermaid-mode</span>)
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">ob-mermaid</span>
@@ -1219,17 +1249,17 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org0000066" class="outline-2">
-<h2 id="org0000066"><span class="section-number-2">6.</span> Miscellaneous</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org000006f" class="outline-2">
+<h2 id="org000006f"><span class="section-number-2">7.</span> Miscellaneous</h2>
+<div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org0000060" class="outline-3">
-<h3 id="org0000060"><span class="section-number-3">6.1.</span> Themes</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-org0000066" class="outline-3">
+<h3 id="org0000066"><span class="section-number-3">7.1.</span> Themes</h3>
+<div class="outline-text-3" id="text-7-1">
 </div>
-<div id="outline-container-org000005a" class="outline-4">
-<h4 id="org000005a"><span class="section-number-4">6.1.1.</span> Set Editor Theme</h4>
-<div class="outline-text-4" id="text-6-1-1">
+<div id="outline-container-org000005d" class="outline-4">
+<h4 id="org000005d"><span class="section-number-4">7.1.1.</span> Set Editor Theme</h4>
+<div class="outline-text-4" id="text-7-1-1">
 <p>
 The main theme when opening emacs.
 </p>
@@ -1250,9 +1280,9 @@ The main theme when opening emacs.
 </div>
 </div>
 
-<div id="outline-container-org000005d" class="outline-4">
-<h4 id="org000005d"><span class="section-number-4">6.1.2.</span> Org Export Theme</h4>
-<div class="outline-text-4" id="text-6-1-2">
+<div id="outline-container-org0000060" class="outline-4">
+<h4 id="org0000060"><span class="section-number-4">7.1.2.</span> Org Export Theme</h4>
+<div class="outline-text-4" id="text-7-1-2">
 <p>
 Theme of the exported website when running <code>org-html-export-to-html</code>, this copies theme that is applied above.
 </p>
@@ -1277,11 +1307,31 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 </div>
+
+<div id="outline-container-org0000063" class="outline-4">
+<h4 id="org0000063"><span class="section-number-4">7.1.3.</span> Highlight Todo</h4>
+<div class="outline-text-4" id="text-7-1-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hl-todo</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> ((prog-mode org-mode) . hl-todo-mode)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> hl-todo-keyword-faces '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #cfdf30; background-color: var(--bg-string); font-weight: bold;">HOLD</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#cfdf30"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-weight: bold;">TODO</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #b6a0ff; background-color: var(--bg-string); font-weight: bold;">NEXT</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#b6a0ff"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #00d3d0; background-color: var(--bg-string); font-weight: bold;">PROG</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#00d3d0"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-weight: bold;">FIXME</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #44bc44; background-color: var(--bg-string); font-weight: bold;">DONE</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#44bc44"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #6ae4b9; background-color: var(--bg-string); font-weight: bold;">REVIEW</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#6ae4b9"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #bfd9ff; background-color: var(--bg-string); font-weight: bold;">DEPRECATED</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#bfd9ff"</span>))))
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org0000063" class="outline-3">
-<h3 id="org0000063"><span class="section-number-3">6.2.</span> Better Help</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-org0000069" class="outline-3">
+<h3 id="org0000069"><span class="section-number-3">7.2.</span> Better Help</h3>
+<div class="outline-text-3" id="text-7-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Setup better help</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">helpful</span>
@@ -1298,15 +1348,29 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 </div>
+
+<div id="outline-container-org000006c" class="outline-3">
+<h3 id="org000006c"><span class="section-number-3">7.3.</span> Chdir Support</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Syncing /proc/self/cwd with changes to (default-directory).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">require</span> '<span style="color: var(--clr-constant); background-color: var(--bg-constant);">chdir</span>)
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org000007e" class="outline-2">
-<h2 id="org000007e"><span class="section-number-2">7.</span> Misc</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org0000087" class="outline-2">
+<h2 id="org0000087"><span class="section-number-2">8.</span> Misc</h2>
+<div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org0000069" class="outline-3">
-<h3 id="org0000069"><span class="section-number-3">7.1.</span> Don't reset the cursor to the middle when scrolling</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-org0000072" class="outline-3">
+<h3 id="org0000072"><span class="section-number-3">8.1.</span> Don't reset the cursor to the middle when scrolling</h3>
+<div class="outline-text-3" id="text-8-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-variables
  '(scroll-conservatively 200)
@@ -1316,9 +1380,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org000006c" class="outline-3">
-<h3 id="org000006c"><span class="section-number-3">7.2.</span> Highlight Trailing Whitespace</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-org0000075" class="outline-3">
+<h3 id="org0000075"><span class="section-number-3">8.2.</span> Highlight Trailing Whitespace</h3>
+<div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t)
 (add-hook 'prog-mode-hook
@@ -1328,9 +1392,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org000006f" class="outline-3">
-<h3 id="org000006f"><span class="section-number-3">7.3.</span> Don't affect previous line with C-backspace</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-org0000078" class="outline-3">
+<h3 id="org0000078"><span class="section-number-3">8.3.</span> Don't affect previous line with C-backspace</h3>
+<div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/backward-kill-word</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Kill backward to the beginning of the current word, but do not cross lines."</span>
@@ -1343,9 +1407,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000072" class="outline-3">
-<h3 id="org0000072"><span class="section-number-3">7.4.</span> Change backup file dump path</h3>
-<div class="outline-text-3" id="text-7-4">
+<div id="outline-container-org000007b" class="outline-3">
+<h3 id="org000007b"><span class="section-number-3">8.4.</span> Change backup file dump path</h3>
+<div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">user-temporary-file-directory</span>
   (concat temporary-file-directory user-login-name <span style="color: var(--clr-string); background-color: var(--bg-string);">"/"</span>))
@@ -1363,9 +1427,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000075" class="outline-3">
-<h3 id="org0000075"><span class="section-number-3">7.5.</span> Window Split Vertical-Horizontal Toggle</h3>
-<div class="outline-text-3" id="text-7-5">
+<div id="outline-container-org000007e" class="outline-3">
+<h3 id="org000007e"><span class="section-number-3">8.5.</span> Window Split Vertical-Horizontal Toggle</h3>
+<div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">window-split-toggle</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Toggle between horizontal and vertical split with two windows."</span>
@@ -1385,9 +1449,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000078" class="outline-3">
-<h3 id="org0000078"><span class="section-number-3">7.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
-<div class="outline-text-3" id="text-7-6">
+<div id="outline-container-org0000081" class="outline-3">
+<h3 id="org0000081"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
+<div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Open URL at point."</span>
@@ -1409,9 +1473,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org000007b" class="outline-3">
-<h3 id="org000007b"><span class="section-number-3">7.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
-<div class="outline-text-3" id="text-7-7">
+<div id="outline-container-org0000084" class="outline-3">
+<h3 id="org0000084"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div class="outline-text-3" id="text-8-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
 </p>
@@ -1658,9 +1722,9 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </div>
 </div>
 
-<div id="outline-container-org0000081" class="outline-2">
-<h2 id="org0000081"><span class="section-number-2">8.</span> Resources References</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org000008a" class="outline-2">
+<h2 id="org000008a"><span class="section-number-2">9.</span> Resources References</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.
 </p>
