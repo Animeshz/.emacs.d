@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-21 Wed 04:09 -->
+<!-- 2024-02-21 Wed 04:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -869,8 +869,10 @@ General keybinds which are not specific to any package.
 </p>
 
 <p>
-Almost everything is mode, and has a mode-map associated with it. In a buffer, there's a major mode and multiple minor
-modes. Read more about them <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html">here</a>.
+With evil we have 2 things, evil states (namely normal, motion, visutal, etc) and mode-map. In emacs, everything we edit
+(the buffer) has a major mode (e.g. rust-mode) and multiple minor modes (e.g. winner-mode) enabled through file
+extension or hooks, each of these modes have a mode-map associated in order to set keybinds in buffers with those modes
+enabled. Read more about them <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html">here</a>.
 </p>
 </div>
 

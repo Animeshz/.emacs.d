@@ -205,8 +205,10 @@ an option.
 
 General keybinds which are not specific to any package.
 
-Almost everything is mode, and has a mode-map associated with it. In a buffer, there's a major mode and multiple minor
-modes. Read more about them [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html][here]].
+With evil we have 2 things, evil states (namely normal, motion, visutal, etc) and mode-map. In emacs, everything we edit
+(the buffer) has a major mode (e.g. rust-mode) and multiple minor modes (e.g. winner-mode) enabled through file
+extension or hooks, each of these modes have a mode-map associated in order to set keybinds in buffers with those modes
+enabled. Read more about them [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html][here]].
 
 *** Normal Keybinds
 
