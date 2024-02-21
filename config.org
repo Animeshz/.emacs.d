@@ -242,7 +242,7 @@ Keybinds with =SPC= prefix.
 
 (leader-key
   "ff" #'find-file
-  "fr" #'consult-recent-file
+  "fr" #'recentf-open
   "tw" #'delete-trailing-whitespace
   "ev" #'eval-region
   "x" #'kill-this-buffer
@@ -309,15 +309,33 @@ Preserving undo history is probably the first productivity enhancer I can think 
   (general-def 'normal vundo-mode-map "<escape>" #'vundo-quit))
 #+END_SRC
 
-** Which Key
+** Key & Minibuffer completions
 
 This is really important as my memory is dum dum.
 
 #+BEGIN_SRC emacs-lisp
+;; Shows valid key combinations after a key-press
 (use-package which-key
   :config
   (setq which-key-idle-delay 0.4)
   (which-key-mode))
+#+END_SRC
+
+Completion over M-x and other help panels.
+
+#+BEGIN_SRC emacs-lisp
+;; Transforms prompts into selectable panels
+(use-package vertico
+  :config
+  (setq vertico-count 20
+        vertico-resize nil
+        vertico-cycle t)
+  (vertico-mode))
+
+;; Allows partial, unordered and regex search on those panels
+(use-package orderless
+  :config
+  (setq completion-styles '(orderless basic)))
 #+END_SRC
 
 ** Hop (Jump Anywhere on Buffer)
@@ -370,23 +388,6 @@ Setup company at the end of everything, so multiple backends can be prioritized.
 (defun setup-company ()
   (setq company-backends '((company-tabnine :with company-yasnippet))))
 (add-hook 'elpaca-after-init-hook #'setup-company)
-#+END_SRC
-
-** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package vertico
-;;   :init
-;;   (setq vertico-count 20
-;;         vertico-resize nil
-;;         vertico-cycle t)
-;;   (vertico-mode))
-
-;; (use-package orderless
-;;   :custom
-;;   ;; (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))
-;;   (completion-styles '(orderless))
-;;   (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
 ** Embark + Consult + Marginalia
