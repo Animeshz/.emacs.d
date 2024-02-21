@@ -206,9 +206,9 @@ an option.
 General keybinds which are not specific to any package.
 
 With evil we have 2 things, evil states (namely normal, motion, visutal, etc) and mode-map. In emacs, everything we edit
-(the buffer) has a major mode (e.g. rust-mode) and multiple minor modes (e.g. winner-mode) enabled through file
-extension or hooks, each of these modes have a mode-map associated in order to set keybinds in buffers with those modes
-enabled. Read more about them [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html][here]].
+(the buffer) has a major mode (e.g. prog-mode) and multiple minor modes (e.g. winner-mode, rust-mode) enabled through
+file extension or hooks, each of these modes have a mode-map associated in order to set keybinds in buffers with those
+modes enabled. Read more about them [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Modes.html][here]].
 
 *** Normal Keybinds
 
@@ -241,12 +241,12 @@ Keybinds with =SPC= prefix.
   :prefix "SPC")
 
 (leader-key
-  "reload" #'revert-buffer
   "ff" #'find-file
   "fr" #'consult-recent-file
   "tw" #'delete-trailing-whitespace
   "ev" #'eval-region
   "x" #'kill-this-buffer
+  "r" #'revert-buffer
   "c" #'display-fill-column-indicator-mode
   "s" #'switch-to-buffer
   "d" #'bookmark-jump
@@ -331,10 +331,45 @@ This was my most missing feature from nvim, so much so I wrote this package myse
   :ensure (hop :host github :repo "Animeshz/hop.el")
   :config
   (general-def '(normal motion visual operator)
-    "go" 'hop-word
-    "gl" 'hop-char
-    "gp" 'hop-regex-pattern
-    "gk" 'hop-line))
+    "go" #'hop-word
+    "gl" #'hop-char
+    "gp" #'hop-regex-pattern
+    "gk" #'hop-line))
+#+END_SRC
+
+** AutoCompletion & Snippets
+
+Woah, now we want to speed up!
+
+#+BEGIN_SRC emacs-lisp
+;; Inline completions frontend
+(use-package company
+  :config
+  (setq company-idle-delay 0
+        company-show-numbers t)
+  (global-company-mode 1))
+#+END_SRC
+
+Now let's add a few completion backends.
+
+#+BEGIN_SRC emacs-lisp
+;; Tabnine is my choice!
+(use-package company-tabnine)
+
+;; Add snippets to the stack!
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (leader-key "ns" #'yas-new-snippet)
+  (yas-global-mode 1))
+#+END_SRC
+
+Setup company at the end of everything, so multiple backends can be prioritized.
+
+#+BEGIN_SRC emacs-lisp
+(defun setup-company ()
+  (setq company-backends '((company-tabnine :with company-yasnippet))))
+(add-hook 'elpaca-after-init-hook #'setup-company)
 #+END_SRC
 
 ** Vertico + Orderless (Autosuggestion & Fuzzy Finder)
@@ -413,49 +448,33 @@ This was my most missing feature from nvim, so much so I wrote this package myse
 ** AutoCompletion, CodeActions & Snippets
 
 #+BEGIN_SRC emacs-lisp
-(use-package projectile
-  :init
-  (projectile-mode +1)
-  :config
-  (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
+;; (use-package projectile
+;;   :init
+;;   (projectile-mode +1)
+;;   :config
+;;   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
 
-(use-package corfu
-  :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
-  :config
-  ;; Setup corfu for popup like completion
-  (setq corfu-cycle t  ; Allows cycling through candidates
-        corfu-auto t   ; Enable auto completion
-        corfu-auto-prefix 0  ; Complete with less prefix keys
-        corfu-auto-delay 0.0  ; No delay for completion
-        corfu-echo-documentation t ; Echo docs for current completion option
-        corfu-popupinfo-delay 0.0
-        corfu-quit-no-match 'separator
-        corfu-quit-at-boundary 'insert)
+;; (use-package corfu
+;;   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
+;;   :config
+;;   ;; Setup corfu for popup like completion
+;;   (setq corfu-cycle t  ; Allows cycling through candidates
+;;         corfu-auto t   ; Enable auto completion
+;;         corfu-auto-prefix 0  ; Complete with less prefix keys
+;;         corfu-auto-delay 0.0  ; No delay for completion
+;;         corfu-echo-documentation t ; Echo docs for current completion option
+;;         corfu-popupinfo-delay 0.0
+;;         corfu-quit-no-match 'separator
+;;         corfu-quit-at-boundary 'insert)
 
-  ;; Silence the pcomplete capf, no errors or messages!
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
+;;   ;; Silence the pcomplete capf, no errors or messages!
+;;   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
 
-  ;; Ensure that pcomplete does not write to the buffer
-  ;; and behaves as a pure `completion-at-point-function'.
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
-  (global-corfu-mode 1)
-  (corfu-popupinfo-mode 1))
-
-(use-package tempel
-  :config
-  (global-tempel-abbrev-mode))
-
-(general-define-key
- :states 'insert
- "C-s" 'tempel-complete)
-(general-define-key
- :states '(insert normal)
- :keymaps 'tempel-map
- "S-TAB" 'tempel-previous
- "TAB" 'tempel-next)
-
-
-(use-package tempel-collection)
+;;   ;; Ensure that pcomplete does not write to the buffer
+;;   ;; and behaves as a pure `completion-at-point-function'.
+;;   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
+;;   (global-corfu-mode 1)
+;;   (corfu-popupinfo-mode 1))
 #+END_SRC
 
 ** LSP
@@ -470,17 +489,6 @@ This was my most missing feature from nvim, so much so I wrote this package myse
 ;;   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
 ;;   (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
 ;;   (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
-
-;; (use-package company
-;;   :config
-;;   (add-hook 'prog-mode-hook 'company-mode)
-;;   (setq company-idle-delay 0)
-;;   (setq company-show-numbers t))
-
-;; (use-package company-tabnine
-;;   :after company
-;;   :config
-;;   (add-to-list 'company-backends #'company-tabnine))
 #+END_SRC
 
 ** Mermaid/GraphViz (Graph)
