@@ -382,35 +382,21 @@ Now let's add a few completion backends.
   (yas-global-mode 1))
 #+END_SRC
 
-Setup company at the end of everything, so multiple backends can be prioritized.
+Setup company at the end of everything, so multiple backends can be grouped and prioritized.
 
 #+BEGIN_SRC emacs-lisp
 (defun setup-company ()
-  (setq company-backends '((company-tabnine :with company-yasnippet))))
+  (setq company-backends '((company-yasnippet))))
 (add-hook 'elpaca-after-init-hook #'setup-company)
-#+END_SRC
 
-** Embark + Consult + Marginalia
-
-- Embark: Quick Actions
-- Consult: Extend default commands
-- Marginalia: Add extra information on Variable/Function/FindFile/etc
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package embark
-;;   :bind ("C-;" . 'embark-act)
-;;   :init
-;;   (setq prefix-help-command #'embark-prefix-help-command
-;;         embark-quit-after-action nil))
-
-;; (use-package consult)
-;; (use-package embark-consult)
-
-;; (use-package marginalia
-;;   :config
-;;   (marginalia-mode)
-;;   (setq marginalia-align 'center
-;;         marginalia-align-offset 20))
+;; Tabnine may not sometimes keep up with my typing speed, so I may wanna toggle it often with SPC-t-n
+(defun toggle-tabnine ()
+  (interactive)
+  (setq company-backends
+        (cond ((equal company-backends '((company-yasnippet))) '((company-tabnine :with company-yasnippet)))
+              (t '((company-yasnippet))))))
+(leader-key
+  "tn" #'toggle-tabnine)
 #+END_SRC
 
 * Integrations
@@ -511,63 +497,46 @@ Setup company at the end of everything, so multiple backends can be prioritized.
 (use-package ob-svgbob)
 #+END_SRC
 
-* Miscellaneous
+* Add-ons
 
-** Themes
+** Embark
 
-*** Set Editor Theme
+This is [[https://karthinks.com/software/fifteen-ways-to-use-embark][great article]] on uses of Embark.
 
-The main theme when opening emacs.
+It makes minibuffer as flexible as normal buffer is.
 
 #+BEGIN_SRC emacs-lisp
-(use-package doom-themes
+(use-package embark
   :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (global-hl-line-mode 1)
-  (doom-themes-visual-bell-config)
-  (load-theme 'doom-city-lights t)
-  (custom-set-faces
-   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
-   '(org-ellipsis ((t (:foreground "#C678DD"))))))
+  (setq embark-quit-after-action nil)
+  (general-def '(normal motion visual global)
+    "C-."  #'embark-act
+    "C-;"  #'embark-export))
 #+END_SRC
 
-*** Org Export Theme
+Most useful actions on =embark-act=
 
-Theme of the exported website when running =org-html-export-to-html=, this copies theme that is applied above.
+| Scope  | Keybind | Action                             |
+|--------+---------+------------------------------------|
+| global | C-h     | Select actions                     |
+|        | i       | Insert minibuffer candidate        |
+| M-x    | g       | Set keybind to command for session |
 
-#+BEGIN_SRC emacs-lisp
-(use-package hexrgb
-  :ensure
-  (hexrgb :host github :repo "emacsmirror/hexrgb" :main "hexrgb.el"))
+** Consult + Marginalia
 
-(use-package org-html-themify
-  :after hexrgb
-  :ensure
-  (org-html-themify
-   :host github
-   :repo "DogLooksGood/org-html-themify"
-   :files ("*.el" "*.js" "*.css"))
-  :hook (org-mode . org-html-themify-mode)
-  :config
-  (setq org-src-preserve-indentation nil
-        org-edit-src-content-indentation 0))
-#+END_SRC
-
-*** Highlight Todo
+- Embark: Quick Actions
+- Consult: Extend default commands
+- Marginalia: Add extra information on Variable/Function/FindFile/etc
 
 #+BEGIN_SRC emacs-lisp
-(use-package hl-todo
-  :hook ((prog-mode org-mode) . hl-todo-mode)
-  :init
-  (setq hl-todo-keyword-faces '(("HOLD" . "#cfdf30")
-                                ("TODO" . "#ff9977")
-                                ("NEXT" . "#b6a0ff")
-                                ("PROG" . "#00d3d0")
-                                ("FIXME" . "#ff9977")
-                                ("DONE" . "#44bc44")
-                                ("REVIEW" . "#6ae4b9")
-                                ("DEPRECATED" . "#bfd9ff"))))
+;; (use-package consult)
+;; (use-package embark-consult)
+
+;; (use-package marginalia
+;;   :config
+;;   (marginalia-mode)
+;;   (setq marginalia-align 'center
+;;         marginalia-align-offset 20))
 #+END_SRC
 
 ** Better Help
@@ -592,6 +561,63 @@ Syncing /proc/self/cwd with changes to (default-directory).
 
 #+BEGIN_SRC emacs-lisp
 (require 'chdir)
+#+END_SRC
+
+* Look & Feel
+
+** Theme
+
+The main theme when opening emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (global-hl-line-mode 1)
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-city-lights t)
+  (custom-set-faces
+   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
+   '(org-ellipsis ((t (:foreground "#C678DD"))))))
+#+END_SRC
+
+** Org Export
+
+Theme of the exported website when running =org-html-export-to-html=, this copies theme that is applied above.
+
+#+BEGIN_SRC emacs-lisp
+(use-package hexrgb
+  :ensure
+  (hexrgb :host github :repo "emacsmirror/hexrgb" :main "hexrgb.el"))
+
+(use-package org-html-themify
+  :after hexrgb
+  :ensure
+  (org-html-themify
+   :host github
+   :repo "DogLooksGood/org-html-themify"
+   :files ("*.el" "*.js" "*.css"))
+  :hook (org-mode . org-html-themify-mode)
+  :config
+  (setq org-src-preserve-indentation nil
+        org-edit-src-content-indentation 0))
+#+END_SRC
+
+** Highlight Todo
+
+#+BEGIN_SRC emacs-lisp
+(use-package hl-todo
+  :hook ((prog-mode org-mode) . hl-todo-mode)
+  :init
+  (setq hl-todo-keyword-faces '(("HOLD" . "#cfdf30")
+                                ("TODO" . "#ff9977")
+                                ("NEXT" . "#b6a0ff")
+                                ("PROG" . "#00d3d0")
+                                ("FIXME" . "#ff9977")
+                                ("DONE" . "#44bc44")
+                                ("REVIEW" . "#6ae4b9")
+                                ("DEPRECATED" . "#bfd9ff"))))
 #+END_SRC
 
 * Misc
@@ -927,3 +953,4 @@ These resources were very helpful in formation of my config. So a huge phrase of
 - [[https://github.com/progfolio/.emacs.d][Progfolio's Emacs Config (Creator of Elpaca package manager we're currently using)]]
 - [[https://github.com/aadi58002/emacs-config/blob/main/init.org][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]]
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Luca's Emacs Config]] & [[https://www.karsdorp.io/posts/dotemacs/][Karsdorp's Emacs Config]] - Long list of useful options to use, like a reference-book!
+
