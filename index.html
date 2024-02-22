@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-22 Thu 17:40 -->
+<!-- 2024-02-22 Thu 21:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -489,7 +489,7 @@ img {
 <li><a href="#org0000066">7. Add-ons</a>
 <ul>
 <li><a href="#org000005a">7.1. Embark</a></li>
-<li><a href="#org000005d">7.2. Consult + Marginalia</a></li>
+<li><a href="#org000005d">7.2. Marginalia</a></li>
 <li><a href="#org0000060">7.3. Better Help</a></li>
 <li><a href="#org0000063">7.4. Chdir Support</a></li>
 </ul>
@@ -501,7 +501,7 @@ img {
 <li><a href="#org000006f">8.3. Highlight Todo</a></li>
 </ul>
 </li>
-<li><a href="#org000008a">9. Misc</a>
+<li><a href="#org000008a">9. Miscellaneous</a>
 <ul>
 <li><a href="#org0000075">9.1. Don't reset the cursor to the middle when scrolling</a></li>
 <li><a href="#org0000078">9.2. Highlight Trailing Whitespace</a></li>
@@ -1167,8 +1167,8 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:mode "\\.nix\\'")</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">markdown-mode</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.md\\'"</span>)
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">kotlin-mode</span>
-  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:mode</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.kt</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">|</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\.kts\\'"</span>)
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package kotlin-mode</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:mode "\\.kt\\|\\.kts\\'")</span>
 </pre>
 </div>
 </div>
@@ -1302,7 +1302,7 @@ Most useful actions on <code>embark-act</code>
 <tr>
 <td class="org-left">global</td>
 <td class="org-left">C-h</td>
-<td class="org-left">Select actions</td>
+<td class="org-left">Expand all actions</td>
 </tr>
 
 <tr>
@@ -1322,23 +1322,17 @@ Most useful actions on <code>embark-act</code>
 </div>
 
 <div id="outline-container-org000005d" class="outline-3">
-<h3 id="org000005d"><span class="section-number-3">7.2.</span> Consult + Marginalia</h3>
+<h3 id="org000005d"><span class="section-number-3">7.2.</span> Marginalia</h3>
 <div class="outline-text-3" id="text-7-2">
-<ul class="org-ul">
-<li>Embark: Quick Actions</li>
-<li>Consult: Extend default commands</li>
-<li>Marginalia: Add extra information on Variable/Function/FindFile/etc</li>
-</ul>
+<p>
+Add extra information on minibuffers.
+</p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package consult)</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package embark-consult)</span>
-
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package marginalia</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:config</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(marginalia-mode)</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq marginalia-align 'center</span>
-<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">marginalia-align-offset 20))</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">marginalia</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> marginalia-align 'center)
+  (marginalia-mode))
 </pre>
 </div>
 </div>
@@ -1456,7 +1450,7 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 
 <div id="outline-container-org000008a" class="outline-2">
-<h2 id="org000008a"><span class="section-number-2">9.</span> Misc</h2>
+<h2 id="org000008a"><span class="section-number-2">9.</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-9">
 </div>
 <div id="outline-container-org0000075" class="outline-3">
@@ -1535,6 +1529,8 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
       (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-selected-window</span>
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"ts"</span> #'window-split-toggle)
 </pre>
 </div>
 </div>
@@ -1823,8 +1819,10 @@ These resources were very helpful in formation of my config. So a huge phrase of
 <ul class="org-ul">
 <li><a href="https://opensource.com/sites/default/files/gated-content/cheat_sheet_emacs.pdf">Emacs Cheatsheet - Opensource.com</a></li>
 <li><a href="https://github.com/progfolio/.emacs.d">Progfolio's Emacs Config (Creator of Elpaca package manager we're currently using)</a></li>
-<li><a href="https://github.com/aadi58002/emacs-config/blob/main/init.org">Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)</a></li>
+<li><a href="https://github.com/aadi58002/emacs-config/blob/main/init.org">Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)</a>.</li>
 <li><a href="https://www.lucacambiaghi.com/vanilla-emacs/readme.html">Luca's Emacs Config</a> &amp; <a href="https://www.karsdorp.io/posts/dotemacs/">Karsdorp's Emacs Config</a> - Long list of useful options to use, like a reference-book!</li>
+<li><a href="https://www.reddit.com/r/emacs/comments/18bg0vc/more_advanced_emacs_tutorials">More advanced Emacs tutorials (Reddit)</a>.</li>
+<li><a href="https://www.youtube.com/@howardabrams1">Howard Abrams (YT)</a>.</li>
 </ul>
 </div>
 </div>

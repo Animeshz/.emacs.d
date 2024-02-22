@@ -404,6 +404,7 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 ** Remote Execution
 
 * Programming
+
 ** Parinfer (Lisp Auto-Parenthesis)
 
 #+BEGIN_SRC emacs-lisp
@@ -428,8 +429,8 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 ;;   :mode "\\.nix\\'")
 (use-package markdown-mode
   :mode "\\.md\\'")
-(use-package kotlin-mode
-  :mode "\\.kt\\|\\.kts\\'")
+;; (use-package kotlin-mode
+;;   :mode "\\.kt\\|\\.kts\\'")
 #+END_SRC
 
 ** AutoCompletion, CodeActions & Snippets
@@ -518,25 +519,19 @@ Most useful actions on =embark-act=
 
 | Scope  | Keybind | Action                             |
 |--------+---------+------------------------------------|
-| global | C-h     | Select actions                     |
+| global | C-h     | Expand all actions                 |
 |        | i       | Insert minibuffer candidate        |
 | M-x    | g       | Set keybind to command for session |
 
-** Consult + Marginalia
+** Marginalia
 
-- Embark: Quick Actions
-- Consult: Extend default commands
-- Marginalia: Add extra information on Variable/Function/FindFile/etc
+Add extra information on minibuffers.
 
 #+BEGIN_SRC emacs-lisp
-;; (use-package consult)
-;; (use-package embark-consult)
-
-;; (use-package marginalia
-;;   :config
-;;   (marginalia-mode)
-;;   (setq marginalia-align 'center
-;;         marginalia-align-offset 20))
+(use-package marginalia
+  :config
+  (setq marginalia-align 'center)
+  (marginalia-mode))
 #+END_SRC
 
 ** Better Help
@@ -620,7 +615,7 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
                                 ("DEPRECATED" . "#bfd9ff"))))
 #+END_SRC
 
-* Misc
+* Miscellaneous
 
 ** Don't reset the cursor to the middle when scrolling
 
@@ -681,6 +676,8 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
       (save-selected-window
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
+(leader-key
+  "ts" #'window-split-toggle)
 #+END_SRC
 
 ** open-at-point that opens respecting OS's default app for the link
@@ -951,6 +948,7 @@ These resources were very helpful in formation of my config. So a huge phrase of
 
 - [[https://opensource.com/sites/default/files/gated-content/cheat_sheet_emacs.pdf][Emacs Cheatsheet - Opensource.com]]
 - [[https://github.com/progfolio/.emacs.d][Progfolio's Emacs Config (Creator of Elpaca package manager we're currently using)]]
-- [[https://github.com/aadi58002/emacs-config/blob/main/init.org][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]]
+- [[https://github.com/aadi58002/emacs-config/blob/main/init.org][Aadi58002's Emacs Config (My classmate, been known for the Emacs user of our batch)]].
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Luca's Emacs Config]] & [[https://www.karsdorp.io/posts/dotemacs/][Karsdorp's Emacs Config]] - Long list of useful options to use, like a reference-book!
-
+- [[https://www.reddit.com/r/emacs/comments/18bg0vc/more_advanced_emacs_tutorials][More advanced Emacs tutorials (Reddit)]].
+- [[https://www.youtube.com/@howardabrams1][Howard Abrams (YT)]].
