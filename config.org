@@ -61,17 +61,17 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 - M = Alt
 - S = Shift
 
-| Scope      | Keybind                | Action                                                               |
-|------------+------------------------+----------------------------------------------------------------------|
-| global     | M-x                    | View Available Commands                                              |
-|            | C-x C-f                | Find File                                                            |
-|            | C-h [f / v / k]        | Help on [functions / variables / key-chords]                         |
-|            | C-x [2 / 3 / 0 / 1]    | Window Split [Down / Right / Switch / Close / Close All Except This] |
-|            | C-x o / C-w C-w (Evil) | Switch Window Split                                                  |
-| org-mode   | C-c C-c                | Run CodeBlock or Format Table                                        |
-|            | C-c C-l                | Insert Link                                                          |
-|            | C-c C-,                | Insert Snippets                                                      |
-| minibuffer | C-y                    | Paste                                                                |
+| Scope      | Keybind                | Action                                                      |
+|------------+------------------------+-------------------------------------------------------------|
+| global     | M-x                    | View Available Commands                                     |
+|            | C-x C-f                | Find File                                                   |
+|            | C-h [f / v / k]        | Help on [functions / variables / key-chords]                |
+|            | C-x [2 / 3 / 0 / 1]    | Window Split [Down / Right / Close / Close All Except This] |
+|            | C-x o / C-w C-w (Evil) | Switch Window Split                                         |
+| org-mode   | C-c C-c                | Run CodeBlock or Format Table                               |
+|            | C-c C-l                | Insert Link                                                 |
+|            | C-c C-,                | Insert Snippets                                             |
+| minibuffer | C-y                    | Paste                                                       |
 
 =M-<number>= is a shorthand for =C-u <number>=, and is used to pass first argument =number= in interactive commands
 via M-x or keybind.
@@ -115,7 +115,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 ;; Configure automatic line breaks and word-wrap (just in case)
 (setq-default fill-column 120  ; SPC-c
               auto-fill-function 'do-auto-fill)
-(global-visual-line-mode t)
+(global-visual-line-mode t)  ; SPC-w
 
 ;; I prefer indentation with spaces
 (setq-default tab-width 4

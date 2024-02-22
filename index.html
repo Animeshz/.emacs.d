@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-21 Wed 15:36 -->
+<!-- 2024-02-22 Thu 07:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -649,7 +649,7 @@ keybinds. And these keybinds are in general good enough for my hands as well hen
 <tr>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">C-x [2 / 3 / 0 / 1]</td>
-<td class="org-left">Window Split [Down / Right / Switch / Close / Close All Except This]</td>
+<td class="org-left">Window Split [Down / Right / Close / Close All Except This]</td>
 </tr>
 
 <tr>
@@ -750,7 +750,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Configure automatic line breaks and word-wrap (just in case)</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> fill-column 120  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-c</span>
               auto-fill-function 'do-auto-fill)
-(global-visual-line-mode t)
+(global-visual-line-mode t)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-w</span>
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">I prefer indentation with spaces</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> tab-width 4
