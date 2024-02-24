@@ -251,7 +251,6 @@ Keybinds with =SPC= prefix.
   "s" #'switch-to-buffer
   "d" #'bookmark-jump
   "w" #'visual-line-mode  ; toggle word-wrap
-  "p" #'projectile-command-map
   "/" #'comment-dwim)
 #+END_SRC
 
@@ -399,106 +398,50 @@ Setup company at the end of everything, so multiple backends can be grouped and 
   "tn" #'toggle-tabnine)
 #+END_SRC
 
-* Integrations
-
-** Remote Execution
-
 * Programming
-
-** Parinfer (Lisp Auto-Parenthesis)
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package parinfer-rust-mode
-;;   :hook '(emacs-lisp-mode)
-;;   :init
-;;   (setq parinfer-rust-auto-download t)
-;;   (setq parinfer-rust-troublesome-modes nil)
-;;   :config
-;;   (defun my-enable-minor-mode-for-special-file ()
-;;     "Enable my-minor-mode for my-special-file.txt."
-;;     (message "%s" (buffer-name))
-;;     (when (string= (buffer-name) "config.org")
-;;       (parinfer-rust-mode)))
-;;   (add-hook 'find-file-hook 'my-enable-minor-mode-for-special-file))
-#+END_SRC
 
 ** Highlighting
 
 #+BEGIN_SRC emacs-lisp
-;; (use-package nix-mode
-;;   :mode "\\.nix\\'")
-(use-package markdown-mode
-  :mode "\\.md\\'")
-;; (use-package kotlin-mode
-;;   :mode "\\.kt\\|\\.kts\\'")
+(use-package markdown-mode)
+(use-package nix-mode)
 #+END_SRC
 
-** AutoCompletion, CodeActions & Snippets
+** Project Management
+
+Consider git repositories as projects, and provide useful commands for project-scoped files.
 
 #+BEGIN_SRC emacs-lisp
-;; (use-package projectile
-;;   :init
-;;   (projectile-mode +1)
-;;   :config
-;;   (define-key projectile-command-map (kbd "ESC") 'keyboard-escape-quit))
-
-;; (use-package corfu
-;;   :ensure (corfu :host github :repo "minad/corfu" :files (:defaults "extensions/*.el"))
-;;   :config
-;;   ;; Setup corfu for popup like completion
-;;   (setq corfu-cycle t  ; Allows cycling through candidates
-;;         corfu-auto t   ; Enable auto completion
-;;         corfu-auto-prefix 0  ; Complete with less prefix keys
-;;         corfu-auto-delay 0.0  ; No delay for completion
-;;         corfu-echo-documentation t ; Echo docs for current completion option
-;;         corfu-popupinfo-delay 0.0
-;;         corfu-quit-no-match 'separator
-;;         corfu-quit-at-boundary 'insert)
-
-;;   ;; Silence the pcomplete capf, no errors or messages!
-;;   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
-
-;;   ;; Ensure that pcomplete does not write to the buffer
-;;   ;; and behaves as a pure `completion-at-point-function'.
-;;   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
-;;   (global-corfu-mode 1)
-;;   (corfu-popupinfo-mode 1))
-#+END_SRC
-
-** LSP
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package eglot
-;;   :hook (prog-mode . eglot-ensure)
-;;   :config
-;;   (setq debug-on-error nil)
-;;   (add-to-list 'eglot-server-programs '(kotlin-mode . ("kotlin-language-server")))
-;;   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-;;   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
-;;   (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
-;;   (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
-#+END_SRC
-
-** Mermaid/GraphViz (Graph)
-
-#+BEGIN_SRC emacs-lisp
-(use-package mermaid-mode)
-(use-package ob-mermaid
+(use-package projectile
   :config
-  (add-hook 'org-babel-after-execute-hook (lambda ()
-                                            (org-redisplay-inline-images)))
-  (setq org-startup-with-inline-images t)
-  (setq org-confirm-babel-evaluate nil)
-  (org-babel-do-load-languages 'org-babel-load-languages '((mermaid . t))))
-
-(use-package graphviz-dot-mode
-  :config
-  (org-babel-do-load-languages 'org-babel-load-languages '((dot . t))))
-
-(use-package ob-svgbob)
+  (projectile-mode +1)
+  (leader-key
+    "p" #'projectile-command-map))
 #+END_SRC
+
+Some importantkeybinds to remember,
+
+| Keybind   | Action                   |
+|-----------+--------------------------|
+| SPC-p-f   | Find file within project |
+| SPC-p-x-s | Open shell on project    |
+| SPC-p-s-g | Grep on project          |
+| SPC-p-D   | Dired on project         |
 
 * Add-ons
+
+** Remote Execution
+
+Tramp (Transparent Remote Access Multiple Protocol) automatically kicks in when working in
+=/[protocol:]user@x.x.x.x:/path/to/file= directory. Can be opened via normal find-file or in the org code block with
+=:dir= property.
+
+#+BEGIN_SRC emacs-lisp
+(use-package tramp
+  :ensure nil
+  :config
+  (setq tramp-default-method "ssh"))
+#+END_SRC
 
 ** Embark
 
@@ -616,6 +559,10 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
 #+END_SRC
 
 * Miscellaneous
+
+** Notes
+
+- =emoji-list= is my emoji picker replacement 🙂
 
 ** Don't reset the cursor to the middle when scrolling
 
