@@ -3,427 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-24 Sat 20:31 -->
+<!-- 2024-02-25 Sun 22:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
 <meta name="author" content="Animesh Sahu" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
-<!--/*--><![CDATA[/*><!--*/
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-html {
-	line-height: 1.35;
-	-webkit-text-size-adjust: 100%;
-}
-
-body {
-	margin: 0;
-	font-family:
-		system-ui,
-		-apple-system,
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
-}
-
-hr {
-	height: 0;
-	color: inherit;
-}
-
-b,
-strong {
-	font-weight: bolder;
-}
-
-code,
-kbd,
-samp,
-pre {
-	font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
-		monospace;
-	font-size: 1em;
-}
-
-small {
-	font-size: 80%;
-}
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-sup {
-	top: -0.5em;
-}
-
-table {
-	text-indent: 0;
-	border-color: inherit;
-}
-
-summary {
-	display: list-item;
-}
-
-:root {
-  --bc-tb: #1A2F54;
-  --bc-block: #008ED1;
-  --clr: #333333;
-  --clr-tb-hd: #85CEEB;
-  --clr-code: #85CEEB;
-  --bg: #FFFFFF;
-  --bg-code: #335EA8;
-  --bg-tb-hd: #335EA8;
-  --bg-block: #FFFFE0;
-  --clr-link: #D0372D;
-  --clr-title: #333333;
-  --clr-todo: #008000;
-  --bg-todo: initial;
-  --clr-done: #8D8D84;
-  --bg-done: initial;
-  --ts-clr: #0000FF;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #0000FF;
-  --bg-constant: initial;
-  --clr-constant: #D0372D;
-  --bg-comment: initial;
-  --clr-comment: #8D8D84;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: #8D8D84;
-  --bg-function: initial;
-  --clr-function: #006699;
-  --bg-variable: initial;
-  --clr-variable: #BA36A5;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: #808080;
-  --bg-doc: initial;
-  --clr-doc: #036A07;
-  --bg-builtin: initial;
-  --clr-builtin: #006FE0;
-  --bg-string: initial;
-  --clr-string: #008000;
-}
-
-html {
-  font-family: Sans;
-}
-
-body {
-  background: #999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-body[data-theme='light'] {
-  background: var(--bg);
-  color: var(--clr);
-}
-
-body[data-theme='dark'] {
-  background: var(--bg);
-  color: var(--clr);
-  --bc-tb: #eeeeec;
-  --bc-block: initial;
-  --clr: #eeeeec;
-  --clr-code: #2e3436;
-  --clr-tb-hd: #2e3436;
-  --bg: #2e3436;
-  --bg-tb-hd: #d3d7cf;
-  --bg-code: #d3d7cf;
-  --bg-block: initial;
-  --clr-link: #e9b2e3;
-  --clr-title: #eeeeec;
-  --clr-todo: #e9b96e;
-  --bg-todo: initial;
-  --clr-done: #73d216;
-  --bg-done: initial;
-  --ts-clr: #b4fa70;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #b4fa70;
-  --bg-constant: initial;
-  --clr-constant: #e9b2e3;
-  --bg-comment: initial;
-  --clr-comment: #73d216;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: initial;
-  --bg-function: initial;
-  --clr-function: #fce94f;
-  --bg-variable: initial;
-  --clr-variable: #fcaf3e;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: initial;
-  --bg-doc: initial;
-  --clr-doc: initial;
-  --bg-builtin: initial;
-  --clr-builtin: #e090d7;
-  --bg-string: initial;
-  --clr-string: #e9b96e;
-}
-
-
-@media only screen and (max-width: 768px) {
-  #content {
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #content {
-    width: 768px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  body {
-    align-items: flex-end;
-  }
-  #content {
-    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
-    margin-right: var(--mg);
-  }
-}
-
-h1 {
-  color: var(--clr-title);
-  text-align: center;
-}
-h2, h3, h4, h5, h6, h7 {
-  font-family: Sans Serif;
-}
-h2 {
-  line-height: 2.5em;
-}
-h2::before {
-  content: "◉ ";
-}
-h3::before {
-  content: "✸ ";
-}
-h4::before {
-  content: "▷ ";
-}
-
-code {
-  color: var(--clr-code);
-  background: var(--bg-code);
-  border-radius: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-pre {
-  padding: 20px;
-  border: 1px solid var(--bc-block);
-  background: var(--bg-block);
-  font-size: 0.9rem;
-  overflow-x: scroll;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-
-.todo {
-  color: var(--clr-todo);
-  background: var(--bg-todo);
-}
-
-.done {
-  color: var(--clr-done);
-  background: var(--bg-done);
-}
-
-.timestamp-wrapper {
-  font-size: 0.8rem;
-  color: var(--clr-ts);
-}
-
-table {
-  width: 100%;
-  border: 2px solid var(--bc-tb);
-}
-
-thead {
-  color: var(--clr-tb-hd);
-  background: var(--bg-tb-hd);
-}
-
-td, th {
-  border: thin solid var(--bc-tb);
-}
-
-li {
-  line-height: 2rem;
-}
-
-a {
-  text-decoration: none;
-  color: var(--clr-link);
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-#table-of-contents > h2 {
-  display: none;
-}
-
-#table-of-contents {
-  border: thin solid var(--bc-block);
-  background: var(--bg-block);
-}
-
-#toggle-toc {
-  display: none;
-}
-
-.toc-show {
-  display: block!important;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 2em;
-    line-height: 2em;
-    display: block;
-  }
-  #table-of-contents {
-    background: var(--bg);
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-y: scroll;
-  }
-  #table-of-contents a {
-    color: var(--clr);
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  #table-of-contents {
-    font-size: 0.8rem;
-    position: fixed;
-    left: var(--mg);
-    top: var(--mg);
-    bottom: var(--mg);
-    width: var(--w-toc);
-    overflow-y: scroll;
-  }
-}
-
-#table-of-contents::-webkit-scrollbar {
-  display: none;
-}
-
-#table-of-contents {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.MathJax_Display {
-  font-size: 1.25em;
-}
-
-#toggle-theme {
-  border-width: 0;
-  line-height: 4em;
-  padding-left: 1em;
-  padding-right: 1em;
-  background: var(--bg-block);
-  color: var(--clr-code);
-}
-
-#toggle-theme:hover {
-  cursor: pointer;
-}
-
-img {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-theme {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #toggle-theme {
-    position: absolute;
-    top: var(--mg);
-    right: var(--mg);
-    border-radius: 5px;
-  }
-}
-
-.theme-transition {
-  transition: all 0.5s;
-}
-
-.status {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  ul {
-    padding-left: .5em;
-    margin-left: 0;
-  }
-  li {
-    padding-left: 0;
-    margin-left: 0;
-  }
-}
-/*]]>*/-->
-</style>
 <style type="text/css">
 <!--/*--><![CDATA[/*><!--*/
 *,
@@ -909,19 +494,18 @@ img {
 <li><a href="#org0000063">7.3. Highlight Todo</a></li>
 </ul>
 </li>
-<li><a href="#org0000081">8. Miscellaneous</a>
+<li><a href="#org000007e">8. Miscellaneous</a>
 <ul>
 <li><a href="#org0000069">8.1. Notes</a></li>
 <li><a href="#org000006c">8.2. Don't reset the cursor to the middle when scrolling</a></li>
 <li><a href="#org000006f">8.3. Highlight Trailing Whitespace</a></li>
-<li><a href="#org0000072">8.4. Don't affect previous line with C-backspace</a></li>
+<li><a href="#org0000072">8.4. Window Split Vertical-Horizontal Toggle</a></li>
 <li><a href="#org0000075">8.5. Change backup file dump path</a></li>
-<li><a href="#org0000078">8.6. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org000007b">8.7. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#org000007e">8.8. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org0000078">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org000007b">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
 </ul>
 </li>
-<li><a href="#org0000084">9. Resources References</a></li>
+<li><a href="#org0000081">9. Resources References</a></li>
 </ul>
 </div>
 </div>
@@ -1350,14 +934,20 @@ Ergonomic UX on insert-like modes,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> 'insert
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-unbind</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-&lt;backspace&gt;"</span>)
+
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> 'insert
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;tab&gt;"</span> #'tab-to-tab-stop
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-&lt;backspace&gt;"</span> #'evil-delete-backward-word
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> #'evil-paste-before-cursor-after)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> '(isearch-mode-map)
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;down&gt;"</span> #'isearch-ring-advance
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;up&gt;"</span> #'isearch-ring-retreat
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> #'isearch-yank-kill)
 
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> '(minibuffer-mode-map)
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-&lt;backspace&gt;"</span> #'evil-delete-backward-word
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-v"</span> #'yank)
 </pre>
 </div>
@@ -1505,7 +1095,7 @@ Now let's add a few completion backends.
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">yasnippet</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> yas-snippet-dirs '(<span style="color: var(--clr-string); background-color: var(--bg-string);">"~/.emacs.d/snippets"</span>))
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"ns"</span> #'yas-new-snippet)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"ns"</span> #'yas-new-snippet)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-n-s</span>
   (yas-global-mode 1))
 </pre>
 </div>
@@ -1515,18 +1105,18 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setup-company</span> ()
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/setup-company</span> ()
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> company-backends '((company-yasnippet))))
-(add-hook 'elpaca-after-init-hook #'setup-company)
+(add-hook 'elpaca-after-init-hook #'my/setup-company)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Tabnine may not sometimes keep up with my typing speed, so I may wanna toggle it often with SPC-t-n</span>
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">toggle-tabnine</span> ()
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/toggle-tabnine</span> ()
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> company-backends
         (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span> ((equal company-backends '((company-yasnippet))) '((company-tabnine <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:with</span> company-yasnippet)))
               (t '((company-yasnippet))))))
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
-  <span style="color: var(--clr-string); background-color: var(--bg-string);">"tn"</span> #'toggle-tabnine)
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"tn"</span> #'my/toggle-tabnine)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-t-n</span>
 </pre>
 </div>
 </div>
@@ -1824,8 +1414,8 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000081" class="outline-2">
-<h2 id="org0000081"><span class="section-number-2">8.</span> Miscellaneous</h2>
+<div id="outline-container-org000007e" class="outline-2">
+<h2 id="org000007e"><span class="section-number-2">8.</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-8">
 </div>
 <div id="outline-container-org0000069" class="outline-3">
@@ -1834,6 +1424,10 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 <ul class="org-ul">
 <li><code>emoji-list</code> is my emoji picker replacement 🙂</li>
 </ul>
+
+<p>
+Below are the things that I like it this way! You may opt in or out to each on your own preferences.
+</p>
 </div>
 </div>
 
@@ -1860,17 +1454,25 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 </div>
-
 <div id="outline-container-org0000072" class="outline-3">
-<h3 id="org0000072"><span class="section-number-3">8.4.</span> Don't affect previous line with C-backspace</h3>
+<h3 id="org0000072"><span class="section-number-3">8.4.</span> Window Split Vertical-Horizontal Toggle</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/backward-kill-word</span> ()
-  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Kill backward to the beginning of the current word, but do not cross lines."</span>
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/window-split-toggle</span> ()
+  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Toggle between horizontal and vertical split with two windows."</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (not (looking-back <span style="color: var(--clr-string); background-color: var(--bg-string);">"^\\s-*"</span>)) (backward-kill-word 1) (delete-horizontal-space)))
-
-(global-set-key (kbd <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;C-backspace&gt;"</span>) 'my/backward-kill-word)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (&gt; (length (window-list)) 2)
+      (<span style="color: #EBBF83;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span>)
+    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((func (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-selected-window</span>
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"ts"</span> #'my/window-split-toggle)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">SPC-t-s</span>
 </pre>
 </div>
 </div>
@@ -1897,32 +1499,8 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 
 <div id="outline-container-org0000078" class="outline-3">
-<h3 id="org0000078"><span class="section-number-3">8.6.</span> Window Split Vertical-Horizontal Toggle</h3>
+<h3 id="org0000078"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
 <div class="outline-text-3" id="text-8-6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">window-split-toggle</span> ()
-  <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Toggle between horizontal and vertical split with two windows."</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (&gt; (length (window-list)) 2)
-      (<span style="color: #EBBF83;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span>)
-    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((func (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (window-full-height-p)
-                    #'split-window-vertically
-                  #'split-window-horizontally)))
-      (delete-other-windows)
-      (funcall func)
-      (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-selected-window</span>
-        (other-window 1)
-        (switch-to-buffer (other-buffer))))))
-(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">leader-key</span>
-  <span style="color: var(--clr-string); background-color: var(--bg-string);">"ts"</span> #'window-split-toggle)
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org000007b" class="outline-3">
-<h3 id="org000007b"><span class="section-number-3">8.7.</span> open-at-point that opens respecting OS's default app for the link</h3>
-<div class="outline-text-3" id="text-8-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Open URL at point."</span>
@@ -1944,9 +1522,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org000007e" class="outline-3">
-<h3 id="org000007e"><span class="section-number-3">8.8.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
-<div class="outline-text-3" id="text-8-8">
+<div id="outline-container-org000007b" class="outline-3">
+<h3 id="org000007b"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div class="outline-text-3" id="text-8-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
 </p>
@@ -2193,9 +1771,8 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </div>
 </div>
 
-
-<div id="outline-container-org0000084" class="outline-2">
-<h2 id="org0000084"><span class="section-number-2">9.</span> Resources References</h2>
+<div id="outline-container-org0000081" class="outline-2">
+<h2 id="org0000081"><span class="section-number-2">9.</span> Resources References</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.

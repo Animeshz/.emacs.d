@@ -259,14 +259,20 @@ Keybinds with =SPC= prefix.
 Ergonomic UX on insert-like modes,
 
 #+BEGIN_SRC emacs-lisp
+(general-unbind "C-<backspace>")
+
 (general-def 'insert
   "<tab>" #'tab-to-tab-stop
+  "C-<backspace>" #'evil-delete-backward-word
   "C-S-v" #'evil-paste-before-cursor-after)
 
 (general-def '(isearch-mode-map)
+  "<down>" #'isearch-ring-advance
+  "<up>" #'isearch-ring-retreat
   "C-S-v" #'isearch-yank-kill)
 
 (general-def '(minibuffer-mode-map)
+  "C-<backspace>" #'evil-delete-backward-word
   "C-S-v" #'yank)
 #+END_SRC
 
@@ -377,25 +383,25 @@ Now let's add a few completion backends.
 (use-package yasnippet
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-  (leader-key "ns" #'yas-new-snippet)
+  (leader-key "ns" #'yas-new-snippet)  ; SPC-n-s
   (yas-global-mode 1))
 #+END_SRC
 
 Setup company at the end of everything, so multiple backends can be grouped and prioritized.
 
 #+BEGIN_SRC emacs-lisp
-(defun setup-company ()
+(defun my/setup-company ()
   (setq company-backends '((company-yasnippet))))
-(add-hook 'elpaca-after-init-hook #'setup-company)
+(add-hook 'elpaca-after-init-hook #'my/setup-company)
 
 ;; Tabnine may not sometimes keep up with my typing speed, so I may wanna toggle it often with SPC-t-n
-(defun toggle-tabnine ()
+(defun my/toggle-tabnine ()
   (interactive)
   (setq company-backends
         (cond ((equal company-backends '((company-yasnippet))) '((company-tabnine :with company-yasnippet)))
               (t '((company-yasnippet))))))
 (leader-key
-  "tn" #'toggle-tabnine)
+  "tn" #'my/toggle-tabnine)  ; SPC-t-n
 #+END_SRC
 
 * Programming
@@ -564,6 +570,8 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
 
 - =emoji-list= is my emoji picker replacement 🙂
 
+Below are the things that I like it this way! You may opt in or out to each on your own preferences.
+
 ** Don't reset the cursor to the middle when scrolling
 
 #+BEGIN_SRC emacs-lisp
@@ -579,16 +587,24 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
 (add-hook 'prog-mode-hook
           (lambda () (font-lock-add-keywords nil '(("\\s-+$" 0 'trailing-whitespace)))))
 #+END_SRC
-
-** Don't affect previous line with C-backspace
+** Window Split Vertical-Horizontal Toggle
 
 #+BEGIN_SRC emacs-lisp
-(defun my/backward-kill-word ()
-  "Kill backward to the beginning of the current word, but do not cross lines."
+(defun my/window-split-toggle ()
+  "Toggle between horizontal and vertical split with two windows."
   (interactive)
-  (if (not (looking-back "^\\s-*")) (backward-kill-word 1) (delete-horizontal-space)))
-
-(global-set-key (kbd "<C-backspace>") 'my/backward-kill-word)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+(leader-key
+  "ts" #'my/window-split-toggle)  ; SPC-t-s
 #+END_SRC
 
 ** Change backup file dump path
@@ -605,26 +621,6 @@ Theme of the exported website when running =org-html-export-to-html=, this copie
       (concat user-temporary-file-directory ".auto-saves-"))
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
-#+END_SRC
-
-** Window Split Vertical-Horizontal Toggle
-
-#+BEGIN_SRC emacs-lisp
-(defun window-split-toggle ()
-  "Toggle between horizontal and vertical split with two windows."
-  (interactive)
-  (if (> (length (window-list)) 2)
-      (error "Can't toggle with more than 2 windows!")
-    (let ((func (if (window-full-height-p)
-                    #'split-window-vertically
-                  #'split-window-horizontally)))
-      (delete-other-windows)
-      (funcall func)
-      (save-selected-window
-        (other-window 1)
-        (switch-to-buffer (other-buffer))))))
-(leader-key
-  "ts" #'window-split-toggle)
 #+END_SRC
 
 ** open-at-point that opens respecting OS's default app for the link
