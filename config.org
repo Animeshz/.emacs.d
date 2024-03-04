@@ -1,7 +1,7 @@
 #+TITLE: My Literate Emacs Configuration
 #+STARTUP: overview
 #+EXPORT_FILE_NAME: index.html
-#+PROPERTIES: header-args :lexical t
+#+PROPERTY: header-args :lexical t
 
 * Preliminaries
 
@@ -140,6 +140,7 @@ Same goes for =org-mode=.
 ;; Allow these languages for code evaluation in org-mode documents
 (org-babel-do-load-languages 'org-babel-load-languages
                              '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t)))  ; C-c C-c
+(setq org-confirm-babel-evaluate nil)
 
 ;; Give org html export a deterministic id so it doesn't pollute git history
 (defun my/org-deterministic-reference (references)
