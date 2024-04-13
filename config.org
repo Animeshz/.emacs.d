@@ -536,6 +536,7 @@ The beautiful bottom mode-line.
 #+BEGIN_SRC emacs-lisp
 (use-package telephone-line
   :config
+  ;; Set theme (color & separator)
   (setq telephone-line-primary-left-separator 'telephone-line-identity-left
         telephone-line-primary-right-separator 'telephone-line-identity-right
         telephone-line-secondary-left-separator 'telephone-line-nil
@@ -549,12 +550,14 @@ The beautiful bottom mode-line.
    `(telephone-line-evil-motion ((t (:foreground "black" :background "burlywood2" :inherit telephone-line-evil))))
    `(telephone-line-evil-emacs ((t (:foreground "black" :background "cornflowerblue" :inherit telephone-line-evil)))))
 
-  ;; TODO: Raised a bug report in mail about this, since this isn't best way to do it for every other language manually
+  ;; Remove unwanted suffixes from major-mode
   (advice-add 'c-update-modeline :around #'ignore)  ; C++//l => C++
+  (add-hook 'after-change-major-mode-hook
+            (lambda () (if (listp mode-name) (setq mode-name (car mode-name)))))
 
+  ;; Custom segments and mode-line configuration
   (telephone-line-defsegment telephone-line-dir ()
     (file-name-nondirectory (directory-file-name default-directory)))
-
   (telephone-line-defsegment telephone-line-visual-selected-char-count ()
     (if (evil-visual-state-p)
         (let ((beg (region-beginning))
