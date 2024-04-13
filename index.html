@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-13 Sat 14:01 -->
+<!-- 2024-04-13 Sat 16:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -1377,6 +1377,19 @@ The beautiful bottom mode-line.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">telephone-line</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-primary-left-separator 'telephone-line-identity-left
+        telephone-line-primary-right-separator 'telephone-line-identity-right
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+
+  (custom-set-faces
+   `(telephone-line-evil-normal ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgreen"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   `(telephone-line-evil-insert ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"skyblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   `(telephone-line-evil-visual ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgoldenrod"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   `(telephone-line-evil-operator ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"mediumpurple2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   `(telephone-line-evil-motion ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"burlywood2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   `(telephone-line-evil-emacs ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"cornflowerblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil)))))
+
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: #ff9977; background-color: var(--bg-comment); font-weight: bold;">TODO</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">: Raised a bug report in mail about this, since this isn't best way to do it for every other language manually</span>
   (advice-add 'c-update-modeline <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'ignore)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C++//l =&gt; C++</span>
 
@@ -1390,20 +1403,6 @@ The beautiful bottom mode-line.
           (format <span style="color: var(--clr-string); background-color: var(--bg-string);">" %d chars  "</span> (+ 1 (- end beg))))
       <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>))
 
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-primary-left-separator 'telephone-line-identity-left
-        telephone-line-primary-right-separator 'telephone-line-identity-right
-        telephone-line-secondary-left-separator 'telephone-line-nil
-        telephone-line-secondary-right-separator 'telephone-line-nil)
-
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(custom-set-faces</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-insert ((t (:background ,(cadr evil-insert-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-normal ((t (:background ,(cadr evil-normal-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-visual ((t (:background ,(cadr evil-visual-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-replace ((t (:background ,(cadr evil-replace-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-motion ((t (:background ,(cadr evil-motion-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-operator ((t (:background ,(cadr evil-operator-state-cursor) :inherit telephone-line-evil))))</span>
-  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-emacs ((t (:background ,(cadr evil-emacs-state-cursor) :inherit telephone-line-evil)))))</span>
-
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-lhs
         '((evil   . (telephone-line-evil-tag-segment))
           (accent . (telephone-line-vc-segment))
@@ -1411,7 +1410,8 @@ The beautiful bottom mode-line.
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-rhs
         '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:args</span> (0 0))))))
+          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:args</span> (3 2))))))
+
   (telephone-line-mode 1))
 </pre>
 </div>

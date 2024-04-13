@@ -534,6 +534,19 @@ The beautiful bottom mode-line.
 #+BEGIN_SRC emacs-lisp
 (use-package telephone-line
   :config
+  (setq telephone-line-primary-left-separator 'telephone-line-identity-left
+        telephone-line-primary-right-separator 'telephone-line-identity-right
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+
+  (custom-set-faces
+   `(telephone-line-evil-normal ((t (:foreground "black" :background "lightgreen" :inherit telephone-line-evil))))
+   `(telephone-line-evil-insert ((t (:foreground "black" :background "skyblue" :inherit telephone-line-evil))))
+   `(telephone-line-evil-visual ((t (:foreground "black" :background "lightgoldenrod" :inherit telephone-line-evil))))
+   `(telephone-line-evil-operator ((t (:foreground "black" :background "mediumpurple2" :inherit telephone-line-evil))))
+   `(telephone-line-evil-motion ((t (:foreground "black" :background "burlywood2" :inherit telephone-line-evil))))
+   `(telephone-line-evil-emacs ((t (:foreground "black" :background "cornflowerblue" :inherit telephone-line-evil)))))
+
   ;; TODO: Raised a bug report in mail about this, since this isn't best way to do it for every other language manually
   (advice-add 'c-update-modeline :around #'ignore)  ; C++//l => C++
 
@@ -547,20 +560,6 @@ The beautiful bottom mode-line.
           (format " %d chars  " (+ 1 (- end beg))))
       ""))
 
-  (setq telephone-line-primary-left-separator 'telephone-line-identity-left
-        telephone-line-primary-right-separator 'telephone-line-identity-right
-        telephone-line-secondary-left-separator 'telephone-line-nil
-        telephone-line-secondary-right-separator 'telephone-line-nil)
-
-  ;; (custom-set-faces
-  ;;  `(telephone-line-evil-insert ((t (:background ,(cadr evil-insert-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-normal ((t (:background ,(cadr evil-normal-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-visual ((t (:background ,(cadr evil-visual-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-replace ((t (:background ,(cadr evil-replace-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-motion ((t (:background ,(cadr evil-motion-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-operator ((t (:background ,(cadr evil-operator-state-cursor) :inherit telephone-line-evil))))
-  ;;  `(telephone-line-evil-emacs ((t (:background ,(cadr evil-emacs-state-cursor) :inherit telephone-line-evil)))))
-
   (setq telephone-line-lhs
         '((evil   . (telephone-line-evil-tag-segment))
           (accent . (telephone-line-vc-segment))
@@ -568,7 +567,8 @@ The beautiful bottom mode-line.
   (setq telephone-line-rhs
         '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment :args (0 0))))))
+          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment :args (3 2))))))
+
   (telephone-line-mode 1))
 #+END_SRC
 
