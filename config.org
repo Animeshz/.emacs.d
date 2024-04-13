@@ -17,6 +17,8 @@ indcredible ingrained & integrable plugin ecosystem. You can't imagine any other
 of use cases, sometimes even better than their recommended options. It has elevated my workflow as a programmer to a
 whole new level.
 
+[[./ss.jpg]]
+
 ** Introduction
 
 This file, even though looking like a documentation or a book is indeed my emacs configuration!
