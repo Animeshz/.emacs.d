@@ -527,6 +527,51 @@ The main theme when opening emacs.
    '(org-ellipsis ((t (:foreground "#C678DD"))))))
 #+END_SRC
 
+** ModeLine
+
+The beautiful bottom mode-line.
+
+#+BEGIN_SRC emacs-lisp
+(use-package telephone-line
+  :config
+  ;; TODO: Raised a bug report in mail about this, since this isn't best way to do it for every other language manually
+  (advice-add 'c-update-modeline :around #'ignore)  ; C++//l => C++
+
+  (telephone-line-defsegment telephone-line-dir ()
+    (file-name-nondirectory (directory-file-name default-directory)))
+
+  (telephone-line-defsegment telephone-line-visual-selected-char-count ()
+    (if (evil-visual-state-p)
+        (let ((beg (region-beginning))
+              (end (region-end)))
+          (format " %d chars  " (+ 1 (- end beg))))
+      ""))
+
+  (setq telephone-line-primary-left-separator 'telephone-line-identity-left
+        telephone-line-primary-right-separator 'telephone-line-identity-right
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+
+  ;; (custom-set-faces
+  ;;  `(telephone-line-evil-insert ((t (:background ,(cadr evil-insert-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-normal ((t (:background ,(cadr evil-normal-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-visual ((t (:background ,(cadr evil-visual-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-replace ((t (:background ,(cadr evil-replace-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-motion ((t (:background ,(cadr evil-motion-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-operator ((t (:background ,(cadr evil-operator-state-cursor) :inherit telephone-line-evil))))
+  ;;  `(telephone-line-evil-emacs ((t (:background ,(cadr evil-emacs-state-cursor) :inherit telephone-line-evil)))))
+
+  (setq telephone-line-lhs
+        '((evil   . (telephone-line-evil-tag-segment))
+          (accent . (telephone-line-vc-segment))
+          (nil    . (telephone-line-buffer-segment))))
+  (setq telephone-line-rhs
+        '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment :args (0 0))))))
+  (telephone-line-mode 1))
+#+END_SRC
+
 ** Org Export
 
 Theme of the exported website when running =org-html-export-to-html=, this copies theme that is applied above.

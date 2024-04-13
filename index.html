@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-02-25 Sun 22:39 -->
+<!-- 2024-04-13 Sat 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -487,25 +487,26 @@ img {
 <li><a href="#org0000057">6.5. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org0000066">7. Look &amp; Feel</a>
+<li><a href="#org0000069">7. Look &amp; Feel</a>
 <ul>
 <li><a href="#org000005d">7.1. Theme</a></li>
-<li><a href="#org0000060">7.2. Org Export</a></li>
-<li><a href="#org0000063">7.3. Highlight Todo</a></li>
+<li><a href="#org0000060">7.2. ModeLine</a></li>
+<li><a href="#org0000063">7.3. Org Export</a></li>
+<li><a href="#org0000066">7.4. Highlight Todo</a></li>
 </ul>
 </li>
-<li><a href="#org000007e">8. Miscellaneous</a>
+<li><a href="#org0000081">8. Miscellaneous</a>
 <ul>
-<li><a href="#org0000069">8.1. Notes</a></li>
-<li><a href="#org000006c">8.2. Don't reset the cursor to the middle when scrolling</a></li>
-<li><a href="#org000006f">8.3. Highlight Trailing Whitespace</a></li>
-<li><a href="#org0000072">8.4. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org0000075">8.5. Change backup file dump path</a></li>
-<li><a href="#org0000078">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#org000007b">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org000006c">8.1. Notes</a></li>
+<li><a href="#org000006f">8.2. Don't reset the cursor to the middle when scrolling</a></li>
+<li><a href="#org0000072">8.3. Highlight Trailing Whitespace</a></li>
+<li><a href="#org0000075">8.4. Window Split Vertical-Horizontal Toggle</a></li>
+<li><a href="#org0000078">8.5. Change backup file dump path</a></li>
+<li><a href="#org000007b">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org000007e">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
 </ul>
 </li>
-<li><a href="#org0000081">9. Resources References</a></li>
+<li><a href="#org0000084">9. Resources References</a></li>
 </ul>
 </div>
 </div>
@@ -775,6 +776,7 @@ Same goes for <code>org-mode</code>.
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Allow these languages for code evaluation in org-mode documents</span>
 (org-babel-do-load-languages 'org-babel-load-languages
                              '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t)))  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C-c C-c</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> org-confirm-babel-evaluate nil)
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Give org html export a deterministic id so it doesn't pollute git history</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/org-deterministic-reference</span> (references)
@@ -1338,8 +1340,8 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org0000066" class="outline-2">
-<h2 id="org0000066"><span class="section-number-2">7.</span> Look &amp; Feel</h2>
+<div id="outline-container-org0000069" class="outline-2">
+<h2 id="org0000069"><span class="section-number-2">7.</span> Look &amp; Feel</h2>
 <div class="outline-text-2" id="text-7">
 </div>
 <div id="outline-container-org000005d" class="outline-3">
@@ -1366,8 +1368,59 @@ The main theme when opening emacs.
 </div>
 
 <div id="outline-container-org0000060" class="outline-3">
-<h3 id="org0000060"><span class="section-number-3">7.2.</span> Org Export</h3>
+<h3 id="org0000060"><span class="section-number-3">7.2.</span> ModeLine</h3>
 <div class="outline-text-3" id="text-7-2">
+<p>
+The beautiful bottom mode-line.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">telephone-line</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: #ff9977; background-color: var(--bg-comment); font-weight: bold;">TODO</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">: Raised a bug report in mail about this, since this isn't best way to do it for every other language manually</span>
+  (advice-add 'c-update-modeline <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'ignore)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C++//l =&gt; C++</span>
+
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">telephone-line-defsegment</span> telephone-line-dir ()
+    (file-name-nondirectory (directory-file-name default-directory)))
+
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">telephone-line-defsegment</span> telephone-line-visual-selected-char-count ()
+    (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (evil-visual-state-p)
+        (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((beg (region-beginning))
+              (end (region-end)))
+          (format <span style="color: var(--clr-string); background-color: var(--bg-string);">" %d chars  "</span> (+ 1 (- end beg))))
+      <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>))
+
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-primary-left-separator 'telephone-line-identity-left
+        telephone-line-primary-right-separator 'telephone-line-identity-right
+        telephone-line-secondary-left-separator 'telephone-line-nil
+        telephone-line-secondary-right-separator 'telephone-line-nil)
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(custom-set-faces</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-insert ((t (:background ,(cadr evil-insert-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-normal ((t (:background ,(cadr evil-normal-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-visual ((t (:background ,(cadr evil-visual-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-replace ((t (:background ,(cadr evil-replace-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-motion ((t (:background ,(cadr evil-motion-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-operator ((t (:background ,(cadr evil-operator-state-cursor) :inherit telephone-line-evil))))</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;  </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">`(telephone-line-evil-emacs ((t (:background ,(cadr evil-emacs-state-cursor) :inherit telephone-line-evil)))))</span>
+
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-lhs
+        '((evil   . (telephone-line-evil-tag-segment))
+          (accent . (telephone-line-vc-segment))
+          (nil    . (telephone-line-buffer-segment))))
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-rhs
+        '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:args</span> (0 0))))))
+  (telephone-line-mode 1))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0000063" class="outline-3">
+<h3 id="org0000063"><span class="section-number-3">7.3.</span> Org Export</h3>
+<div class="outline-text-3" id="text-7-3">
 <p>
 Theme of the exported website when running <code>org-html-export-to-html</code>, this copies theme that is applied above.
 </p>
@@ -1393,9 +1446,9 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000063" class="outline-3">
-<h3 id="org0000063"><span class="section-number-3">7.3.</span> Highlight Todo</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-org0000066" class="outline-3">
+<h3 id="org0000066"><span class="section-number-3">7.4.</span> Highlight Todo</h3>
+<div class="outline-text-3" id="text-7-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hl-todo</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> ((prog-mode org-mode) . hl-todo-mode)
@@ -1414,12 +1467,12 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org000007e" class="outline-2">
-<h2 id="org000007e"><span class="section-number-2">8.</span> Miscellaneous</h2>
+<div id="outline-container-org0000081" class="outline-2">
+<h2 id="org0000081"><span class="section-number-2">8.</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org0000069" class="outline-3">
-<h3 id="org0000069"><span class="section-number-3">8.1.</span> Notes</h3>
+<div id="outline-container-org000006c" class="outline-3">
+<h3 id="org000006c"><span class="section-number-3">8.1.</span> Notes</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li><code>emoji-list</code> is my emoji picker replacement 🙂</li>
@@ -1431,8 +1484,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org000006c" class="outline-3">
-<h3 id="org000006c"><span class="section-number-3">8.2.</span> Don't reset the cursor to the middle when scrolling</h3>
+<div id="outline-container-org000006f" class="outline-3">
+<h3 id="org000006f"><span class="section-number-3">8.2.</span> Don't reset the cursor to the middle when scrolling</h3>
 <div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-variables
@@ -1443,8 +1496,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org000006f" class="outline-3">
-<h3 id="org000006f"><span class="section-number-3">8.3.</span> Highlight Trailing Whitespace</h3>
+<div id="outline-container-org0000072" class="outline-3">
+<h3 id="org0000072"><span class="section-number-3">8.3.</span> Highlight Trailing Whitespace</h3>
 <div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t)
@@ -1454,8 +1507,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 </div>
-<div id="outline-container-org0000072" class="outline-3">
-<h3 id="org0000072"><span class="section-number-3">8.4.</span> Window Split Vertical-Horizontal Toggle</h3>
+<div id="outline-container-org0000075" class="outline-3">
+<h3 id="org0000075"><span class="section-number-3">8.4.</span> Window Split Vertical-Horizontal Toggle</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/window-split-toggle</span> ()
@@ -1478,8 +1531,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org0000075" class="outline-3">
-<h3 id="org0000075"><span class="section-number-3">8.5.</span> Change backup file dump path</h3>
+<div id="outline-container-org0000078" class="outline-3">
+<h3 id="org0000078"><span class="section-number-3">8.5.</span> Change backup file dump path</h3>
 <div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">user-temporary-file-directory</span>
@@ -1498,8 +1551,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org0000078" class="outline-3">
-<h3 id="org0000078"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
+<div id="outline-container-org000007b" class="outline-3">
+<h3 id="org000007b"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
 <div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
@@ -1522,8 +1575,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org000007b" class="outline-3">
-<h3 id="org000007b"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div id="outline-container-org000007e" class="outline-3">
+<h3 id="org000007e"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
 <div class="outline-text-3" id="text-8-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
@@ -1771,8 +1824,8 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </div>
 </div>
 
-<div id="outline-container-org0000081" class="outline-2">
-<h2 id="org0000081"><span class="section-number-2">9.</span> Resources References</h2>
+<div id="outline-container-org0000084" class="outline-2">
+<h2 id="org0000084"><span class="section-number-2">9.</span> Resources References</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.
