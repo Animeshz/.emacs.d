@@ -228,7 +228,7 @@ Keybinds without prefix.
   "." #'evil-scroll-line-up
 
   ;; Indent region (same keybind as vscode lol)
-  "C-S-i" '(lambda () (interactive) (indent-region (point-min) (point-max)))
+  "C-S-i" (lambda () (interactive) (indent-region (point-min) (point-max)))
 
   "<escape>" #'keyboard-escape-quit)
 #+END_SRC
@@ -285,12 +285,12 @@ Some org mode enhancements
 ;; Toggle folding org headings with tab/ret
 (general-def 'normal org-mode-map
   "<tab>" #'evil-toggle-fold
-  "<RET>" '(lambda ()
-             (interactive)
-             (cond
-              ((org-at-heading-p) (evil-toggle-fold))
-              ((org-in-regexp org-link-any-re) (org-open-at-point))
-              (t (evil-ret)))))
+  "<RET>" (lambda ()
+            (interactive)
+            (cond
+             ((org-at-heading-p) (evil-toggle-fold))
+             ((org-in-regexp org-link-any-re) (org-open-at-point))
+             (t (evil-ret)))))
 #+END_SRC
 
 * Productivity Enhancers
@@ -543,12 +543,12 @@ The beautiful bottom mode-line.
         telephone-line-secondary-right-separator 'telephone-line-nil)
 
   (custom-set-faces
-   `(telephone-line-evil-normal ((t (:foreground "black" :background "lightgreen" :inherit telephone-line-evil))))
-   `(telephone-line-evil-insert ((t (:foreground "black" :background "skyblue" :inherit telephone-line-evil))))
-   `(telephone-line-evil-visual ((t (:foreground "black" :background "lightgoldenrod" :inherit telephone-line-evil))))
-   `(telephone-line-evil-operator ((t (:foreground "black" :background "mediumpurple2" :inherit telephone-line-evil))))
-   `(telephone-line-evil-motion ((t (:foreground "black" :background "burlywood2" :inherit telephone-line-evil))))
-   `(telephone-line-evil-emacs ((t (:foreground "black" :background "cornflowerblue" :inherit telephone-line-evil)))))
+   '(telephone-line-evil-normal ((t (:foreground "black" :background "lightgreen" :inherit telephone-line-evil))))
+   '(telephone-line-evil-insert ((t (:foreground "black" :background "skyblue" :inherit telephone-line-evil))))
+   '(telephone-line-evil-visual ((t (:foreground "black" :background "lightgoldenrod" :inherit telephone-line-evil))))
+   '(telephone-line-evil-operator ((t (:foreground "black" :background "mediumpurple2" :inherit telephone-line-evil))))
+   '(telephone-line-evil-motion ((t (:foreground "black" :background "burlywood2" :inherit telephone-line-evil))))
+   '(telephone-line-evil-emacs ((t (:foreground "black" :background "cornflowerblue" :inherit telephone-line-evil)))))
 
   ;; Remove unwanted suffixes from major-mode
   (advice-add 'c-update-modeline :around #'ignore)  ; C++//l => C++
@@ -562,8 +562,13 @@ The beautiful bottom mode-line.
     (if (evil-visual-state-p)
         (let ((beg (region-beginning))
               (end (region-end)))
-          (format " %d chars  " (+ 1 (- end beg))))
+          (format "%d chars  " (+ 1 (- end beg))))
       ""))
+  (telephone-line-defsegment telephone-line-isearch-count ()
+    ;; TODO: Seems like a bug, evil search forward always make count 0
+    ;; (if (evil-normal-state-p)
+    ;;     (format "[%s/%s] wow  " isearch-lazy-count-current isearch-lazy-count-total)
+    "")
 
   (setq telephone-line-lhs
         '((evil   . (telephone-line-evil-tag-segment))
@@ -572,7 +577,7 @@ The beautiful bottom mode-line.
   (setq telephone-line-rhs
         '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment :args (3 2))))))
+          (evil   . (telephone-line-isearch-count telephone-line-visual-selected-char-count (telephone-line-airline-position-segment :args (3 2))))))
 
   (telephone-line-mode 1))
 #+END_SRC

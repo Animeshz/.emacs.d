@@ -3,12 +3,427 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-13 Sat 19:29 -->
+<!-- 2024-04-15 Mon 11:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
 <meta name="author" content="Animesh Sahu" />
 <meta name="generator" content="Org Mode" />
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.35;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+:root {
+  --bc-tb: #1A2F54;
+  --bc-block: #008ED1;
+  --clr: #333333;
+  --clr-tb-hd: #85CEEB;
+  --clr-code: #85CEEB;
+  --bg: #FFFFFF;
+  --bg-code: #335EA8;
+  --bg-tb-hd: #335EA8;
+  --bg-block: #FFFFE0;
+  --clr-link: #D0372D;
+  --clr-title: #333333;
+  --clr-todo: #008000;
+  --bg-todo: initial;
+  --clr-done: #8D8D84;
+  --bg-done: initial;
+  --ts-clr: #0000FF;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #0000FF;
+  --bg-constant: initial;
+  --clr-constant: #D0372D;
+  --bg-comment: initial;
+  --clr-comment: #8D8D84;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: #8D8D84;
+  --bg-function: initial;
+  --clr-function: #006699;
+  --bg-variable: initial;
+  --clr-variable: #BA36A5;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #808080;
+  --bg-doc: initial;
+  --clr-doc: #036A07;
+  --bg-builtin: initial;
+  --clr-builtin: #006FE0;
+  --bg-string: initial;
+  --clr-string: #008000;
+}
+
+html {
+  font-family: Sans;
+}
+
+body {
+  background: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-theme='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-theme='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #eeeeec;
+  --bc-block: initial;
+  --clr: #eeeeec;
+  --clr-code: #2e3436;
+  --clr-tb-hd: #2e3436;
+  --bg: #2e3436;
+  --bg-tb-hd: #d3d7cf;
+  --bg-code: #d3d7cf;
+  --bg-block: initial;
+  --clr-link: #e9b2e3;
+  --clr-title: #eeeeec;
+  --clr-todo: #e9b96e;
+  --bg-todo: initial;
+  --clr-done: #73d216;
+  --bg-done: initial;
+  --ts-clr: #b4fa70;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #b4fa70;
+  --bg-constant: initial;
+  --clr-constant: #e9b2e3;
+  --bg-comment: initial;
+  --clr-comment: #73d216;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #fce94f;
+  --bg-variable: initial;
+  --clr-variable: #fcaf3e;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: initial;
+  --bg-doc: initial;
+  --clr-doc: initial;
+  --bg-builtin: initial;
+  --clr-builtin: #e090d7;
+  --bg-string: initial;
+  --clr-string: #e9b96e;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #content {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    align-items: flex-end;
+  }
+  #content {
+    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
+    margin-right: var(--mg);
+  }
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+  font-family: Sans Serif;
+}
+h2 {
+  line-height: 2.5em;
+}
+h2::before {
+  content: "◉ ";
+}
+h3::before {
+  content: "✸ ";
+}
+h4::before {
+  content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+  padding: 20px;
+  border: 1px solid var(--bc-block);
+  background: var(--bg-block);
+  font-size: 0.9rem;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#table-of-contents > h2 {
+  display: none;
+}
+
+#table-of-contents {
+  border: thin solid var(--bc-block);
+  background: var(--bg-block);
+}
+
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #table-of-contents {
+    font-size: 0.8rem;
+    position: fixed;
+    left: var(--mg);
+    top: var(--mg);
+    bottom: var(--mg);
+    width: var(--w-toc);
+    overflow-y: scroll;
+  }
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+#table-of-contents {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+#toggle-theme {
+  border-width: 0;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: var(--bg-block);
+  color: var(--clr-code);
+}
+
+#toggle-theme:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-theme {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #toggle-theme {
+    position: absolute;
+    top: var(--mg);
+    right: var(--mg);
+    border-radius: 5px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.5s;
+}
+
+.status {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    padding-left: .5em;
+    margin-left: 0;
+  }
+  li {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+/*]]>*/-->
+</style>
 <style type="text/css">
 <!--/*--><![CDATA[/*><!--*/
 *,
@@ -578,11 +993,11 @@ Install as you wish, I prefer using nix + home-manager for installation.
 <div class="org-src-container">
 <pre class="src src-nix">{ pkgs }:
 {
-  <span style="color: #718CA1;">programs.emacs</span> = {
-    <span style="color: #718CA1;">enable</span> = <span style="color: #5EC4FF;">true</span>;
-    <span style="color: #718CA1;">package</span> = pkgs.emacs29;
+  <span style="color: #b6b635;">programs.emacs</span> = {
+    <span style="color: #b6b635;">enable</span> = <span style="color: #7f7dca;">true</span>;
+    <span style="color: #b6b635;">package</span> = pkgs.emacs29;
 
-    <span style="color: #718CA1;">extraPackages</span> = epkgs: <span style="color: #5EC4FF;">with</span> epkgs; <span style="color: #5EC4FF;">with</span> pkgs; [
+    <span style="color: #b6b635;">extraPackages</span> = epkgs: <span style="color: #598bc1;">with</span> epkgs; <span style="color: #598bc1;">with</span> pkgs; [
       custom.emacs-pcre
       custom.emacs-chdir
     ];
@@ -896,7 +1311,7 @@ Keybinds without prefix.
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"."</span> #'evil-scroll-line-up
 
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Indent region (same keybind as vscode lol)</span>
-  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> '(lambda () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max)))
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"C-S-i"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>) (indent-region (point-min) (point-max)))
 
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;escape&gt;"</span> #'keyboard-escape-quit)
 </pre>
@@ -968,12 +1383,12 @@ Some org mode enhancements
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Toggle folding org headings with tab/ret</span>
 (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> 'normal org-mode-map
   <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;tab&gt;"</span> #'evil-toggle-fold
-  <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> '(lambda ()
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
-             (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span>
-              ((org-at-heading-p) (evil-toggle-fold))
-              ((org-in-regexp org-link-any-re) (org-open-at-point))
-              (t (evil-ret)))))
+  <span style="color: var(--clr-string); background-color: var(--bg-string);">"&lt;RET&gt;"</span> (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">cond</span>
+             ((org-at-heading-p) (evil-toggle-fold))
+             ((org-in-regexp org-link-any-re) (org-open-at-point))
+             (t (evil-ret)))))
 </pre>
 </div>
 </div>
@@ -1390,12 +1805,12 @@ The beautiful bottom mode-line.
         telephone-line-secondary-right-separator 'telephone-line-nil)
 
   (custom-set-faces
-   `(telephone-line-evil-normal ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgreen"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
-   `(telephone-line-evil-insert ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"skyblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
-   `(telephone-line-evil-visual ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgoldenrod"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
-   `(telephone-line-evil-operator ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"mediumpurple2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
-   `(telephone-line-evil-motion ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"burlywood2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
-   `(telephone-line-evil-emacs ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"cornflowerblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil)))))
+   '(telephone-line-evil-normal ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgreen"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   '(telephone-line-evil-insert ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"skyblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   '(telephone-line-evil-visual ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"lightgoldenrod"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   '(telephone-line-evil-operator ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"mediumpurple2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   '(telephone-line-evil-motion ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"burlywood2"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil))))
+   '(telephone-line-evil-emacs ((t (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:foreground</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"black"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:background</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"cornflowerblue"</span> <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inherit</span> telephone-line-evil)))))
 
   <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Remove unwanted suffixes from major-mode</span>
   (advice-add 'c-update-modeline <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'ignore)  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">C++//l =&gt; C++</span>
@@ -1409,8 +1824,13 @@ The beautiful bottom mode-line.
     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (evil-visual-state-p)
         (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((beg (region-beginning))
               (end (region-end)))
-          (format <span style="color: var(--clr-string); background-color: var(--bg-string);">" %d chars  "</span> (+ 1 (- end beg))))
+          (format <span style="color: var(--clr-string); background-color: var(--bg-string);">"%d chars  "</span> (+ 1 (- end beg))))
       <span style="color: var(--clr-string); background-color: var(--bg-string);">""</span>))
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">telephone-line-defsegment</span> telephone-line-isearch-count ()
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: #ff9977; background-color: var(--bg-comment); font-style: italic;">TODO</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">: Seems like a bug, evil search forward always make count 0</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(if (evil-normal-state-p)</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;     </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(format "[%s/%s] wow  " isearch-lazy-count-current isearch-lazy-count-total)</span>
+    <span style="color: var(--clr-doc); background-color: var(--bg-doc);">""</span>)
 
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-lhs
         '((evil   . (telephone-line-evil-tag-segment))
@@ -1419,7 +1839,7 @@ The beautiful bottom mode-line.
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> telephone-line-rhs
         '((nil    . (telephone-line-dir telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (evil   . (telephone-line-visual-selected-char-count (telephone-line-airline-position-segment <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:args</span> (3 2))))))
+          (evil   . (telephone-line-isearch-count telephone-line-visual-selected-char-count (telephone-line-airline-position-segment <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:args</span> (3 2))))))
 
   (telephone-line-mode 1))
 </pre>
@@ -1462,14 +1882,14 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hl-todo</span>
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> ((prog-mode org-mode) . hl-todo-mode)
   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> hl-todo-keyword-faces '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #cfdf30; background-color: var(--bg-string); font-weight: bold;">HOLD</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#cfdf30"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-weight: bold;">TODO</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #b6a0ff; background-color: var(--bg-string); font-weight: bold;">NEXT</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#b6a0ff"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #00d3d0; background-color: var(--bg-string); font-weight: bold;">PROG</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#00d3d0"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-weight: bold;">FIXME</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #44bc44; background-color: var(--bg-string); font-weight: bold;">DONE</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#44bc44"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #6ae4b9; background-color: var(--bg-string); font-weight: bold;">REVIEW</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#6ae4b9"</span>)
-                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #bfd9ff; background-color: var(--bg-string); font-weight: bold;">DEPRECATED</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#bfd9ff"</span>))))
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> hl-todo-keyword-faces '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #cfdf30; background-color: var(--bg-string); font-style: italic;">HOLD</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#cfdf30"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-style: italic;">TODO</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #b6a0ff; background-color: var(--bg-string); font-style: italic;">NEXT</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#b6a0ff"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #00d3d0; background-color: var(--bg-string); font-style: italic;">PROG</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#00d3d0"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #ff9977; background-color: var(--bg-string); font-style: italic;">FIXME</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#ff9977"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #44bc44; background-color: var(--bg-string); font-style: italic;">DONE</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#44bc44"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #6ae4b9; background-color: var(--bg-string); font-style: italic;">REVIEW</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#6ae4b9"</span>)
+                                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"</span><span style="color: #bfd9ff; background-color: var(--bg-string); font-style: italic;">DEPRECATED</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"</span> . <span style="color: var(--clr-string); background-color: var(--bg-string);">"#bfd9ff"</span>))))
 </pre>
 </div>
 </div>
@@ -1524,7 +1944,7 @@ Below are the things that I like it this way! You may opt in or out to each on y
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Toggle between horizontal and vertical split with two windows."</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (&gt; (length (window-list)) 2)
-      (<span style="color: #EBBF83;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span>)
+      (<span style="color: #f57e00; font-weight: bold;">error</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Can't toggle with more than 2 windows!"</span>)
     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let</span> ((func (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> (window-full-height-p)
                     #'split-window-vertically
                   #'split-window-horizontally)))
@@ -1567,7 +1987,7 @@ Below are the things that I like it this way! You may opt in or out to each on y
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Open URL at point."</span>
   (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interactive</span>)
-  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((link-regexp <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\[\\[</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">.*?</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: #5EC4FF; background-color: var(--bg-string); font-weight: bold;">)</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\]\\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">.*?\\</span><span style="color: var(--clr-string); background-color: var(--bg-string);">]\\]"</span>)
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">let*</span> ((link-regexp <span style="color: var(--clr-string); background-color: var(--bg-string);">"\\[\\[</span><span style="color: var(--clr-string); background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: var(--clr-string); background-color: var(--bg-string); font-weight: bold;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">.*?</span><span style="color: var(--clr-string); background-color: var(--bg-string); font-weight: bold;">\\</span><span style="color: var(--clr-string); background-color: var(--bg-string); font-weight: bold;">)</span><span style="color: var(--clr-string); background-color: var(--bg-string);">\\]\\[</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">.*?\\</span><span style="color: var(--clr-string); background-color: var(--bg-string);">]\\]"</span>)
          (link (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">save-excursion</span>
                  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">when</span> (re-search-backward link-regexp nil t)
                    (match-string 1)))))
@@ -1592,7 +2012,7 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">map-y-or-n-p</span> (prompter actor list <span style="color: #EBBF83;">&amp;optional</span> help action-alist
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">map-y-or-n-p</span> (prompter actor list <span style="color: #d65946;">&amp;optional</span> help action-alist
                               no-cursor-in-echo-area)
   <span style="color: var(--clr-doc); background-color: var(--bg-doc);">"Ask a boolean question per PROMPTER for each object in LIST, then call ACTOR.</span>
 
@@ -1600,7 +2020,7 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      object; when it returns nil, the list of objects is considered exhausted.</span>
 
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If PROMPTER is a string, it should be a format string to be used to format</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the question as </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(format PROMPTER OBJECT).</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the question as </span><span style="color: #f57e00; background-color: var(--bg-doc); font-weight: bold;">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(format PROMPTER OBJECT).</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If PROMPTER is not a string, it should be a function of one argument, an</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      object from LIST, which returns a string to be used as the question for</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      that object.  If the function's return value is not a string, it may be</span>
@@ -1627,7 +2047,7 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      plural noun describing several elements of LIST, and ACTION is a</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      transitive verb describing action by ACTOR on one or more elements</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      of LIST.  If HELP is omitted or nil, it defaults</span>
-<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      to </span><span style="color: #EBBF83; background-color: var(--bg-doc);">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(\"object\" \"objects\" \"act on\").</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);">      to </span><span style="color: #f57e00; background-color: var(--bg-doc); font-weight: bold;">\</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">(\"object\" \"objects\" \"act on\").</span>
 
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      If ACTION-ALIST is given, it is an alist specifying additional keys</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);">      that will be accepted as an answer to the questions.  Each element</span>
@@ -1680,9 +2100,9 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
                                         (vector (nth 1 elt))))
                                 action-alist)
                       (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" This But No More"</span>)
-                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do This But No More"</span>) <span style="color: #EBBF83;">. act-and-exit)</span>
+                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do This But No More"</span>) <span style="color: #f57e00; font-weight: bold;">. act-and-exit)</span>
                       (,(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> help (concat action <span style="color: var(--clr-string); background-color: var(--bg-string);">" All "</span> objects)
-                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do All"</span>) <span style="color: #EBBF83;">. automatic)</span>
+                          <span style="color: var(--clr-string); background-color: var(--bg-string);">"Do All"</span>) <span style="color: #f57e00; font-weight: bold;">. automatic)</span>
                       (<span style="color: var(--clr-string); background-color: var(--bg-string);">"No For All"</span> . exit))
                 use-menus t
                 mouse-event last-nonmenu-event))
