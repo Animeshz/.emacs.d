@@ -130,7 +130,13 @@ Emacs requires some essential tweaks to become somewhat usable.
 ;; Replace yes/no with y/n
 (setq use-short-answers t)
 
-;; Modeline
+;; Don't break hardlinks
+(setq backup-by-copying t)
+
+;; Count current and total count of isearch
+(setq isearch-lazy-count t)
+
+;; Modeline, if the custom one didn't work
 (column-number-mode 1)
 #+END_SRC
 
@@ -517,16 +523,10 @@ Syncing /proc/self/cwd with changes to (default-directory).
 The main theme when opening emacs.
 
 #+BEGIN_SRC emacs-lisp
-(use-package doom-themes
+(use-package nimbus-theme
   :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
   (global-hl-line-mode 1)
-  (doom-themes-visual-bell-config)
-  (load-theme 'doom-city-lights t)
-  (custom-set-faces
-   '(doom-themes-visual-bell ((t (:background "#00FFFF"))))
-   '(org-ellipsis ((t (:foreground "#C678DD"))))))
+  (load-theme 'nimbus t))
 #+END_SRC
 
 ** ModeLine
@@ -663,20 +663,20 @@ Below are the things that I like it this way! You may opt in or out to each on y
   "ts" #'my/window-split-toggle)  ; SPC-t-s
 #+END_SRC
 
-** Change backup file dump path
+** Change backup and lock file dump path
 
 #+BEGIN_SRC emacs-lisp
-(defvar user-temporary-file-directory
-  (concat temporary-file-directory user-login-name "/"))
-(make-directory user-temporary-file-directory t)
-(setq backup-by-copying t)
-(setq backup-directory-alist
-      `(("." . ,user-temporary-file-directory)
-        (,tramp-file-name-regexp nil)))
-(setq auto-save-list-file-prefix
-      (concat user-temporary-file-directory ".auto-saves-"))
-(setq auto-save-file-name-transforms
-      `((".*" ,user-temporary-file-directory t)))
+(defvar backupdir (concat user-emacs-directory "file-backups/"))
+(defvar lockdir (concat user-emacs-directory "file-locks/"))
+(make-directory backupdir t)
+(make-directory lockdir t)
+
+(setq auto-save-list-file-prefix (concat backupdir ".auto-saves-")
+      auto-save-file-name-transforms `((".*" ,backupdir t))
+      lock-file-name-transforms `((".*" ,lockdir t))
+      backup-directory-alist `(("." . ,backupdir))
+      tramp-auto-save-directory backupdir
+      tramp-backup-directory-alist `((".*" . ,backupdir)))
 #+END_SRC
 
 ** open-at-point that opens respecting OS's default app for the link

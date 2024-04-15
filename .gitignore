@@ -7,6 +7,8 @@ parinfer-rust/
 undo-fu-session/
 games/
 transient/
+file-locks/
+file-backups/
 
 .lsp*
 .org-id-locations
