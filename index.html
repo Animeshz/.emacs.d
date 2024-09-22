@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-22 Sun 20:51 -->
+<!-- 2024-09-22 Sun 23:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
@@ -779,6 +779,10 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Modeline, if the custom one didn't work</span>
 (column-number-mode 1)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Auto detect/guess/infer indentation levels</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">dtrt-indent</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (prog-mode . dtrt-indent-mode))
 </pre>
 </div>
 </div>
@@ -1873,7 +1877,6 @@ These resources were very helpful in formation of my config. So a huge phrase of
 </ul>
 </div>
 </div>
-
 
 <div id="outline-container-org0000091" class="outline-2">
 <h2 id="org0000091"><span class="section-number-2">10.</span> Unverified Code</h2>

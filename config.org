@@ -138,6 +138,10 @@ Emacs requires some essential tweaks to become somewhat usable.
 
 ;; Modeline, if the custom one didn't work
 (column-number-mode 1)
+
+;; Auto detect/guess/infer indentation levels
+(use-package dtrt-indent
+  :hook (prog-mode . dtrt-indent-mode))
 #+END_SRC
 
 ** Better Org-Mode Defaults
@@ -958,7 +962,6 @@ These resources were very helpful in formation of my config. So a huge phrase of
 - [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html][Luca's Emacs Config]] & [[https://www.karsdorp.io/posts/dotemacs/][Karsdorp's Emacs Config]] - Long list of useful options to use, like a reference-book!
 - [[https://www.reddit.com/r/emacs/comments/18bg0vc/more_advanced_emacs_tutorials][More advanced Emacs tutorials (Reddit)]].
 - [[https://www.youtube.com/@howardabrams1][Howard Abrams (YT)]].
-
 
 * Unverified Code
 ** Completions & Jumping
