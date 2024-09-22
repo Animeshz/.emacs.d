@@ -9,6 +9,7 @@ games/
 transient/
 file-locks/
 file-backups/
+tree-sitter/
 
 .lsp*
 .org-id-locations

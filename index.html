@@ -3,842 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-15 Mon 11:56 -->
+<!-- 2024-09-22 Sun 20:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Literate Emacs Configuration</title>
 <meta name="author" content="Animesh Sahu" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
-<!--/*--><![CDATA[/*><!--*/
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-html {
-	line-height: 1.35;
-	-webkit-text-size-adjust: 100%;
-}
-
-body {
-	margin: 0;
-	font-family:
-		system-ui,
-		-apple-system,
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
-}
-
-hr {
-	height: 0;
-	color: inherit;
-}
-
-b,
-strong {
-	font-weight: bolder;
-}
-
-code,
-kbd,
-samp,
-pre {
-	font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
-		monospace;
-	font-size: 1em;
-}
-
-small {
-	font-size: 80%;
-}
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-sup {
-	top: -0.5em;
-}
-
-table {
-	text-indent: 0;
-	border-color: inherit;
-}
-
-summary {
-	display: list-item;
-}
-
-:root {
-  --bc-tb: #1A2F54;
-  --bc-block: #008ED1;
-  --clr: #333333;
-  --clr-tb-hd: #85CEEB;
-  --clr-code: #85CEEB;
-  --bg: #FFFFFF;
-  --bg-code: #335EA8;
-  --bg-tb-hd: #335EA8;
-  --bg-block: #FFFFE0;
-  --clr-link: #D0372D;
-  --clr-title: #333333;
-  --clr-todo: #008000;
-  --bg-todo: initial;
-  --clr-done: #8D8D84;
-  --bg-done: initial;
-  --ts-clr: #0000FF;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #0000FF;
-  --bg-constant: initial;
-  --clr-constant: #D0372D;
-  --bg-comment: initial;
-  --clr-comment: #8D8D84;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: #8D8D84;
-  --bg-function: initial;
-  --clr-function: #006699;
-  --bg-variable: initial;
-  --clr-variable: #BA36A5;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: #808080;
-  --bg-doc: initial;
-  --clr-doc: #036A07;
-  --bg-builtin: initial;
-  --clr-builtin: #006FE0;
-  --bg-string: initial;
-  --clr-string: #008000;
-}
-
-html {
-  font-family: Sans;
-}
-
-body {
-  background: #999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-body[data-theme='light'] {
-  background: var(--bg);
-  color: var(--clr);
-}
-
-body[data-theme='dark'] {
-  background: var(--bg);
-  color: var(--clr);
-  --bc-tb: #eeeeec;
-  --bc-block: initial;
-  --clr: #eeeeec;
-  --clr-code: #2e3436;
-  --clr-tb-hd: #2e3436;
-  --bg: #2e3436;
-  --bg-tb-hd: #d3d7cf;
-  --bg-code: #d3d7cf;
-  --bg-block: initial;
-  --clr-link: #e9b2e3;
-  --clr-title: #eeeeec;
-  --clr-todo: #e9b96e;
-  --bg-todo: initial;
-  --clr-done: #73d216;
-  --bg-done: initial;
-  --ts-clr: #b4fa70;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #b4fa70;
-  --bg-constant: initial;
-  --clr-constant: #e9b2e3;
-  --bg-comment: initial;
-  --clr-comment: #73d216;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: initial;
-  --bg-function: initial;
-  --clr-function: #fce94f;
-  --bg-variable: initial;
-  --clr-variable: #fcaf3e;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: initial;
-  --bg-doc: initial;
-  --clr-doc: initial;
-  --bg-builtin: initial;
-  --clr-builtin: #e090d7;
-  --bg-string: initial;
-  --clr-string: #e9b96e;
-}
-
-
-@media only screen and (max-width: 768px) {
-  #content {
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #content {
-    width: 768px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  body {
-    align-items: flex-end;
-  }
-  #content {
-    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
-    margin-right: var(--mg);
-  }
-}
-
-h1 {
-  color: var(--clr-title);
-  text-align: center;
-}
-h2, h3, h4, h5, h6, h7 {
-  font-family: Sans Serif;
-}
-h2 {
-  line-height: 2.5em;
-}
-h2::before {
-  content: "◉ ";
-}
-h3::before {
-  content: "✸ ";
-}
-h4::before {
-  content: "▷ ";
-}
-
-code {
-  color: var(--clr-code);
-  background: var(--bg-code);
-  border-radius: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-pre {
-  padding: 20px;
-  border: 1px solid var(--bc-block);
-  background: var(--bg-block);
-  font-size: 0.9rem;
-  overflow-x: scroll;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-
-.todo {
-  color: var(--clr-todo);
-  background: var(--bg-todo);
-}
-
-.done {
-  color: var(--clr-done);
-  background: var(--bg-done);
-}
-
-.timestamp-wrapper {
-  font-size: 0.8rem;
-  color: var(--clr-ts);
-}
-
-table {
-  width: 100%;
-  border: 2px solid var(--bc-tb);
-}
-
-thead {
-  color: var(--clr-tb-hd);
-  background: var(--bg-tb-hd);
-}
-
-td, th {
-  border: thin solid var(--bc-tb);
-}
-
-li {
-  line-height: 2rem;
-}
-
-a {
-  text-decoration: none;
-  color: var(--clr-link);
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-#table-of-contents > h2 {
-  display: none;
-}
-
-#table-of-contents {
-  border: thin solid var(--bc-block);
-  background: var(--bg-block);
-}
-
-#toggle-toc {
-  display: none;
-}
-
-.toc-show {
-  display: block!important;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 2em;
-    line-height: 2em;
-    display: block;
-  }
-  #table-of-contents {
-    background: var(--bg);
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-y: scroll;
-  }
-  #table-of-contents a {
-    color: var(--clr);
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  #table-of-contents {
-    font-size: 0.8rem;
-    position: fixed;
-    left: var(--mg);
-    top: var(--mg);
-    bottom: var(--mg);
-    width: var(--w-toc);
-    overflow-y: scroll;
-  }
-}
-
-#table-of-contents::-webkit-scrollbar {
-  display: none;
-}
-
-#table-of-contents {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.MathJax_Display {
-  font-size: 1.25em;
-}
-
-#toggle-theme {
-  border-width: 0;
-  line-height: 4em;
-  padding-left: 1em;
-  padding-right: 1em;
-  background: var(--bg-block);
-  color: var(--clr-code);
-}
-
-#toggle-theme:hover {
-  cursor: pointer;
-}
-
-img {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-theme {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #toggle-theme {
-    position: absolute;
-    top: var(--mg);
-    right: var(--mg);
-    border-radius: 5px;
-  }
-}
-
-.theme-transition {
-  transition: all 0.5s;
-}
-
-.status {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  ul {
-    padding-left: .5em;
-    margin-left: 0;
-  }
-  li {
-    padding-left: 0;
-    margin-left: 0;
-  }
-}
-/*]]>*/-->
-</style>
-<style type="text/css">
-<!--/*--><![CDATA[/*><!--*/
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-html {
-	line-height: 1.35;
-	-webkit-text-size-adjust: 100%;
-}
-
-body {
-	margin: 0;
-	font-family:
-		system-ui,
-		-apple-system,
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
-}
-
-hr {
-	height: 0;
-	color: inherit;
-}
-
-b,
-strong {
-	font-weight: bolder;
-}
-
-code,
-kbd,
-samp,
-pre {
-	font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
-		monospace;
-	font-size: 1em;
-}
-
-small {
-	font-size: 80%;
-}
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-sup {
-	top: -0.5em;
-}
-
-table {
-	text-indent: 0;
-	border-color: inherit;
-}
-
-summary {
-	display: list-item;
-}
-
-:root {
-  --bc-tb: #1A2F54;
-  --bc-block: #008ED1;
-  --clr: #333333;
-  --clr-tb-hd: #85CEEB;
-  --clr-code: #85CEEB;
-  --bg: #FFFFFF;
-  --bg-code: #335EA8;
-  --bg-tb-hd: #335EA8;
-  --bg-block: #FFFFE0;
-  --clr-link: #D0372D;
-  --clr-title: #333333;
-  --clr-todo: #008000;
-  --bg-todo: initial;
-  --clr-done: #8D8D84;
-  --bg-done: initial;
-  --ts-clr: #0000FF;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #0000FF;
-  --bg-constant: initial;
-  --clr-constant: #D0372D;
-  --bg-comment: initial;
-  --clr-comment: #8D8D84;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: #8D8D84;
-  --bg-function: initial;
-  --clr-function: #006699;
-  --bg-variable: initial;
-  --clr-variable: #BA36A5;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: #808080;
-  --bg-doc: initial;
-  --clr-doc: #036A07;
-  --bg-builtin: initial;
-  --clr-builtin: #006FE0;
-  --bg-string: initial;
-  --clr-string: #008000;
-}
-
-html {
-  font-family: Sans;
-}
-
-body {
-  background: #999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-body[data-theme='light'] {
-  background: var(--bg);
-  color: var(--clr);
-}
-
-body[data-theme='dark'] {
-  background: var(--bg);
-  color: var(--clr);
-  --bc-tb: #eeeeec;
-  --bc-block: initial;
-  --clr: #eeeeec;
-  --clr-code: #2e3436;
-  --clr-tb-hd: #2e3436;
-  --bg: #2e3436;
-  --bg-tb-hd: #d3d7cf;
-  --bg-code: #d3d7cf;
-  --bg-block: initial;
-  --clr-link: #e9b2e3;
-  --clr-title: #eeeeec;
-  --clr-todo: #e9b96e;
-  --bg-todo: initial;
-  --clr-done: #73d216;
-  --bg-done: initial;
-  --ts-clr: #b4fa70;
-  --mg: 20px;
-  --w-toc: 300px;
-  --bg-keyword: initial;
-  --clr-keyword: #b4fa70;
-  --bg-constant: initial;
-  --clr-constant: #e9b2e3;
-  --bg-comment: initial;
-  --clr-comment: #73d216;
-  --bg-comment-delimiter: initial;
-  --clr-comment-delimiter: initial;
-  --bg-function: initial;
-  --clr-function: #fce94f;
-  --bg-variable: initial;
-  --clr-variable: #fcaf3e;
-  --bg-preprocessor: initial;
-  --clr-preprocessor: initial;
-  --bg-doc: initial;
-  --clr-doc: initial;
-  --bg-builtin: initial;
-  --clr-builtin: #e090d7;
-  --bg-string: initial;
-  --clr-string: #e9b96e;
-}
-
-
-@media only screen and (max-width: 768px) {
-  #content {
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #content {
-    width: 768px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  body {
-    align-items: flex-end;
-  }
-  #content {
-    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
-    margin-right: var(--mg);
-  }
-}
-
-h1 {
-  color: var(--clr-title);
-  text-align: center;
-}
-h2, h3, h4, h5, h6, h7 {
-  font-family: Sans Serif;
-}
-h2 {
-  line-height: 2.5em;
-}
-h2::before {
-  content: "◉ ";
-}
-h3::before {
-  content: "✸ ";
-}
-h4::before {
-  content: "▷ ";
-}
-
-code {
-  color: var(--clr-code);
-  background: var(--bg-code);
-  border-radius: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-pre {
-  padding: 20px;
-  border: 1px solid var(--bc-block);
-  background: var(--bg-block);
-  font-size: 0.9rem;
-  overflow-x: scroll;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-
-.todo {
-  color: var(--clr-todo);
-  background: var(--bg-todo);
-}
-
-.done {
-  color: var(--clr-done);
-  background: var(--bg-done);
-}
-
-.timestamp-wrapper {
-  font-size: 0.8rem;
-  color: var(--clr-ts);
-}
-
-table {
-  width: 100%;
-  border: 2px solid var(--bc-tb);
-}
-
-thead {
-  color: var(--clr-tb-hd);
-  background: var(--bg-tb-hd);
-}
-
-td, th {
-  border: thin solid var(--bc-tb);
-}
-
-li {
-  line-height: 2rem;
-}
-
-a {
-  text-decoration: none;
-  color: var(--clr-link);
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-#table-of-contents > h2 {
-  display: none;
-}
-
-#table-of-contents {
-  border: thin solid var(--bc-block);
-  background: var(--bg-block);
-}
-
-#toggle-toc {
-  display: none;
-}
-
-.toc-show {
-  display: block!important;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 2em;
-    line-height: 2em;
-    display: block;
-  }
-  #table-of-contents {
-    background: var(--bg);
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-y: scroll;
-  }
-  #table-of-contents a {
-    color: var(--clr);
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  #table-of-contents {
-    font-size: 0.8rem;
-    position: fixed;
-    left: var(--mg);
-    top: var(--mg);
-    bottom: var(--mg);
-    width: var(--w-toc);
-    overflow-y: scroll;
-  }
-}
-
-#table-of-contents::-webkit-scrollbar {
-  display: none;
-}
-
-#table-of-contents {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.MathJax_Display {
-  font-size: 1.25em;
-}
-
-#toggle-theme {
-  border-width: 0;
-  line-height: 4em;
-  padding-left: 1em;
-  padding-right: 1em;
-  background: var(--bg-block);
-  color: var(--clr-code);
-}
-
-#toggle-theme:hover {
-  cursor: pointer;
-}
-
-img {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  #toggle-theme {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #toggle-theme {
-    position: absolute;
-    top: var(--mg);
-    right: var(--mg);
-    border-radius: 5px;
-  }
-}
-
-.theme-transition {
-  transition: all 0.5s;
-}
-
-.status {
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-  ul {
-    padding-left: .5em;
-    margin-left: 0;
-  }
-  li {
-    padding-left: 0;
-    margin-left: 0;
-  }
-}
-/*]]>*/-->
-</style>
 <style type="text/css">
 <!--/*--><![CDATA[/*><!--*/
 *,
@@ -1294,49 +464,56 @@ img {
 </li>
 </ul>
 </li>
-<li><a href="#org0000040">4. Productivity Enhancers</a>
+<li><a href="#org0000043">4. Productivity Enhancers</a>
 <ul>
 <li><a href="#org0000034">4.1. Undo History</a></li>
 <li><a href="#org0000037">4.2. Key &amp; Minibuffer completions</a></li>
 <li><a href="#org000003a">4.3. Hop (Jump Anywhere on Buffer)</a></li>
-<li><a href="#org000003d">4.4. AutoCompletion &amp; Snippets</a></li>
+<li><a href="#org000003d">4.4. Zoxide</a></li>
+<li><a href="#org0000040">4.5. AutoCompletion &amp; Snippets</a></li>
 </ul>
 </li>
-<li><a href="#org0000049">5. Programming</a>
+<li><a href="#org000004c">5. Programming</a>
 <ul>
-<li><a href="#org0000043">5.1. Highlighting</a></li>
-<li><a href="#org0000046">5.2. Project Management</a></li>
+<li><a href="#org0000046">5.1. Highlighting</a></li>
+<li><a href="#org0000049">5.2. Project Management</a></li>
 </ul>
 </li>
-<li><a href="#org000005b">6. Add-ons</a>
+<li><a href="#org000005e">6. Add-ons</a>
 <ul>
-<li><a href="#org000004c">6.1. Remote Execution</a></li>
-<li><a href="#org000004f">6.2. Embark</a></li>
-<li><a href="#org0000052">6.3. Marginalia</a></li>
-<li><a href="#org0000055">6.4. Better Help</a></li>
-<li><a href="#org0000058">6.5. Chdir Support</a></li>
+<li><a href="#org000004f">6.1. Remote Execution</a></li>
+<li><a href="#org0000052">6.2. Embark</a></li>
+<li><a href="#org0000055">6.3. Marginalia</a></li>
+<li><a href="#org0000058">6.4. Better Help</a></li>
+<li><a href="#org000005b">6.5. Chdir Support</a></li>
 </ul>
 </li>
-<li><a href="#org000006a">7. Look &amp; Feel</a>
+<li><a href="#org000006d">7. Look &amp; Feel</a>
 <ul>
-<li><a href="#org000005e">7.1. Theme</a></li>
-<li><a href="#org0000061">7.2. ModeLine</a></li>
-<li><a href="#org0000064">7.3. Org Export</a></li>
-<li><a href="#org0000067">7.4. Highlight Todo</a></li>
+<li><a href="#org0000061">7.1. Theme</a></li>
+<li><a href="#org0000064">7.2. ModeLine</a></li>
+<li><a href="#org0000067">7.3. Org Export</a></li>
+<li><a href="#org000006a">7.4. Highlight Todo</a></li>
 </ul>
 </li>
-<li><a href="#org0000082">8. Miscellaneous</a>
+<li><a href="#org0000085">8. Miscellaneous</a>
 <ul>
-<li><a href="#org000006d">8.1. Notes</a></li>
-<li><a href="#org0000070">8.2. Don't reset the cursor to the middle when scrolling</a></li>
-<li><a href="#org0000073">8.3. Highlight Trailing Whitespace</a></li>
-<li><a href="#org0000076">8.4. Window Split Vertical-Horizontal Toggle</a></li>
-<li><a href="#org0000079">8.5. Change backup and lock file dump path</a></li>
-<li><a href="#org000007c">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
-<li><a href="#org000007f">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
+<li><a href="#org0000070">8.1. Notes</a></li>
+<li><a href="#org0000073">8.2. Don't reset the cursor to the middle when scrolling</a></li>
+<li><a href="#org0000076">8.3. Highlight Trailing Whitespace</a></li>
+<li><a href="#org0000079">8.4. Window Split Vertical-Horizontal Toggle</a></li>
+<li><a href="#org000007c">8.5. Change backup and lock file dump path</a></li>
+<li><a href="#org000007f">8.6. open-at-point that opens respecting OS's default app for the link</a></li>
+<li><a href="#org0000082">8.7. File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</a></li>
 </ul>
 </li>
-<li><a href="#org0000085">9. Resources References</a></li>
+<li><a href="#org0000088">9. Resources References</a></li>
+<li><a href="#org0000091">10. Unverified Code</a>
+<ul>
+<li><a href="#org000008b">10.1. Completions &amp; Jumping</a></li>
+<li><a href="#org000008e">10.2. Consult (tmp)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1817,8 +994,8 @@ Some org mode enhancements
 </div>
 </div>
 
-<div id="outline-container-org0000040" class="outline-2">
-<h2 id="org0000040"><span class="section-number-2">4.</span> Productivity Enhancers</h2>
+<div id="outline-container-org0000043" class="outline-2">
+<h2 id="org0000043"><span class="section-number-2">4.</span> Productivity Enhancers</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 <div id="outline-container-org0000034" class="outline-3">
@@ -1911,8 +1088,19 @@ This was my most missing feature from nvim, so much so I wrote this package myse
 </div>
 
 <div id="outline-container-org000003d" class="outline-3">
-<h3 id="org000003d"><span class="section-number-3">4.4.</span> AutoCompletion &amp; Snippets</h3>
+<h3 id="org000003d"><span class="section-number-3">4.4.</span> Zoxide</h3>
 <div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">zoxide</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">general-def</span> '(normal motion visual operator) <span style="color: var(--clr-string); background-color: var(--bg-string);">"gz"</span> #'zoxide-find-file))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0000040" class="outline-3">
+<h3 id="org0000040"><span class="section-number-3">4.5.</span> AutoCompletion &amp; Snippets</h3>
+<div class="outline-text-3" id="text-4-5">
 <p>
 Woah, now we want to speed up!
 </p>
@@ -1967,12 +1155,12 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 </div>
 </div>
 
-<div id="outline-container-org0000049" class="outline-2">
-<h2 id="org0000049"><span class="section-number-2">5.</span> Programming</h2>
+<div id="outline-container-org000004c" class="outline-2">
+<h2 id="org000004c"><span class="section-number-2">5.</span> Programming</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org0000043" class="outline-3">
-<h3 id="org0000043"><span class="section-number-3">5.1.</span> Highlighting</h3>
+<div id="outline-container-org0000046" class="outline-3">
+<h3 id="org0000046"><span class="section-number-3">5.1.</span> Highlighting</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">markdown-mode</span>)
@@ -1982,8 +1170,8 @@ Setup company at the end of everything, so multiple backends can be grouped and 
 </div>
 </div>
 
-<div id="outline-container-org0000046" class="outline-3">
-<h3 id="org0000046"><span class="section-number-3">5.2.</span> Project Management</h3>
+<div id="outline-container-org0000049" class="outline-3">
+<h3 id="org0000049"><span class="section-number-3">5.2.</span> Project Management</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Consider git repositories as projects, and provide useful commands for project-scoped files.
@@ -2042,12 +1230,12 @@ Some importantkeybinds to remember,
 </div>
 </div>
 
-<div id="outline-container-org000005b" class="outline-2">
-<h2 id="org000005b"><span class="section-number-2">6.</span> Add-ons</h2>
+<div id="outline-container-org000005e" class="outline-2">
+<h2 id="org000005e"><span class="section-number-2">6.</span> Add-ons</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org000004c" class="outline-3">
-<h3 id="org000004c"><span class="section-number-3">6.1.</span> Remote Execution</h3>
+<div id="outline-container-org000004f" class="outline-3">
+<h3 id="org000004f"><span class="section-number-3">6.1.</span> Remote Execution</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Tramp (Transparent Remote Access Multiple Protocol) automatically kicks in when working in
@@ -2065,8 +1253,8 @@ Tramp (Transparent Remote Access Multiple Protocol) automatically kicks in when 
 </div>
 </div>
 
-<div id="outline-container-org000004f" class="outline-3">
-<h3 id="org000004f"><span class="section-number-3">6.2.</span> Embark</h3>
+<div id="outline-container-org0000052" class="outline-3">
+<h3 id="org0000052"><span class="section-number-3">6.2.</span> Embark</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 This is <a href="https://karthinks.com/software/fifteen-ways-to-use-embark">great article</a> on uses of Embark.
@@ -2130,8 +1318,8 @@ Most useful actions on <code>embark-act</code>
 </div>
 </div>
 
-<div id="outline-container-org0000052" class="outline-3">
-<h3 id="org0000052"><span class="section-number-3">6.3.</span> Marginalia</h3>
+<div id="outline-container-org0000055" class="outline-3">
+<h3 id="org0000055"><span class="section-number-3">6.3.</span> Marginalia</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 Add extra information on minibuffers.
@@ -2147,8 +1335,8 @@ Add extra information on minibuffers.
 </div>
 </div>
 
-<div id="outline-container-org0000055" class="outline-3">
-<h3 id="org0000055"><span class="section-number-3">6.4.</span> Better Help</h3>
+<div id="outline-container-org0000058" class="outline-3">
+<h3 id="org0000058"><span class="section-number-3">6.4.</span> Better Help</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Setup better help</span>
@@ -2167,8 +1355,8 @@ Add extra information on minibuffers.
 </div>
 </div>
 
-<div id="outline-container-org0000058" class="outline-3">
-<h3 id="org0000058"><span class="section-number-3">6.5.</span> Chdir Support</h3>
+<div id="outline-container-org000005b" class="outline-3">
+<h3 id="org000005b"><span class="section-number-3">6.5.</span> Chdir Support</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 Syncing /proc/self/cwd with changes to (default-directory).
@@ -2182,12 +1370,12 @@ Syncing /proc/self/cwd with changes to (default-directory).
 </div>
 </div>
 
-<div id="outline-container-org000006a" class="outline-2">
-<h2 id="org000006a"><span class="section-number-2">7.</span> Look &amp; Feel</h2>
+<div id="outline-container-org000006d" class="outline-2">
+<h2 id="org000006d"><span class="section-number-2">7.</span> Look &amp; Feel</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org000005e" class="outline-3">
-<h3 id="org000005e"><span class="section-number-3">7.1.</span> Theme</h3>
+<div id="outline-container-org0000061" class="outline-3">
+<h3 id="org0000061"><span class="section-number-3">7.1.</span> Theme</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 The main theme when opening emacs.
@@ -2203,8 +1391,8 @@ The main theme when opening emacs.
 </div>
 </div>
 
-<div id="outline-container-org0000061" class="outline-3">
-<h3 id="org0000061"><span class="section-number-3">7.2.</span> ModeLine</h3>
+<div id="outline-container-org0000064" class="outline-3">
+<h3 id="org0000064"><span class="section-number-3">7.2.</span> ModeLine</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 The beautiful bottom mode-line.
@@ -2262,8 +1450,8 @@ The beautiful bottom mode-line.
 </div>
 </div>
 
-<div id="outline-container-org0000064" class="outline-3">
-<h3 id="org0000064"><span class="section-number-3">7.3.</span> Org Export</h3>
+<div id="outline-container-org0000067" class="outline-3">
+<h3 id="org0000067"><span class="section-number-3">7.3.</span> Org Export</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 Theme of the exported website when running <code>org-html-export-to-html</code>, this copies theme that is applied above.
@@ -2290,8 +1478,8 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000067" class="outline-3">
-<h3 id="org0000067"><span class="section-number-3">7.4.</span> Highlight Todo</h3>
+<div id="outline-container-org000006a" class="outline-3">
+<h3 id="org000006a"><span class="section-number-3">7.4.</span> Highlight Todo</h3>
 <div class="outline-text-3" id="text-7-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">hl-todo</span>
@@ -2311,12 +1499,12 @@ Theme of the exported website when running <code>org-html-export-to-html</code>,
 </div>
 </div>
 
-<div id="outline-container-org0000082" class="outline-2">
-<h2 id="org0000082"><span class="section-number-2">8.</span> Miscellaneous</h2>
+<div id="outline-container-org0000085" class="outline-2">
+<h2 id="org0000085"><span class="section-number-2">8.</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org000006d" class="outline-3">
-<h3 id="org000006d"><span class="section-number-3">8.1.</span> Notes</h3>
+<div id="outline-container-org0000070" class="outline-3">
+<h3 id="org0000070"><span class="section-number-3">8.1.</span> Notes</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li><code>emoji-list</code> is my emoji picker replacement 🙂</li>
@@ -2328,8 +1516,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org0000070" class="outline-3">
-<h3 id="org0000070"><span class="section-number-3">8.2.</span> Don't reset the cursor to the middle when scrolling</h3>
+<div id="outline-container-org0000073" class="outline-3">
+<h3 id="org0000073"><span class="section-number-3">8.2.</span> Don't reset the cursor to the middle when scrolling</h3>
 <div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-variables
@@ -2340,8 +1528,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org0000073" class="outline-3">
-<h3 id="org0000073"><span class="section-number-3">8.3.</span> Highlight Trailing Whitespace</h3>
+<div id="outline-container-org0000076" class="outline-3">
+<h3 id="org0000076"><span class="section-number-3">8.3.</span> Highlight Trailing Whitespace</h3>
 <div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-default</span> show-trailing-whitespace t)
@@ -2351,8 +1539,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 </div>
-<div id="outline-container-org0000076" class="outline-3">
-<h3 id="org0000076"><span class="section-number-3">8.4.</span> Window Split Vertical-Horizontal Toggle</h3>
+<div id="outline-container-org0000079" class="outline-3">
+<h3 id="org0000079"><span class="section-number-3">8.4.</span> Window Split Vertical-Horizontal Toggle</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">my/window-split-toggle</span> ()
@@ -2375,8 +1563,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org0000079" class="outline-3">
-<h3 id="org0000079"><span class="section-number-3">8.5.</span> Change backup and lock file dump path</h3>
+<div id="outline-container-org000007c" class="outline-3">
+<h3 id="org000007c"><span class="section-number-3">8.5.</span> Change backup and lock file dump path</h3>
 <div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defvar</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">backupdir</span> (concat user-emacs-directory <span style="color: var(--clr-string); background-color: var(--bg-string);">"file-backups/"</span>))
@@ -2395,8 +1583,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org000007c" class="outline-3">
-<h3 id="org000007c"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
+<div id="outline-container-org000007f" class="outline-3">
+<h3 id="org000007f"><span class="section-number-3">8.6.</span> open-at-point that opens respecting OS's default app for the link</h3>
 <div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">defun</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">open-at-point</span> ()
@@ -2419,8 +1607,8 @@ Below are the things that I like it this way! You may opt in or out to each on y
 </div>
 </div>
 
-<div id="outline-container-org000007f" class="outline-3">
-<h3 id="org000007f"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
+<div id="outline-container-org0000082" class="outline-3">
+<h3 id="org0000082"><span class="section-number-3">8.7.</span> File closing prompt with evil-quit without saving won't show "Type C-h for help." in case wrong key is pressed.</h3>
 <div class="outline-text-3" id="text-8-7">
 <p>
 Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines commented out.
@@ -2668,8 +1856,8 @@ Redefining the funcion at emacs/lisp/emacs-lisp/map-ynp.el, with some lines comm
 </div>
 </div>
 
-<div id="outline-container-org0000085" class="outline-2">
-<h2 id="org0000085"><span class="section-number-2">9.</span> Resources References</h2>
+<div id="outline-container-org0000088" class="outline-2">
+<h2 id="org0000088"><span class="section-number-2">9.</span> Resources References</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 These resources were very helpful in formation of my config. So a huge phrase of appreciation to all those people who were part of this.
@@ -2683,6 +1871,165 @@ These resources were very helpful in formation of my config. So a huge phrase of
 <li><a href="https://www.reddit.com/r/emacs/comments/18bg0vc/more_advanced_emacs_tutorials">More advanced Emacs tutorials (Reddit)</a>.</li>
 <li><a href="https://www.youtube.com/@howardabrams1">Howard Abrams (YT)</a>.</li>
 </ul>
+</div>
+</div>
+
+
+<div id="outline-container-org0000091" class="outline-2">
+<h2 id="org0000091"><span class="section-number-2">10.</span> Unverified Code</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org000008b" class="outline-3">
+<h3 id="org000008b"><span class="section-number-3">10.1.</span> Completions &amp; Jumping</h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">eglot</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> nil
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:after</span> (cape orderless)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">No event buffers, disable providers cause a lot of hover traffic. Shutdown unused servers.</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> eglot-events-buffer-size 0
+        eglot-ignored-server-capabilities '(<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;</span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:hoverProvider</span>
+                                            <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:documentHighlightProvider</span>)
+        eglot-autoshutdown t)
+
+  (fset #'jsonrpc--log-event #'ignore)
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Option 1: Specify explicitly to use Orderless for Eglot</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> completion-category-overrides '((eglot (styles orderless))
+                                        (eglot-capf (styles orderless))))
+
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Option 2: Undo the Eglot modification of completion-category-defaults</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">with-eval-after-load</span> 'eglot
+     (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> completion-category-defaults nil))
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Enable cache busting, depending on if your server returns</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">sufficiently many candidates in the first place.</span>
+  (advice-add 'eglot-completion-at-point <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:around</span> #'cape-wrap-buster)
+  (add-hook 'eglot-managed-mode-hook
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> ()
+              (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq-local</span> completion-at-point-functions
+                          (list (cape-capf-super
+                                 #'eglot-completion-at-point
+                                 #'cape-keyword
+                                 #'cape-file)))))
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Eldoc configuration</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> eldoc-documentation-strategy
+            'eldoc-documentation-compose-eagerly)
+  (add-hook 'eglot-managed-mode-hook
+            (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">lambda</span> () (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> eldoc-documentation-functions
+                            '(flymake-eldoc-function
+                              eglot-signature-eldoc-function
+                              eglot-hover-eldoc-function))))
+
+  (add-to-list 'eglot-server-programs
+              `(((js-mode <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:language-id</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"javascript"</span>)
+                 (js-ts-mode <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:language-id</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"javascript"</span>)
+                 (tsx-ts-mode <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:language-id</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"typescriptreact"</span>)
+                 (typescript-ts-mode <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:language-id</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"typescript"</span>)
+                 (typescript-mode <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:language-id</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"typescript"</span>))
+                 .
+                (<span style="color: var(--clr-string); background-color: var(--bg-string);">"typescript-language-server"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"--stdio"</span>
+                <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:initializationOptions</span> (
+                  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:maxTsServerMemory</span> 8192
+                  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:preferences</span>
+                    (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayParameterNameHints</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"literals"</span>
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayParameterNameHintsWhenArgumentMatchesName</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayFunctionParameterTypeHints</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayVariableTypeHints</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayVariableTypeHintsWhenTypeMatchesName</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayPropertyDeclarationTypeHints</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayFunctionLikeReturnTypeHints</span> t
+                      <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:includeInlayEnumMemberValueHints</span> t)))))
+  (add-to-list 'eglot-server-programs
+                `(rust-ts-mode . (<span style="color: var(--clr-string); background-color: var(--bg-string);">"rust-analyzer"</span>
+                   <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:initializationOptions</span> (
+                     <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:inhayHints</span> t)))))
+
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">project</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> nil
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> project-vc-extra-root-markers '(<span style="color: var(--clr-string); background-color: var(--bg-string);">".git"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"package.json"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"Cargo.toml"</span>)))
+
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">treesit</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> nil
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:config</span>
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List of file extensions and corresponding modes</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> treesit-language-source-alist
+    '((bash <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-bash"</span>)
+      (cmake <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/uyha/tree-sitter-cmake"</span>)
+      (css <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-css"</span>)
+      (elisp <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/Wilfred/tree-sitter-elisp"</span>)
+      (go <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-go"</span>)
+      (html <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-html"</span>)
+      (javascript <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-javascript"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"master"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"src"</span>)
+      (json <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-json"</span>)
+      (make <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/alemuller/tree-sitter-make"</span>)
+      (markdown <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ikatyang/tree-sitter-markdown"</span>)
+      (python <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-python"</span>)
+      (rust <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-rust"</span>)
+      (toml <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-toml"</span>)
+      (tsx <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-typescript"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"master"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"tsx/src"</span>)
+      (typescript <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/tree-sitter/tree-sitter-typescript"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"master"</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"typescript/src"</span>)
+      (yaml <span style="color: var(--clr-string); background-color: var(--bg-string);">"https://github.com/ikatyang/tree-sitter-yaml"</span>)))
+
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> mode-list '((<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.tsx\\'"</span> . tsx-ts-mode)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.ts\\'"</span> . typescript-ts-mode)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.cpp\\'"</span> . c++-mode)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.rs\\'"</span> . rust-ts-mode)
+                    (<span style="color: var(--clr-string); background-color: var(--bg-string);">"\\.py\\'"</span> . python-mode)))
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Loop to add file extensions to auto-mode-alist</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">dolist</span> (mode-pair mode-list)
+    (add-to-list 'auto-mode-alist mode-pair))
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">List of modes to add eglot to their hooks</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> eglot-modes (mapcar 'cdr mode-list))
+
+  <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Loop to add eglot to the respective mode hooks</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">dolist</span> (mode eglot-modes)
+    (add-hook (intern (concat (symbol-name mode) <span style="color: var(--clr-string); background-color: var(--bg-string);">"-hook"</span>)) 'eglot-ensure))
+)
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package treesit-fold</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">;; :config</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">;; (global-treesit-fold-indicators-mode 1)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">)</span>
+
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Comment and Uncommenting</span>
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">evil-nerd-commenter</span>)
+
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">prog-mode</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> nil
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (prog-mode . which-function-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org000008e" class="outline-3">
+<h3 id="org000008e"><span class="section-number-3">10.2.</span> Consult (tmp)</h3>
+<div class="outline-text-3" id="text-10-2">
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;; </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(use-package embark</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">:config</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;   </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">(setq prefix-help-command #'embark-prefix-help-command</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">embark-mixed-indicator-delay 0.1</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">embark-verbose-indicator-display-action '(display-buffer-at-bottom)</span>
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">;;         </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">embark-quit-after-action nil))</span>
+
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">embark-consult</span>)
+(<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">use-package</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">consult</span>
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:ensure</span> (consult <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:host</span> github <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:repo</span> <span style="color: var(--clr-string); background-color: var(--bg-string);">"minad/consult"</span>)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:hook</span> (completion-list-mode . consult-preview-at-point-mode)
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:bind</span> (<span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:map</span> consult-narrow-map (<span style="color: var(--clr-string); background-color: var(--bg-string);">"?"</span> . consult-narrow-help))
+  <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:init</span>
+  (<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">setq</span> register-preview-delay 0
+        register-preview-function #'consult-register-format)
+  (advice-add #'register-preview <span style="color: var(--clr-builtin); background-color: var(--bg-builtin);">:override</span> #'consult-register-window))
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
