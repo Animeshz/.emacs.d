@@ -115,7 +115,7 @@ Emacs requires some essential tweaks to become somewhat usable.
 (global-display-line-numbers-mode t)
 
 ;; Configure automatic line breaks and word-wrap (just in case)
-(setq-default fill-column 120  ; SPC-c
+(setq-default fill-column 500  ; SPC-c
               auto-fill-function 'do-auto-fill)
 (global-visual-line-mode t)  ; SPC-w
 
@@ -151,7 +151,7 @@ Same goes for =org-mode=.
 #+BEGIN_SRC emacs-lisp
 ;; Allow these languages for code evaluation in org-mode documents
 (org-babel-do-load-languages 'org-babel-load-languages
-                             '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t)))  ; C-c C-c
+                             '((emacs-lisp . t) (shell . t) (python . t) (ruby . t) (C . t) (js . t) (sql . t)))  ; C-c C-c
 (setq org-confirm-babel-evaluate nil)
 
 ;; Give org html export a deterministic id so it doesn't pollute git history
@@ -361,6 +361,12 @@ Completion over M-x and other help panels.
 This was my most missing feature from nvim, so much so I wrote this package myself. Read more on [[https://github.com/Animeshz/hop.el][hop.el]].
 
 #+BEGIN_SRC emacs-lisp
+;; (use-package pcre
+;;   ;; :straight if you use stright.el
+;;   :ensure (pcre :host github :repo "syohex/emacs-pcre"
+;;                   :pre-build (("make" "all"))
+;;                   :files ("pcre.el" "pcre-core.so")))
+(add-to-list 'load-path "/nix/store/0lhzi2473ngzg5bxpa8incpjlyh3vdpk-emacs-emacs-pcre-bc63431cff76dae6ccbff6470173c96ff037fae7/share/emacs/site-lisp")
 (require 'pcre)
 
 (use-package hop
@@ -524,7 +530,10 @@ Add extra information on minibuffers.
 Syncing /proc/self/cwd with changes to (default-directory).
 
 #+BEGIN_SRC emacs-lisp
-(require 'chdir)
+;; (use-package chdir
+;;   :ensure (chdir :host github :repo "Animeshz/emacs-chdir"
+;;                 :files (:default "chdir.el" "chdir-core.so")
+;;                 :pre-build (("make" "all"))))
 #+END_SRC
 
 * Look & Feel
